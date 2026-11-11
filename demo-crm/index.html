@@ -24,6 +24,7 @@
   --st-entregado: #64748b;
   --st-cancelado: #ef4444;
   --wa: #1fa855;
+  --bubble-me: oklch(0.94 0.05 150);
   --radius: 0.625rem;
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --shadow: 0 1px 2px oklch(0.2 0.01 260 / 0.06), 0 2px 8px oklch(0.2 0.01 260 / 0.05);
@@ -32,14 +33,14 @@
   :root:not([data-theme="light"]) {
     --background: oklch(0.13 0.01 260); --foreground: oklch(0.985 0 0); --card: oklch(0.18 0.01 260); --card-2: oklch(0.205 0.01 260);
     --muted: oklch(0.22 0.01 260); --muted-foreground: oklch(0.68 0.01 260); --border: oklch(0.28 0.01 260); --sidebar: oklch(0.16 0.01 260);
-    --primary: oklch(0.68 0.2 16); --primary-soft: oklch(0.68 0.2 16 / 0.18); --overlay: oklch(0 0 0 / 0.6); --wa: #25d366;
+    --primary: oklch(0.68 0.2 16); --primary-soft: oklch(0.68 0.2 16 / 0.18); --overlay: oklch(0 0 0 / 0.6); --wa: #25d366; --bubble-me: oklch(0.33 0.05 150);
     --shadow: 0 1px 2px oklch(0 0 0 / 0.4); color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --background: oklch(0.13 0.01 260); --foreground: oklch(0.985 0 0); --card: oklch(0.18 0.01 260); --card-2: oklch(0.205 0.01 260);
   --muted: oklch(0.22 0.01 260); --muted-foreground: oklch(0.68 0.01 260); --border: oklch(0.28 0.01 260); --sidebar: oklch(0.16 0.01 260);
-  --primary: oklch(0.68 0.2 16); --primary-soft: oklch(0.68 0.2 16 / 0.18); --overlay: oklch(0 0 0 / 0.6); --wa: #25d366;
+  --primary: oklch(0.68 0.2 16); --primary-soft: oklch(0.68 0.2 16 / 0.18); --overlay: oklch(0 0 0 / 0.6); --wa: #25d366; --bubble-me: oklch(0.33 0.05 150);
   --shadow: 0 1px 2px oklch(0 0 0 / 0.4); color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -72,6 +73,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .icon-btn { width: 44px; height: 44px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--card); display: grid; place-items: center; cursor: pointer; }
 .menu-btn { display: none; }
 .content { padding-block: 16px 32px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 16px; min-width: 0; }
+.content > *, .list > * { min-width: 0; }
+.chat-item { overflow: hidden; }
 .demo-note { font-size: 13px; color: var(--muted-foreground); background: var(--muted); border: 1px dashed var(--border); border-radius: var(--radius); padding: 8px 12px; }
 
 /* Filtro de días */
@@ -152,6 +155,28 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .cook .r:last-child { border-bottom: 0; }
 .cook .r b { font-size: 22px; color: var(--primary); font-variant-numeric: tabular-nums; }
 
+/* Bandeja de mensajes (como el inbox de WaCRM) */
+.chat-item { display: flex; gap: 12px; align-items: center; width: 100%; text-align: left; background: var(--card); border: 1px solid var(--border); border-radius: calc(var(--radius) * 1.4); padding: 12px 14px; cursor: pointer; }
+.chat-item .t { flex: 1; min-width: 0; }
+.chat-item b { display: block; font-size: 16px; }
+.chat-item small { display: block; color: var(--muted-foreground); font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.chat-item .side { display: grid; justify-items: end; gap: 4px; font-size: 12px; color: var(--muted-foreground); }
+.unread { background: var(--wa); color: #fff; border-radius: 999px; font-size: 12px; font-weight: 700; min-width: 22px; height: 22px; display: grid; place-items: center; padding: 0 6px; }
+.chat-deal { padding: 10px 16px; border-bottom: 1px solid var(--border); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 14px; background: var(--card); }
+.chat-deal .move { flex-basis: 100%; }
+.chat-deal .chip { padding: 6px 12px; font-size: 14px; }
+.msgs { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 8px; background: var(--muted); }
+.msg { max-width: 82%; padding: 8px 12px; border-radius: 12px; font-size: 16px; box-shadow: var(--shadow); overflow-wrap: anywhere; }
+.msg.c { align-self: flex-start; background: var(--card); border-top-left-radius: 4px; }
+.msg.m { align-self: flex-end; background: var(--bubble-me); border-top-right-radius: 4px; }
+.msg time { display: block; font-size: 11px; color: var(--muted-foreground); text-align: right; margin-top: 2px; }
+.foto { width: 190px; max-width: 100%; aspect-ratio: 3 / 4; border-radius: 8px; background: repeating-linear-gradient(135deg, var(--muted) 0 10px, var(--card-2) 10px 20px); border: 1px solid var(--border); display: grid; place-items: center; text-align: center; color: var(--muted-foreground); font-size: 14px; padding: 10px; }
+.quick { display: flex; gap: 8px; overflow-x: auto; padding: 10px 12px 0; background: var(--card); scrollbar-width: none; }
+.quick .chip { font-size: 14px; padding: 7px 12px; }
+.composer { display: flex; gap: 8px; padding: 10px 12px 12px; background: var(--card); }
+.composer input { flex: 1; min-width: 0; min-height: 48px; border: 1px solid var(--border); border-radius: 999px; padding: 0 16px; font: inherit; background: var(--background); color: var(--foreground); }
+.composer button { width: 48px; height: 48px; border-radius: 999px; border: 0; background: var(--wa); color: #fff; display: grid; place-items: center; cursor: pointer; }
+
 .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(20px + env(safe-area-inset-bottom, 0px)); background: var(--foreground); color: var(--background); padding: 12px 18px; border-radius: 999px; font-weight: 600; font-size: 15px; z-index: 30; box-shadow: var(--shadow); max-width: calc(100% - 32px); text-align: center; }
 
 @media (max-width: 900px) {
@@ -170,6 +195,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
     <div class="brand"><div class="logo">M</div><div>Doña Miriam<small>Comida cubana</small></div></div>
     <ul class="nav" id="nav">
       <li><button data-v="tablero" class="on"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="18" rx="1.5"/><rect x="14" y="3" width="7" height="11" rx="1.5"/></svg>Encargos<span class="count" id="navNuevos">0</span></button></li>
+      <li><button data-v="mensajes"><svg class="i" viewBox="0 0 24 24"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.6-4.2A8.5 8.5 0 1 1 20.5 11.6z"/></svg>Mensajes<span class="count" id="navMsgs" style="background:var(--wa)">0</span></button></li>
       <li><button data-v="cocinar"><svg class="i" viewBox="0 0 24 24"><path d="M4 11h16"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 4v3"/><path d="M8 5l1 2M16 5l-1 2"/></svg>Qué cocinar</button></li>
       <li><button data-v="clientes"><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></svg>Clientes</button></li>
     </ul>
@@ -207,7 +233,7 @@ const plural = (n, s) => n + " " + (n === 1 ? s : s + "s");
 // Encargos de EJEMPLO (no son reales)
 let deals = [
   { id: 1, nombre: "Ana López", tel: "844 123 4567", fecha: H, charolas: 2, stage: "pago", charolasDet: ["Congrí, Fricasé de pollo, Tostones, Frijoles negros", "Arroz blanco, Ropa vieja, Boniato"], notas: "Una sin cebolla", total: 300, anticipo: 150, extras: [] },
-  { id: 2, nombre: "Pedro Ruiz", tel: "", fecha: H, charolas: 1, stage: "nuevo", charolasDet: ["Congrí, Bistec de puerco, Platanito maduro frito"], notas: "", total: 190, anticipo: 75, extras: ["Ración extra de arroz"] },
+  { id: 2, nombre: "Pedro Ruiz", tel: "844 310 2233", fecha: H, charolas: 1, stage: "nuevo", charolasDet: ["Congrí, Bistec de puerco, Platanito maduro frito"], notas: "", total: 190, anticipo: 75, extras: ["Ración extra de arroz"] },
   { id: 3, nombre: "Lupita Garza", tel: "844 987 6543", fecha: M, charolas: 3, stage: "nuevo", charolasDet: ["Arroz amarillo, Chuleta de puerco, Papa con mojo, Chícharo", "Arroz amarillo, Chuleta de puerco, Papa con mojo, Chícharo", "Arroz amarillo, Chuleta de puerco, Papa con mojo, Chícharo"], notas: "", total: 450, anticipo: 225, extras: [] },
   { id: 4, nombre: "Carlos Treviño", tel: "844 555 0000", fecha: M, charolas: 1, stage: "pago", charolasDet: ["Congrí, Picadillo de res, Tostones"], notas: "Pasa como a la 1", total: 150, anticipo: 75, extras: [] },
   { id: 5, nombre: "Rosa Medina", tel: "844 222 3344", fecha: P, charolas: 2, stage: "nuevo", charolasDet: ["Congrí, Fricasé de puerco, Tostones, Frijoles colorados", "Congrí, Fricasé de puerco, Tostones"], notas: "", total: 300, anticipo: 150, extras: [] },
@@ -216,6 +242,27 @@ let deals = [
   { id: 8, nombre: "Mariela", tel: "", fecha: M, charolas: 1, stage: "cancelado", charolasDet: ["Congrí, Bistec de puerco, Boniato"], notas: "", total: 150, anticipo: 75, extras: [] }
 ];
 const historial = { "Ana López": [{ f: dia(-9), t: "2 charolas · $300" }, { f: dia(-5), t: "1 charola · $150" }] };
+
+// Conversaciones de EJEMPLO
+const PAGO = (n) => `Para apartar tu encargo deposita $${n} de anticipo a BBVA a nombre de Miriam Coombs. En el concepto pon tu nombre y "Pago de servicios" 🙏 Me mandas la foto del comprobante por aquí.`;
+let chats = [
+  { id: "pedro", nombre: "Pedro Ruiz", dealId: 2, unread: 2, msgs: [
+    { de: "c", t: "Hola Doña Miriam 👋 Quiero apartar 1 charola para hoy: Congrí, Bistec de puerco, Platanito maduro frito + ración extra de arroz. Total $190", h: "10:12" },
+    { de: "m", t: PAGO(75), h: "10:20" },
+    { de: "c", foto: true, h: "11:02" },
+    { de: "c", t: "Listo, ya le deposité", h: "11:02" } ] },
+  { id: "lupita", nombre: "Lupita Garza", dealId: 3, unread: 1, msgs: [
+    { de: "c", t: "Hola, aparté 3 charolas en la página para mañana 😊", h: "09:15" },
+    { de: "m", t: PAGO(225), h: "09:30" },
+    { de: "c", t: "Buenas, ¿a qué hora puedo pasar mañana por ellas?", h: "12:40" } ] },
+  { id: "desconocido", nombre: "844 300 1122", dealId: null, unread: 1, msgs: [
+    { de: "c", t: "Hola, ¿todavía tiene lugar para el viernes? Somos 4", h: "12:55" } ] },
+  { id: "ana", nombre: "Ana López", dealId: 1, unread: 0, msgs: [
+    { de: "c", foto: true, h: "Ayer" },
+    { de: "m", t: "Recibido Ana, gracias 🙏 Te las tengo listas", h: "Ayer" } ] }
+];
+let chatAbierto = null;
+const hora = () => new Date().toTimeString().slice(0, 5);
 
 let vista = "tablero", filtro = H, abierto = null, pidiendoCancelar = false;
 const $ = (id) => document.getElementById(id);
@@ -280,8 +327,39 @@ function clientes() {
   const arr = Object.values(map).sort((a, b) => b.n - a.n);
   return `<div class="demo-note">Clientes de ejemplo.</div><div class="list">${arr.map((c) => { const x = fmt(c.ultimo); return `<div class="client"><span class="avatar">${ini(c.nombre)}</span><div class="t"><b>${esc(c.nombre)}</b><small>${plural(Math.round(c.n), "pedido")} · último: ${x.dia} ${x.n} ${x.mes}${c.tel ? " · " + esc(c.tel) : ""}</small></div></div>`; }).join("")}</div>`;
 }
+function mensajes() {
+  const prev = (c) => { const m = c.msgs[c.msgs.length - 1]; return (m.de === "m" ? "Tú: " : "") + (m.foto ? "📷 Foto" : m.t); };
+  return `<div class="demo-note">Así se verían sus mensajes de WhatsApp si conectamos su número. Conversaciones de ejemplo.</div>
+  <div class="list">${chats.map((c) => { const d = c.dealId && deals.find((x) => x.id === c.dealId); const s = d && stageOf(d.stage);
+    return `<button class="chat-item" data-chat="${c.id}"><span class="avatar">${ini(c.nombre)}</span><span class="t"><b>${esc(c.nombre)}</b><small>${esc(prev(c))}</small>${s ? `<small style="color:${s.c};font-weight:600">● ${s.t}</small>` : ""}</span><span class="side">${c.msgs[c.msgs.length - 1].h}${c.unread ? `<span class="unread">${c.unread}</span>` : ""}</span></button>`; }).join("")}</div>`;
+}
+function chatView() {
+  const root = $("drawerRoot");
+  const c = chats.find((x) => x.id === chatAbierto); c.unread = 0;
+  const d = c.dealId && deals.find((x) => x.id === c.dealId);
+  let banner;
+  if (d) {
+    const s = stageOf(d.stage), x = fmt(d.fecha);
+    let mv = "";
+    if (d.stage === "nuevo") mv = `<div class="move"><button style="background:var(--st-pago)" data-mv="pago" data-id="${d.id}">${ICON.check} Ya pagó</button></div>`;
+    if (d.stage === "pago") mv = `<div class="move"><button style="background:var(--st-entregado)" data-mv="entregado" data-id="${d.id}">${ICON.box} Ya lo entregué</button></div>`;
+    banner = `<span style="color:${s.c};font-weight:700">● ${s.t}</span><span>${plural(d.charolas, "charola")} · ${x.dia} ${x.n} · $${d.total}</span><button class="chip" style="margin-left:auto" data-open="${d.id}">Ver encargo</button>${mv}`;
+  } else banner = `<span>Todavía no tiene encargo</span><button class="chip" style="margin-left:auto" data-crear>+ Anotar encargo</button>`;
+  root.innerHTML = `<div class="drawer-scrim" data-close></div>
+  <aside class="drawer" role="dialog" aria-modal="true" aria-label="Chat con ${esc(c.nombre)}">
+    <div class="dh" style="align-items:center"><span class="avatar">${ini(c.nombre)}</span><h2>${esc(c.nombre)}</h2><button class="icon-btn" data-close aria-label="Cerrar">${ICON.x}</button></div>
+    <div class="chat-deal">${banner}</div>
+    <div class="msgs" id="msgs">${c.msgs.map((m) => `<div class="msg ${m.de}">${m.foto ? `<div class="foto">📷<br>Foto del comprobante de depósito</div>` : esc(m.t)}<time>${m.h}</time></div>`).join("")}</div>
+    <div class="quick"><button class="chip" data-q="pago">💳 Datos de pago</button><button class="chip" data-q="recibido">✅ Recibido, gracias</button><button class="chip" data-q="listo">🍽️ Ya está listo</button></div>
+    <form class="composer" id="composer"><input id="msgIn" placeholder="Escribe un mensaje" autocomplete="off"><button aria-label="Enviar"><svg class="i" viewBox="0 0 24 24"><path d="M4 12l16-8-6 16-3-7z"/></svg></button></form>
+  </aside>`;
+  const ms = $("msgs"); ms.scrollTop = ms.scrollHeight;
+  const b = $("navMsgs"), n = chats.reduce((a, x) => a + x.unread, 0); b.textContent = n; b.hidden = !n;
+}
+function enviar(t) { const c = chats.find((x) => x.id === chatAbierto); c.msgs.push({ de: "m", t, h: hora() }); chatView(); }
 function drawer() {
   const root = $("drawerRoot");
+  if (chatAbierto) return chatView();
   if (!abierto) { root.innerHTML = ""; return; }
   const d = deals.find((x) => x.id === abierto); const x = fmt(d.fecha);
   const hist = historial[d.nombre] || [];
@@ -296,7 +374,7 @@ function drawer() {
       </div>
       <div><div class="lbl">Lo que lleva (${plural(d.charolas, "charola")})</div><div class="box"><ul>${d.charolasDet.map((c) => `<li>${esc(c)}</li>`).join("")}${d.extras.map((e) => `<li>➕ ${esc(e)}</li>`).join("")}</ul>${d.notas ? `<p style="margin:10px 0 0;font-size:15px">📝 ${esc(d.notas)}</p>` : ""}</div></div>
       <dl class="kv"><dt>Total</dt><dd>$${d.total}</dd><dt>Anticipo</dt><dd>$${d.anticipo}</dd><dt>WhatsApp</dt><dd>${d.tel ? esc(d.tel) : "No lo dejó"}</dd></dl>
-      ${tel ? `<a class="btn wa" href="https://wa.me/52${tel}?text=${msg}" target="_blank" rel="noopener">${ICON.wa} Mandarle la cuenta por WhatsApp</a>` : `<div class="demo-note">Este cliente no dejó su WhatsApp. Su mensaje te llegó directo a tu WhatsApp.</div>`}
+      ${chats.some((c) => c.dealId === d.id) ? `<button class="btn wa" data-chat="${chats.find((c) => c.dealId === d.id).id}">${ICON.wa} Ver sus mensajes</button>` : tel ? `<a class="btn wa" href="https://wa.me/52${tel}?text=${msg}" target="_blank" rel="noopener">${ICON.wa} Mandarle la cuenta por WhatsApp</a>` : `<div class="demo-note">Este cliente no dejó su WhatsApp. Su mensaje te llegó directo a tu WhatsApp.</div>`}
       <div><div class="lbl">Pedidos anteriores de ${esc(d.nombre.split(" ")[0])}</div>${hist.length ? `<div class="hist">${hist.map((h) => { const y = fmt(h.f); return `<div><span>${y.dia} ${y.n} ${y.mes}</span><span>${h.t}</span></div>`; }).join("")}</div>` : `<div style="font-size:15px;color:var(--muted-foreground)">Es su primer pedido.</div>`}</div>
       <div><div class="lbl">Nota para ti</div><textarea class="note-in" id="nota-${d.id}" placeholder="Ej. paga en efectivo al recoger"></textarea></div>
     </div>
@@ -307,9 +385,10 @@ function render() {
   $("navNuevos").textContent = nuevos; $("navNuevos").hidden = !nuevos;
   document.querySelectorAll("#nav button").forEach((b) => b.classList.toggle("on", b.dataset.v === vista));
   const x = fmt(H);
-  $("title").textContent = { tablero: "Encargos", cocinar: "Qué cocinar", clientes: "Clientes" }[vista];
+  const nm = chats.reduce((a, c) => a + c.unread, 0); $("navMsgs").textContent = nm; $("navMsgs").hidden = !nm;
+  $("title").textContent = { tablero: "Encargos", mensajes: "Mensajes", cocinar: "Qué cocinar", clientes: "Clientes" }[vista];
   $("subtitle").textContent = `Hoy es ${x.dia} ${x.n} de ${MESES[new Date(H + "T12:00:00").getMonth()]}`;
-  $("content").innerHTML = vista === "tablero" ? tablero() : vista === "cocinar" ? cocinar() : clientes();
+  $("content").innerHTML = vista === "tablero" ? tablero() : vista === "mensajes" ? mensajes() : vista === "cocinar" ? cocinar() : clientes();
   drawer();
 }
 function mover(id, st) {
@@ -322,15 +401,19 @@ document.addEventListener("click", (e) => {
   const nav = t.closest("#nav button"); if (nav) { vista = nav.dataset.v; abierto = null; $("sidebar").classList.remove("open"); $("scrim").classList.remove("open"); render(); return; }
   if (t.closest("#menuBtn")) { $("sidebar").classList.add("open"); $("scrim").classList.add("open"); return; }
   if (t.closest("#scrim")) { $("sidebar").classList.remove("open"); $("scrim").classList.remove("open"); return; }
-  const ch = t.closest(".chip"); if (ch) { filtro = ch.dataset.f; render(); return; }
+  const cb = t.closest("[data-chat]"); if (cb) { chatAbierto = cb.dataset.chat; chats.find((x) => x.id === chatAbierto).unread = 0; abierto = null; render(); return; }
+  const q = t.closest("[data-q]"); if (q) { const c = chats.find((x) => x.id === chatAbierto); const d = c.dealId && deals.find((x) => x.id === c.dealId); enviar({ pago: PAGO(d ? d.anticipo : 75), recibido: "Recibido, gracias 🙏 Ya quedó apartado tu encargo", listo: "¡Tu encargo ya está listo! Te espero en Dolores Hidalgo 124 😊" }[q.dataset.q]); return; }
+  if (t.closest("[data-crear]")) { toast("Aquí se anotaría su encargo"); return; }
+  const ch = t.closest(".chip[data-f]"); if (ch) { filtro = ch.dataset.f; render(); return; }
   const mv = t.closest("[data-mv]"); if (mv) { e.stopPropagation(); mover(+mv.dataset.id, mv.dataset.mv); return; }
-  const op = t.closest("[data-open]"); if (op) { abierto = +op.dataset.open; pidiendoCancelar = false; drawer(); return; }
-  if (t.closest("[data-close]")) { abierto = null; pidiendoCancelar = false; drawer(); return; }
+  const op = t.closest("[data-open]"); if (op) { abierto = +op.dataset.open; chatAbierto = null; pidiendoCancelar = false; drawer(); return; }
+  if (t.closest("[data-close]")) { abierto = null; chatAbierto = null; pidiendoCancelar = false; render(); return; }
   const st = t.closest("[data-st]"); if (st) { if (st.dataset.st === "cancelado") { pidiendoCancelar = true; drawer(); } else mover(abierto, st.dataset.st); return; }
   if (t.closest("[data-nocancel]")) { pidiendoCancelar = false; drawer(); return; }
   if (t.closest("[data-sicancel]")) { mover(abierto, "cancelado"); return; }
 });
-document.addEventListener("keydown", (e) => { if (e.key === "Escape" && abierto) { abierto = null; drawer(); } if ((e.key === "Enter" || e.key === " ") && e.target.matches("[data-open]")) { e.preventDefault(); abierto = +e.target.dataset.open; drawer(); } });
+document.addEventListener("submit", (e) => { if (e.target.id !== "composer") return; e.preventDefault(); const v = $("msgIn").value.trim(); if (v) enviar(v); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && (abierto || chatAbierto)) { abierto = null; chatAbierto = null; render(); } if ((e.key === "Enter" || e.key === " ") && e.target.matches("[data-open]")) { e.preventDefault(); abierto = +e.target.dataset.open; drawer(); } });
 render();
 </script>
 
