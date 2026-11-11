@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#C8262E">
+<title>Encargos Doña Miriam</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="vendor/framework7-bundle.min.css">
+<style>
+:root {
+  --rojo: #C8262E; --azul: #16264A; --crema: #FBF6EE; --verde: #1E8E4E; --ambar: #B7791F; --gris: #6B7280;
+  --f7-font-size: 17px;
+  --f7-navbar-title-font-size: 21px;
+  --f7-tabbar-label-font-size: 14px;
+  --f7-tabbar-icons-height: 64px;
+  --f7-card-margin-horizontal: 12px;
+  --f7-button-height: 52px;
+  --f7-button-font-size: 17px;
+  --f7-button-border-radius: 14px;
+  --f7-page-bg-color: var(--crema);
+}
+html, body { background: var(--crema); }
+.navbar .title small { display: block; font-size: 13px; font-weight: 500; opacity: .75; }
+.tabbar .icon { font-style: normal; font-size: 26px; line-height: 1; }
+.dias { display: flex; gap: 8px; overflow-x: auto; padding: 12px 12px 4px; scrollbar-width: none; }
+.dias::-webkit-scrollbar { display: none; }
+.dia { flex: 0 0 auto; border: 2px solid #E5DDD0; background: #fff; border-radius: 16px; padding: 8px 14px; text-align: center; min-width: 86px; cursor: pointer; }
+.dia b { display: block; font-size: 17px; text-transform: capitalize; }
+.dia span { font-size: 13px; color: var(--gris); }
+.dia.on { background: var(--azul); border-color: var(--azul); color: #fff; }
+.dia.on span { color: #fff; opacity: .85; }
+.resumen { margin: 10px 12px 2px; padding: 14px 16px; background: #fff; border-radius: 18px; display: flex; align-items: center; gap: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+.resumen .num { font-size: 34px; font-weight: 800; color: var(--rojo); line-height: 1; }
+.resumen p { margin: 0; font-size: 16px; }
+.resumen .barra { height: 10px; background: #EEE7DB; border-radius: 99px; margin-top: 8px; overflow: hidden; }
+.resumen .barra i { display: block; height: 100%; background: var(--rojo); border-radius: 99px; }
+.enc { margin: 12px; background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.08); border-left: 8px solid var(--ambar); }
+.enc.confirmado { border-left-color: var(--verde); }
+.enc.entregado { border-left-color: #9CA3AF; opacity: .75; }
+.enc .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; padding: 14px 16px 6px; }
+.enc h3 { margin: 0; font-size: 21px; line-height: 1.2; }
+.enc .sub { color: var(--gris); font-size: 14px; margin-top: 2px; }
+.pill { flex: 0 0 auto; font-size: 13px; font-weight: 700; padding: 6px 10px; border-radius: 99px; white-space: nowrap; }
+.pill.pendiente { background: #FEF3C7; color: #92400E; }
+.pill.confirmado { background: #DCFCE7; color: #166534; }
+.pill.entregado { background: #E5E7EB; color: #374151; }
+.enc ul { margin: 4px 0 0; padding: 0 16px 6px 34px; }
+.enc li { font-size: 17px; margin: 4px 0; }
+.enc .nota { margin: 4px 16px 6px; background: #FFF7E6; border-radius: 10px; padding: 8px 10px; font-size: 15px; }
+.enc .plata { padding: 2px 16px 10px; font-size: 15px; color: var(--gris); }
+.enc .acciones { display: grid; gap: 8px; padding: 0 12px 12px; grid-template-columns: 1fr 1fr; }
+.enc .acciones .button { text-transform: none; font-weight: 700; }
+.enc .acciones .solo { grid-column: 1 / -1; }
+.b-wa { background: #25D366 !important; color: #fff !important; }
+.b-ok { background: var(--verde) !important; color: #fff !important; }
+.b-entregar { background: var(--azul) !important; color: #fff !important; }
+.enc .cancelar { display: block; text-align: center; color: var(--gris); font-size: 14px; padding: 0 0 12px; text-decoration: underline; }
+.vacio { text-align: center; color: var(--gris); padding: 40px 24px; font-size: 18px; }
+.vacio .grande { font-size: 48px; display: block; margin-bottom: 8px; }
+.cocina { margin: 12px; background: #fff; border-radius: 20px; padding: 6px 16px 10px; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+.cocina h4 { margin: 14px 0 6px; font-size: 17px; color: var(--azul); }
+.cocina .fila { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #F1ECE3; font-size: 18px; }
+.cocina .fila:last-child { border-bottom: 0; }
+.cocina .fila b { font-size: 24px; color: var(--rojo); min-width: 44px; text-align: right; }
+.aviso-demo { margin: 10px 12px 0; padding: 10px 12px; background: #E0E7FF; color: #1E3A8A; border-radius: 12px; font-size: 14px; }
+.estado-red { margin: 10px 12px 0; padding: 10px 12px; background: #FEE2E2; color: #991B1B; border-radius: 12px; font-size: 14px; }
+.tabbar .badge { font-size: 12px; }
+.dialog-title { font-size: 22px !important; }
+.dialog-text { font-size: 17px !important; line-height: 1.45; }
+.dialog-button { font-size: 17px !important; font-weight: 700; }
+.toast-text { font-size: 16px; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="view view-main view-init">
+    <div class="page">
+      <div class="navbar">
+        <div class="navbar-bg"></div>
+        <div class="navbar-inner">
+          <div class="title">Doña Miriam<small id="hoyTxt"></small></div>
+          <div class="right"><a class="link icon-only" id="recargar" aria-label="Actualizar" style="font-size:24px">⟳</a></div>
+        </div>
+      </div>
+      <div class="toolbar tabbar tabbar-icons toolbar-bottom">
+        <div class="toolbar-inner">
+          <a href="#t-encargos" class="tab-link tab-link-active"><i class="icon">📋</i><span class="tabbar-label">Encargos</span></a>
+          <a href="#t-cocinar" class="tab-link"><i class="icon">🍲</i><span class="tabbar-label">Qué cocinar</span></a>
+          <a href="#t-cobrar" class="tab-link"><i class="icon">💰<span class="badge color-red" id="badgeCobrar" style="display:none"></span></i><span class="tabbar-label">Por cobrar</span></a>
+        </div>
+      </div>
+      <div class="tabs">
+        <div id="t-encargos" class="page-content tab tab-active">
+          <div id="avisos"></div>
+          <div class="dias" id="dias"></div>
+          <div id="resumen"></div>
+          <div id="lista"></div>
+        </div>
+        <div id="t-cocinar" class="page-content tab">
+          <div class="dias" id="dias2"></div>
+          <div id="cocina"></div>
+        </div>
+        <div id="t-cobrar" class="page-content tab">
+          <div id="cobrar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="vendor/framework7-bundle.min.js"></script>
+<script>
+// ---------- Configuración ----------
+const CFG = {
+  api: "https://automatizaciones-n8n.ttjgax.easypanel.host/webhook/dona-miriam/app",
+  cupo: 10,
+  cuenta: "BBVA a nombre de Miriam Coombs. Tarjeta 4152 3146 1399 7157 o CLABE 012078015267329652",
+  concepto: "tu nombre y \"Pago de servicios\"",
+  grupos: [["🍚 Arroz", ["Congrí", "Arroz blanco", "Arroz amarillo"]], ["🍖 Carne", ["Fricasé de puerco", "Fricasé de pollo", "Bistec de puerco", "Ropa vieja", "Picadillo de res", "Chuleta de puerco"]], ["🍌 Vianda", ["Papa con mojo", "Boniato", "Platanito maduro frito", "Tostones"]], ["🥣 Potaje", ["Frijoles negros", "Frijoles colorados", "Chícharo"]]]
+};
+
+const app = new Framework7({ el: "#app", theme: "md", colors: { primary: "#C8262E" }, darkMode: false });
+const $ = (id) => document.getElementById(id);
+const DIAS = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+const MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fecha = (f) => { const [y, m, d] = f.split("-").map(Number); const dt = new Date(Date.UTC(y, m - 1, d)); return { dia: DIAS[dt.getUTCDay()], n: d, mes: MESES[m - 1] }; };
+const sumar = (f, n) => new Date(Date.parse(f + "T12:00:00Z") + n * 864e5).toISOString().slice(0, 10);
+const hoyMx = () => new Date().toLocaleString("en-CA", { timeZone: "America/Monterrey", hour12: false }).slice(0, 10);
+const plural = (n, s, p) => n + " " + (n === 1 ? s : (p || s + "s"));
+const guarda = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+const lee = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+
+// Clave de acceso: viene en el link (#k=...) la primera vez y se queda guardada en el celular
+const mh = location.hash.match(/k=([\w-]+)/);
+if (mh) { guarda("dm_k", mh[1]); history.replaceState(null, "", location.pathname); }
+const KEY = lee("dm_k");
+const DEMO = !KEY;
+
+let datos = { hoy: hoyMx(), encargos: [] };
+let diaSel = null;
+let conocidos = null;
+let sinRed = false;
+
+// ---------- Datos de ejemplo (sin clave) ----------
+function demo() {
+  const h = hoyMx(), m = sumar(h, 1), p = sumar(h, 2);
+  return { hoy: h, encargos: [
+    { folio: "DM-A1B2C3", fecha: h, charolas: 2, nombre: "Ana López", telefono: "8441234567", detalle: "1× Congrí, Fricasé de pollo, Tostones, Frijoles negros | 1× Arroz blanco, Ropa vieja, Boniato | Notas: una sin cebolla", total: 300, anticipo: 150, estado: "confirmado" },
+    { folio: "DM-D4E5F6", fecha: h, charolas: 1, nombre: "Pedro Ruiz", telefono: "", detalle: "1× Congrí, Bistec de puerco, Platanito maduro frito + ración extra de arroz", total: 190, anticipo: 75, estado: "pendiente" },
+    { folio: "DM-G7H8I9", fecha: m, charolas: 3, nombre: "Lupita", telefono: "8449876543", detalle: "3× Arroz amarillo, Chuleta de puerco, Papa con mojo, Chícharo", total: 450, anticipo: 225, estado: "pendiente" },
+    { folio: "DM-J1K2L3", fecha: m, charolas: 1, nombre: "Carlos", telefono: "8445550000", detalle: "1× Congrí, Picadillo de res, Tostones", total: 150, anticipo: 75, estado: "confirmado" },
+    { folio: "DM-M4N5O6", fecha: p, charolas: 2, nombre: "Rosa", telefono: "", detalle: "2× Congrí, Fricasé de puerco, Tostones, Frijoles colorados", total: 300, anticipo: 150, estado: "pendiente" }
+  ] };
+}
+
+// ---------- Carga ----------
+async function cargar(silencioso) {
+  if (DEMO) { if (!datos.encargos.length) datos = demo(); pintar(); return; }
+  try {
+    const r = await fetch(CFG.api + "/datos?k=" + encodeURIComponent(KEY), { cache: "no-store" });
+    const j = await r.json();
+    if (!j.ok) throw new Error(j.motivo || "error");
+    datos = j; sinRed = false;
+    guarda("dm_cache", JSON.stringify(j));
+    avisarNuevos();
+  } catch (e) {
+    sinRed = true;
+    const c = lee("dm_cache"); if (c && !datos.encargos.length) { try { datos = JSON.parse(c); } catch (x) {} }
+    if (!silencioso) app.toast.show({ text: "No hay internet. Se muestra lo último guardado.", closeTimeout: 3000, position: "center" });
+  }
+  pintar();
+}
+
+function avisarNuevos() {
+  const ids = datos.encargos.map((e) => e.folio);
+  if (conocidos) {
+    const nuevos = datos.encargos.filter((e) => !conocidos.has(e.folio) && e.estado !== "cancelado");
+    if (nuevos.length) {
+      const e = nuevos[0];
+      const f = fecha(e.fecha);
+      app.toast.show({ text: `🔔 Nuevo encargo de ${esc(e.nombre || "un cliente")}: ${plural(e.charolas, "charola")} para el ${f.dia} ${f.n}`, closeTimeout: 6000, position: "top" });
+      try { navigator.vibrate && navigator.vibrate([300, 150, 300]); } catch (x) {}
+      sonar();
+    }
+  }
+  conocidos = new Set(ids);
+}
+function sonar() {
+  try { const c = new (window.AudioContext || window.webkitAudioContext)(); [0, 0.25].forEach((t) => { const o = c.createOscillator(), g = c.createGain(); o.frequency.value = 880; o.connect(g); g.connect(c.destination); g.gain.setValueAtTime(0.25, c.currentTime + t); g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + t + 0.2); o.start(c.currentTime + t); o.stop(c.currentTime + t + 0.22); }); } catch (e) {}
+}
+
+// ---------- Cambiar estado ----------
+async function cambiar(folio, estado, texto) {
+  const e = datos.encargos.find((x) => x.folio === folio); if (!e) return;
+  const antes = e.estado; e.estado = estado; pintar();
+  app.toast.show({ text: texto, closeTimeout: 2000, position: "center" });
+  if (DEMO) return;
+  try {
+    const r = await fetch(CFG.api + "/estado", { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify({ k: KEY, folio, estado }) });
+    const j = await r.json(); if (!j.ok) throw new Error();
+  } catch (x) {
+    e.estado = antes; pintar();
+    app.dialog.alert("No se pudo guardar. Revisa el internet e inténtalo otra vez.", "Sin conexión");
+  }
+}
+
+function mensajePago(e) {
+  const f = fecha(e.fecha);
+  return `Hola${e.nombre ? " " + e.nombre : ""}, soy Doña Miriam 😊. Para apartar tu encargo del ${f.dia} ${f.n} deposita $${e.anticipo} de anticipo a ${CFG.cuenta}. En el concepto pon ${CFG.concepto}. Cuando pagues, mándame la captura por aquí. ¡Gracias!`;
+}
+async function mandarCuenta(folio) {
+  const e = datos.encargos.find((x) => x.folio === folio); if (!e) return;
+  const txt = mensajePago(e);
+  const tel = String(e.telefono || "").replace(/\D/g, "").slice(-10);
+  if (tel.length === 10) { window.open(`https://wa.me/52${tel}?text=${encodeURIComponent(txt)}`, "_blank"); return; }
+  try { await navigator.clipboard.writeText(txt); app.dialog.alert("Ya quedó copiado el mensaje con la cuenta.<br><br>Abre el chat de <b>" + esc(e.nombre || "tu cliente") + "</b> en WhatsApp, deja el dedo apretado donde se escribe y toca <b>Pegar</b>.", "Mensaje copiado"); }
+  catch (x) { app.dialog.alert(esc(txt), "Mándale esto al cliente"); }
+}
+
+// ---------- Pintar ----------
+function tarjeta(e, conFecha) {
+  const f = fecha(e.fecha);
+  const segs = e.detalle.split(" | ").map((s) => s.trim()).filter(Boolean);
+  const lineas = segs.filter((s) => !/^Notas:/i.test(s)).map((s) => `<li>${esc(s.replace(/\s*\+\s*/g, " + "))}</li>`).join("");
+  const notas = segs.filter((s) => /^Notas:/i.test(s)).map((s) => `<div class="nota">📝 ${esc(s.replace(/^Notas:\s*/i, ""))}</div>`).join("");
+  const pill = { pendiente: "⏳ Falta anticipo", confirmado: "✅ Pagado", entregado: "📦 Entregado" }[e.estado] || e.estado;
+  let acc = "";
+  if (e.estado === "pendiente") acc = `<a class="button button-fill b-wa" data-acc="cuenta" data-f="${e.folio}">💬 Mandar cuenta</a><a class="button button-fill b-ok" data-acc="pago" data-f="${e.folio}">✅ Ya pagó</a>`;
+  else if (e.estado === "confirmado") acc = `<a class="button button-fill b-entregar solo" data-acc="entregar" data-f="${e.folio}">📦 Ya lo entregué</a>`;
+  else if (e.estado === "entregado") acc = `<a class="button button-outline solo" data-acc="deshacer" data-f="${e.folio}">↩︎ No, todavía no lo entrego</a>`;
+  return `<div class="enc ${e.estado}">
+    <div class="top"><div><h3>${esc(e.nombre || "Sin nombre")} · ${plural(e.charolas, "charola")}</h3><div class="sub">${conFecha ? `Para el ${f.dia} ${f.n} de ${f.mes} · ` : ""}${esc(e.entrega || "Paso a recoger")}</div></div><span class="pill ${e.estado}">${pill}</span></div>
+    <ul>${lineas}</ul>${notas}
+    <div class="plata">Total $${e.total} · Anticipo $${e.anticipo}</div>
+    <div class="acciones">${acc}</div>
+    ${e.estado === "pendiente" || e.estado === "confirmado" ? `<a class="cancelar" data-acc="cancelar" data-f="${e.folio}">Cancelar este encargo</a>` : ""}
+  </div>`;
+}
+
+function diasConEncargos() {
+  const h = datos.hoy || hoyMx();
+  const set = new Set([h, sumar(h, 1)]);
+  datos.encargos.forEach((e) => { if (e.fecha >= h && e.estado !== "cancelado") set.add(e.fecha); });
+  return [...set].sort().slice(0, 10);
+}
+function activos(d) { return datos.encargos.filter((e) => e.fecha === d && e.estado !== "cancelado"); }
+
+function chips(cont) {
+  const h = datos.hoy || hoyMx();
+  cont.innerHTML = diasConEncargos().map((d) => {
+    const f = fecha(d); const n = activos(d).reduce((a, e) => a + e.charolas, 0);
+    const t = d === h ? "Hoy" : d === sumar(h, 1) ? "Mañana" : `${f.dia.slice(0, 3)} ${f.n}`;
+    return `<div class="dia ${d === diaSel ? "on" : ""}" data-d="${d}"><b>${t}</b><span>${n ? plural(n, "charola") : "nada"}</span></div>`;
+  }).join("");
+}
+
+function pintar() {
+  const h = datos.hoy || hoyMx();
+  if (!diaSel || diaSel < h) diaSel = h;
+  const fh = fecha(h); $("hoyTxt").textContent = `${fh.dia[0].toUpperCase() + fh.dia.slice(1)} ${fh.n} de ${fh.mes}`;
+  $("avisos").innerHTML = (DEMO ? `<div class="aviso-demo">👀 Esto es una <b>demostración</b> con encargos de ejemplo. Los botones funcionan pero no guardan nada.</div>` : "") + (sinRed ? `<div class="estado-red">Sin internet. Lo que ves puede no estar al día.</div>` : "");
+  chips($("dias")); chips($("dias2"));
+  // Resumen del día
+  const lista = activos(diaSel).sort((a, b) => ({ pendiente: 0, confirmado: 1, entregado: 2 }[a.estado] - { pendiente: 0, confirmado: 1, entregado: 2 }[b.estado]));
+  const total = lista.reduce((a, e) => a + e.charolas, 0);
+  const fd = fecha(diaSel);
+  $("resumen").innerHTML = `<div class="resumen"><div class="num">${total}</div><div style="flex:1"><p><b>${total === 1 ? "charola" : "charolas"}</b> para el ${fd.dia} ${fd.n} · quedan ${Math.max(0, CFG.cupo - total)} lugares</p><div class="barra"><i style="width:${Math.min(100, total / CFG.cupo * 100)}%"></i></div></div></div>`;
+  $("lista").innerHTML = lista.length ? lista.map((e) => tarjeta(e, false)).join("") : `<div class="vacio"><span class="grande">🍽️</span>No hay encargos para este día todavía.</div>`;
+  // Qué cocinar
+  const cuenta = {}, extras = {};
+  lista.forEach((e) => e.detalle.split(" | ").forEach((s) => { const m = s.trim().match(/^(\d+)\s*×\s*(.+)$/); if (!m) return; const n = +m[1]; const [base, ...ex] = m[2].split(" + "); base.split(",").map((x) => x.trim()).filter(Boolean).forEach((x) => cuenta[x] = (cuenta[x] || 0) + n); ex.join(",").split(",").map((x) => x.trim()).filter(Boolean).forEach((x) => extras[x] = (extras[x] || 0) + n); }));
+  let html = "";
+  for (const [tit, ops] of CFG.grupos) { const fs = ops.filter((o) => cuenta[o]); if (fs.length) html += `<h4>${tit}</h4>` + fs.map((o) => `<div class="fila"><span>${o}</span><b>${cuenta[o]}</b></div>`).join(""); }
+  if (Object.keys(extras).length) html += `<h4>➕ Extras</h4>` + Object.entries(extras).map(([k, v]) => `<div class="fila"><span>${esc(k.replace(/^ración extra de /i, "Ración extra de "))}</span><b>${v}</b></div>`).join("");
+  $("cocina").innerHTML = total ? `<div class="resumen"><div class="num">${total}</div><p><b>${total === 1 ? "charola" : "charolas"}</b> para el ${fd.dia} ${fd.n}</p></div><div class="cocina">${html}</div>` : `<div class="vacio"><span class="grande">🍲</span>No hay nada que cocinar para este día.</div>`;
+  // Por cobrar
+  const pend = datos.encargos.filter((e) => e.estado === "pendiente" && e.fecha >= h).sort((a, b) => a.fecha.localeCompare(b.fecha));
+  $("cobrar").innerHTML = pend.length ? `<div class="resumen"><div class="num">${pend.length}</div><p><b>${pend.length === 1 ? "encargo" : "encargos"}</b> sin anticipo todavía</p></div>` + pend.map((e) => tarjeta(e, true)).join("") : `<div class="vacio"><span class="grande">👍</span>Todos los encargos ya pagaron.</div>`;
+  const b = $("badgeCobrar"); b.textContent = pend.length; b.style.display = pend.length ? "" : "none";
+}
+
+// ---------- Toques ----------
+document.addEventListener("click", (ev) => {
+  const d = ev.target.closest(".dia"); if (d) { diaSel = d.dataset.d; pintar(); return; }
+  const a = ev.target.closest("[data-acc]"); if (!a) return;
+  const f = a.dataset.f, acc = a.dataset.acc, e = datos.encargos.find((x) => x.folio === f);
+  if (acc === "cuenta") mandarCuenta(f);
+  else if (acc === "pago") cambiar(f, "confirmado", "✅ Anotado: ya pagó");
+  else if (acc === "entregar") cambiar(f, "entregado", "📦 Anotado: entregado");
+  else if (acc === "deshacer") cambiar(f, "confirmado", "Listo, regresó a pendiente de entregar");
+  else if (acc === "cancelar") app.dialog.create({ title: "¿Cancelar el encargo?", text: `El de <b>${esc(e.nombre || "este cliente")}</b> (${plural(e.charolas, "charola")}). El lugar queda libre para otro cliente.`, buttons: [{ text: "No" }, { text: "Sí, cancelar", color: "red", onClick: () => cambiar(f, "cancelado", "❌ Encargo cancelado") }] }).open();
+});
+$("recargar").addEventListener("click", () => cargar(false));
+document.addEventListener("visibilitychange", () => { if (!document.hidden) cargar(true); });
+setInterval(() => { if (!document.hidden) cargar(true); }, 60000);
+
+if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(() => {});
+cargar(false);
+</script>
+</body>
+</html>

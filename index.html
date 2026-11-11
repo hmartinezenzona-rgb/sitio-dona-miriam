@@ -624,6 +624,7 @@ footer .social { display: flex; gap: 18px; }
   <div class="lines" id="lines"></div>
   <div class="totals" id="totals"></div>
   <div class="field"><label for="cNombre">Tu nombre</label><input id="cNombre" autocomplete="name" placeholder="Ej. Mariana"></div>
+  <div class="field"><label for="cTel">Tu WhatsApp <small style="font-weight:400;opacity:.7">(para confirmarte)</small></label><input id="cTel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej. 844 123 4567"></div>
   <fieldset class="field">
     <legend>¿Cómo lo quieres?</legend>
     <div class="seg">
@@ -858,7 +859,7 @@ footer .social { display: flex; gap: 18px; }
         $("cFecha").focus(); return;
       }
       if (CU.apiEncargo) {
-        const datos = { folio, fecha: $("cFecha").value, charolas: count(), nombre: $("cNombre").value.trim(), entrega: delivery() ? "A domicilio" : "Paso a recoger",
+        const datos = { folio, fecha: $("cFecha").value, charolas: count(), nombre: $("cNombre").value.trim(), telefono: ($("cTel") ? $("cTel").value.trim() : ""), entrega: delivery() ? "A domicilio" : "Paso a recoger",
           detalle: pedido.map((x) => `${x.qty}× ${chTexto(x.sel)}${x.ex.length ? " + " + exTexto(x.ex) : ""}`).join(" | ") + ($("cNotas").value.trim() ? " | Notas: " + $("cNotas").value.trim() : ""),
           total: subtotal(), anticipo: pedido.reduce((a, x) => a + x.qty * (CH.anticipo || 0), 0) };
         try { navigator.sendBeacon(CU.apiEncargo, new Blob([JSON.stringify(datos)], { type: "text/plain" })); } catch (err) {}
