@@ -80,6 +80,8 @@ const CONFIG = {
     ],
     aviso: "El último día para encargar es el viernes, para entregar el sábado.",
     // Cupo diario: pega aquí las URLs de producción de los webhooks de n8n
+    // Menú, cupo y encargos desde el CRM (Supabase). Sin esto se usa lo de arriba.
+    menuApi: { url: "https://mltjlslvbhwegnafdswf.supabase.co", key: "sb_publishable_Ej634MujaTmhbqagvJYoNw_ky9OXU-a", cuenta: "ff7a0fa1-1338-439d-8b04-baae18232f94" },
     cupo: { diario: 10, api: "https://automatizaciones-n8n.ttjgax.easypanel.host/webhook/dona-miriam/cupo", apiEncargo: "https://automatizaciones-n8n.ttjgax.easypanel.host/webhook/dona-miriam/encargo" },
     encargos: { diasAntes: 1, dias: [1, 2, 3, 4, 5, 6] },
     grupos: [
@@ -647,7 +649,7 @@ footer .social { display: flex; gap: 18px; }
 </section>
 
 <script>
-(function () {
+window.__iniciarSitio = function () {
   const C = CONFIG, N = C.negocio, $ = (id) => document.getElementById(id);
   const money = (n) => "$" + n.toLocaleString("es-MX");
   const WA = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>';
@@ -812,7 +814,7 @@ footer .social { display: flex; gap: 18px; }
     if (CH) {
       const ant = pedido.reduce((a, x) => a + x.qty * (CH.anticipo || 0), 0);
       if (!folio) folio = nuevoFolio();
-      let t = `Hola ${N.nombre}, quiero hacer un encargo${CU.api ? " (folio " + folio + ")" : ""}:\n\n` + pedido.map((x) => `• ${x.qty} × ${CH.nombre || "Charola"}: ${chTexto(x.sel)}${CH.incluyeCorto ? " + " + CH.incluyeCorto.toLowerCase() : ""}${x.ex.length ? " + " + exTexto(x.ex) : ""} (${money(unidad(x.ex))} c/u)`).join("\n") +
+      let t = `Hola ${N.nombre}, quiero hacer un encargo${CU.api || CH.menuApi ? " (folio " + folio + ")" : ""}:\n\n` + pedido.map((x) => `• ${x.qty} × ${CH.nombre || "Charola"}: ${chTexto(x.sel)}${CH.incluyeCorto ? " + " + CH.incluyeCorto.toLowerCase() : ""}${x.ex.length ? " + " + exTexto(x.ex) : ""} (${money(unidad(x.ex))} c/u)`).join("\n") +
         `\n\nTotal: ${money(subtotal() + env)}` + (ant ? `\nAnticipo: ${money(ant)}` : "") +
         `\nPara el día: ${fechaOk() ? fechaLarga() : "por confirmar"}\nEntrega: ${delivery() ? "A domicilio" : "Paso a recoger"}`;
       if (delivery() && $("cDir").value.trim()) t += `\nDirección: ${$("cDir").value.trim()}`;
@@ -863,11 +865,19 @@ footer .social { display: flex; gap: 18px; }
         $("fechaHint").textContent = !pedido.length ? "Agrega al menos una charola." : !fechaOk() ? "Revisa el día de entrega." : `Solo quedan ${quedan($("cFecha").value)} charolas para ese día. Elige otro día o reduce tu encargo.`;
         $("cFecha").focus(); return;
       }
-      if (CU.apiEncargo) {
+      if (CU.apiEncargo || CH.menuApi) {
         const datos = { folio, fecha: $("cFecha").value, charolas: count(), nombre: $("cNombre").value.trim(), telefono: ($("cTel") ? $("cTel").value.trim() : ""), entrega: delivery() ? "A domicilio" : "Paso a recoger",
           detalle: pedido.map((x) => `${x.qty}× ${chTexto(x.sel)}${x.ex.length ? " + " + exTexto(x.ex) : ""}`).join(" | ") + ($("cNotas").value.trim() ? " | Notas: " + $("cNotas").value.trim() : ""),
           total: subtotal(), anticipo: pedido.reduce((a, x) => a + x.qty * (CH.anticipo || 0), 0) };
-        try { navigator.sendBeacon(CU.apiEncargo, new Blob([JSON.stringify(datos)], { type: "text/plain" })); } catch (err) {}
+        if (CU.apiEncargo) { try { navigator.sendBeacon(CU.apiEncargo, new Blob([JSON.stringify(datos)], { type: "text/plain" })); } catch (err) {} }
+        // Encargo al CRM: queda como tarjeta en «Nuevo encargo» (el total lo calcula el CRM).
+        if (CH.menuApi) {
+          const nom = (t) => (CH.__nombres && CH.__nombres[t]) || t;
+          const pedidoCrm = { folio, fecha: datos.fecha, nombre: datos.nombre, telefono: datos.telefono, notas: $("cNotas").value.trim(),
+            charolas: pedido.map((x) => Object.assign({ qty: x.qty, extras: EX.filter((e) => x.ex.includes(e.id)).map((e) => e.t) },
+              Object.fromEntries(CH.grupos.map((g) => [g.id, x.sel[g.id] ? nom(x.sel[g.id]) : ""])))) };
+          try { fetch(CH.menuApi.url + "/rest/v1/rpc/encargo_web", { method: "POST", keepalive: true, headers: { apikey: CH.menuApi.key, "Content-Type": "application/json" }, body: JSON.stringify({ p_account: CH.menuApi.cuenta, p: pedidoCrm }) }); } catch (err) {}
+        }
         if (cupoDias && cupoDias[datos.fecha]) cupoDias[datos.fecha].quedan = Math.max(0, cupoDias[datos.fecha].quedan - datos.charolas);
         setTimeout(() => { pedido.splice(0); folio = ""; updateCart(); if (window.pintarCupo) window.pintarCupo(); $("fechaHint").textContent = "¡Listo! Tu encargo quedó apartado. Termina de enviarlo en WhatsApp."; }, 400);
       }
@@ -1064,15 +1074,15 @@ footer .social { display: flex; gap: 18px; }
     };
     $("charolaBox").addEventListener("click", (e) => { const b = e.target.closest(".ch-dia"); if (!b || b.disabled) return; $("cFecha").value = b.dataset.f; $("cFecha").dispatchEvent(new Event("input")); window.pintarCupo(); });
     window.pintarCupo();
-    if (CU.api) {
-      fetch(CU.api, { cache: "no-store" }).then((r) => r.json()).then((d) => {
+    const usarCupo = (d) => {
         cupoDias = d && d.dias || null; if (!cupoDias) return;
         if (!quedan($("cFecha").value)) { const f = Object.keys(cupoDias).find((k) => { const [y, m, dd] = k.split("-").map(Number); return new Date(y, m - 1, dd) >= primerDia() && cupoDias[k].quedan > 0; }); if (f) $("cFecha").value = f; }
         window.pintarCupo(); $("cFecha").dispatchEvent(new Event("input"));
         const q = quedan($("cFecha").value);
         if (q !== null) $("status").lastElementChild.textContent = `Quedan ${q} charolas para ${relDia(fechaSel())}`;
-      }).catch(() => {});
-    }
+    };
+    if (CH.__dias) setTimeout(() => usarCupo({ dias: CH.__dias }), 0);
+    else if (CU.api) fetch(CU.api, { cache: "no-store" }).then((r) => r.json()).then(usarCupo).catch(() => {});
     $("heroWa").removeAttribute("target"); $("heroWa").href = "#menu"; $("heroWa").innerHTML = "<span>Arma tu charola</span>"; $("heroWa").className = "btn btn-acento";
     // Estado: encargos en lugar de abierto/cerrado
     $("status").classList.remove("closed");
@@ -1108,6 +1118,44 @@ footer .social { display: flex; gap: 18px; }
     mark(".ch-resumen", false, 0);
     mark(".visita-grid > *", false, 2);
   }
+};
+// Si hay menuApi, primero se pide el menú y el cupo al CRM y después se arma la
+// página. Si el CRM no contesta en 2.5 s, se arma con lo que trae CONFIG.
+(function () {
+  const CH = CONFIG.charola, M = CH && CH.menuApi;
+  let hecho = false;
+  const arrancar = () => { if (hecho) return; hecho = true; window.__iniciarSitio(); };
+  if (!M) return arrancar();
+  const espera = setTimeout(arrancar, 2500);
+  fetch(M.url + "/rest/v1/rpc/sitio_datos", { method: "POST", headers: { apikey: M.key, "Content-Type": "application/json" }, body: JSON.stringify({ p_account: M.cuenta }) })
+    .then((r) => r.ok ? r.json() : null)
+    .then((d) => {
+      if (!hecho && d && Array.isArray(d.items)) {
+        const corto = ["D", "L", "M", "M", "J", "V", "S"];
+        const etiqueta = (it) => it.dias && it.dias.length ? `${it.nombre} (solo ${it.dias.slice().sort((a, b) => ((a + 6) % 7) - ((b + 6) % 7)).map((n) => corto[n]).join(", ")})` : it.nombre;
+        CH.__nombres = {};
+        CH.grupos.forEach((g) => {
+          g.opciones = d.items.filter((it) => it.grupo === g.id).map((it) => { const t = etiqueta(it); CH.__nombres[t] = it.nombre; return t; });
+        });
+        CH.grupos = CH.grupos.filter((g) => g.opciones.length);
+        CH.extras = d.items.filter((it) => it.grupo === "extra").map((it, i) => ({ id: "x" + i, t: it.nombre, precio: Number(it.precio) || 0 }));
+        CH.precio = Number(d.precio_charola) || CH.precio;
+        CH.anticipo = Number(d.anticipo) || 0;
+        CH.encargos = Object.assign({}, CH.encargos, { diasAntes: d.dias_antes, dias: d.dias_entrega });
+        CH.cupo = Object.assign({}, CH.cupo, { diario: d.cupo_diario, api: "" });
+        if (d.aviso) CH.aviso = d.aviso;
+        // Cupo por día con lo que ya está apartado en el tablero.
+        const dias = {}, [y, m, dd] = d.hoy.split("-").map(Number);
+        for (let k = 0; k < 21; k++) {
+          const x = new Date(y, m - 1, dd + k), f = `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, "0")}-${String(x.getDate()).padStart(2, "0")}`;
+          if (!d.dias_entrega.includes(x.getDay()) || (d.fechas_cerradas || []).includes(f)) continue;
+          dias[f] = { quedan: Math.max(0, d.cupo_diario - ((d.ocupado || {})[f] || 0)) };
+        }
+        CH.__dias = dias;
+      }
+      clearTimeout(espera); arrancar();
+    })
+    .catch(() => { clearTimeout(espera); arrancar(); });
 })();
 </script>
 </body>
