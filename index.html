@@ -3,1188 +3,826 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Doña Miriam · Comida cubana casera en Saltillo</title>
+<meta name="description" content="Comida cubana casera por encargo en Saltillo. Arma tu charola de $150: congrí, fricasé, ropa vieja, tostones. Encarga hoy, recoge mañana.">
+<meta property="og:title" content="Doña Miriam · Comida cubana casera">
+<meta property="og:description" content="Arma tu charola de $150. Encarga hoy, recoge mañana en Saltillo.">
+<meta property="og:image" content="fotos/portada-poster.jpg">
+<meta name="theme-color" content="#FBF5EA">
 <link rel="icon" type="image/svg+xml" href="fotos/icono.svg">
 <link rel="apple-touch-icon" href="fotos/icono-180.png">
-<title>Doña Miriam · Comida Cubana</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<!--
-  ============================================================
-  SITIO: Doña Miriam · Comida Cubana (plantilla comida, modo charola)
-  Para un cliente nuevo: copia la carpeta, cambia las fotos en
-  /fotos y edita SOLO el bloque CONFIG. Lo demás se arma solo.
-  ============================================================
--->
-<script>
-const CONFIG = {
-  negocio: {
-    nombre: "Doña Miriam",
-    giro: "Comida cubana",
-    eslogan: "Comida cubana casera hecha con amor. Congrí, fricasé, ropa vieja y tostones por encargo, de lunes a sábado.",
-    fundado: 0,
-    ciudad: "Saltillo",
-    telefono: "844 369 0845",
-    whatsapp: "528443690845",
-    direccion: "Dolores Hidalgo 124, Col. Guanajuato Oriente, Saltillo, Coah.",
-    mapsUrl: "https://maps.app.goo.gl/TJzehQeJHqoVgkXR8",
-    mapaEmbed: "https://maps.google.com/maps?q=25.438895,-100.9787809&z=16&output=embed",
-    facebook: "",
-    instagram: "",
-    aDomicilio: false,
-    costoEnvio: 0
-  },
-  estilo: "familiar",
-  logo: "",
-  logoSvg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 598 102" height="44" role="img" aria-label="Doña Miriam, comida cubana"><path d="M21.2 93.5Q17.2 93 15.7 91.4Q14.2 89.8 14.4 86.2Q15.1 76.3 17.7 61.7Q20.3 47.1 24 33.6Q24.7 31.1 26.8 30.2Q28.9 29.2 32.3 29.2Q38.4 29.2 38.4 32.5Q38.4 34 37.8 35.8Q35.2 43.8 32.6 57.2Q30 70.7 28.9 82.9Q31.9 83.2 35.7 83.2Q53.2 83.2 61.8 72.6Q70.5 62 70.5 44.3Q70.5 32.4 63.7 25.8Q56.9 19.3 44.5 19.3Q36.5 19.3 28.6 21.8Q20.8 24.3 14.5 28.5Q13.2 29.3 11.7 29.3Q10 29.3 9 27.9Q8 26.5 8 24.3Q8 22 8.8 20.4Q9.6 18.8 11.5 17.5Q18.4 12.8 27.7 10.4Q37 8 45.6 8Q57.8 8 66.7 12.2Q75.6 16.5 80.4 24.7Q85.2 32.9 85.2 44.5Q85.2 59.6 79.2 70.8Q73.2 82.1 61.7 88.3Q50.2 94.5 34.3 94.5Q28.5 94.5 21.2 93.5Z M145.6 67.9Q145.6 72.7 142.7 73.6Q136.7 75.7 129.5 76Q127.6 84.4 122 89.4Q116.4 94.5 109.3 94.5Q103.3 94.5 99 91.6Q94.8 88.7 92.6 83.9Q90.4 79.1 90.4 73.5Q90.4 65.9 93.3 59.9Q96.2 54 101.3 50.6Q106.4 47.3 112.6 47.3Q120.2 47.3 124.8 52.5Q129.5 57.8 130.3 65.5Q135 65.2 141.5 63.5Q142.3 63.3 142.9 63.3Q144.2 63.3 144.9 64.6Q145.6 65.9 145.6 67.9Z M118.8 73.8Q115.7 71.7 114 68.3Q112.4 64.9 112.4 61.1Q112.4 59.5 112.7 57.9H112.2Q108.2 57.9 105.5 61.7Q102.9 65.6 102.9 72.6Q102.9 78.1 105 81Q107.2 83.9 110.1 83.9Q113.3 83.9 115.6 81.3Q118 78.7 118.8 73.8Z M137.2 77.7Q137.2 64.7 140.9 53Q141.8 50 143.8 48.7Q145.9 47.4 149.6 47.4Q151.6 47.4 152.4 47.9Q153.2 48.4 153.2 49.8Q153.2 51.4 151.7 57Q150.7 61 150.1 64Q149.5 67 149.1 71.4Q152.4 62.8 156.5 57.4Q160.6 52 164.5 49.7Q168.5 47.4 171.8 47.4Q178.3 47.4 178.3 53.9Q178.3 57.8 176.1 68Q174.2 76.7 174.2 79.5Q174.2 83.5 177.1 83.5Q179.1 83.5 181.8 81Q184.6 78.6 189.2 73.1Q190.4 71.7 191.9 71.7Q193.2 71.7 193.9 72.9Q194.7 74.1 194.7 76.2Q194.7 80.2 192.8 82.4Q188.5 87.7 183.5 91.1Q178.6 94.5 172.3 94.5Q167.2 94.5 164.6 91.5Q162 88.6 162 83Q162 80.2 163.4 73Q164.7 66.7 164.7 64.3Q164.7 62.7 163.6 62.7Q162.3 62.7 159.9 66Q157.6 69.4 155.1 74.9Q152.7 80.4 151.2 86.5Q150.1 91.2 148.6 92.8Q147.2 94.5 144.1 94.5Q140.3 94.5 138.7 90.5Q137.2 86.5 137.2 77.7ZM167.2 38.1 156.5 30.7 152.1 37Q150.5 39.3 147.6 39.3Q145.8 39.3 144.5 38.2Q143.3 37.1 143.3 35.4Q143.3 33 147 27.7Q149.3 24.3 151.5 22.8Q153.7 21.2 156.3 21.2Q158 21.2 159.3 21.7Q160.7 22.2 162.9 23.8L173.6 31.2L178 25Q179.6 22.7 182.5 22.7Q184.3 22.7 185.5 23.8Q186.8 24.8 186.8 26.7Q186.8 28 185.8 29.8Q184.9 31.5 183.1 34.4Q180.8 37.6 178.6 39.2Q176.4 40.8 173.8 40.8Q172.2 40.8 170.8 40.2Q169.4 39.6 167.2 38.1Z M185.3 78.2Q185.3 70.2 189 63Q192.7 55.9 198.8 51.5Q205 47.1 211.9 47.1Q214.1 47.1 214.8 48Q215.6 48.9 216.1 51Q218 50.6 220.3 50.6Q222.7 50.6 224 51.8Q225.3 53 225.3 55.3Q225.3 57.6 224.3 63.3Q223.2 69.4 222.6 74.9Q222 80.5 222 87.4Q222 91.2 220.4 92.8Q218.9 94.5 215.4 94.5Q212 94.5 210.3 92.8Q208.7 91.2 208.7 87.5L208.8 85.9Q205.7 94.5 198.1 94.5Q192.4 94.5 188.8 90Q185.3 85.5 185.3 78.2Z M211.2 66.6 213.1 56.5Q209 56.6 205.5 59.6Q202 62.7 199.9 67.7Q197.8 72.7 197.8 78.3Q197.8 81.3 198.9 82.8Q200.1 84.4 202 84.4Q204.8 84.4 207.1 80.5Q209.4 76.6 211.2 66.6Z M270.4 86.6Q270.4 83.5 271 78.6Q271.7 73.8 273.2 65.3Q275.8 49.5 277.3 38Q278.2 30.9 278.2 26Q278.2 21.5 274.9 21.5Q272.3 21.5 268.6 24.2Q265 26.8 260.6 32.6Q259.2 34.5 257.5 34.5Q256.1 34.5 255 33.2Q254 31.9 254 30.1Q254 28.5 254.6 26.9Q255.3 25.2 256.8 23.2Q261.6 16.5 267.5 12.8Q273.4 9.1 279.3 9.1Q284.8 9.1 287.7 12.6Q290.7 16.1 290.7 22.8Q290.7 25.5 290.2 29.2Q289.7 32.9 289.3 35.2Q288.9 37.5 288.7 38.4Q294.4 22 301.5 15.6Q308.6 9.1 317.1 9.1Q323.6 9.1 327.3 13.7Q331.1 18.3 331.1 26.7Q331.1 30 330.2 35Q335.2 21.2 341.9 15.1Q348.6 9.1 357.3 9.1Q364.3 9.1 368 13.6Q371.8 18.2 371.8 26.2Q371.8 30.6 370.5 37L364.4 65.6Q363.4 70.6 363.4 74.2Q363.4 78.4 365.3 80.5Q367.3 82.6 370.8 82.6Q374.1 82.6 377.2 80.4Q380.4 78.2 384.7 73.1Q385.9 71.7 387.4 71.7Q388.7 71.7 389.4 72.9Q390.2 74.1 390.2 76.2Q390.2 80.1 388.3 82.4Q383.1 88.7 378 91.6Q372.9 94.5 367.3 94.5Q358.8 94.5 354 89.4Q349.2 84.4 349.2 75.9Q349.2 70 351.6 58.8L355.6 40.5Q355.8 39.5 356.3 37.3Q356.8 35 357.1 32.9Q357.4 30.9 357.4 28.8Q357.4 25.3 356 23.6Q354.7 21.8 352.2 21.8Q347.5 21.8 342.3 27.9Q337.2 34 332.5 48Q327.9 62 325 84.4Q324.3 90.4 322.5 92.4Q320.8 94.5 316.9 94.5Q313.5 94.5 311.9 92.9Q310.4 91.3 310.4 86.9Q310.4 82.8 311.5 76.1Q312.6 69.5 314.3 60.5Q318.9 36.3 318.9 29.2Q318.9 25.5 317.4 23.6Q316 21.8 313.1 21.8Q308.2 21.8 303 27.4Q297.8 33 292.8 47.1Q287.9 61.3 284.6 85.4Q283.9 90.5 282.5 92.5Q281.2 94.5 277.3 94.5Q273.6 94.5 272 92.8Q270.4 91.2 270.4 86.6Z M386.8 33.4Q386.8 29.8 389.5 27.5Q392.3 25.2 396.4 25.2Q400.1 25.2 402.4 27Q404.7 28.7 404.7 32Q404.7 36 402.1 38.4Q399.5 40.8 395.2 40.8Q391 40.8 388.9 38.8Q386.8 36.9 386.8 33.4Z M382 77.7Q382 73.2 383.1 66.1Q384.3 59.1 386.1 53Q387 49.8 388.5 48.5Q390 47.4 393.3 47.4Q398.4 47.4 398.4 50.8Q398.4 53.3 396.5 62.4Q394.1 73.4 394.1 77.3Q394.1 80.3 394.9 81.9Q395.7 83.5 397.6 83.5Q399.4 83.5 402.1 81Q404.8 78.5 409.3 73.1Q410.5 71.7 412 71.7Q413.3 71.7 414 72.9Q414.8 74.1 414.8 76.2Q414.8 80.2 412.9 82.4Q403 94.5 394.4 94.5Q387.9 94.5 384.9 89.9Q382 85.3 382 77.7Z M406.9 77.7Q406.9 64.7 410.6 53Q411.5 50 413.5 48.7Q415.6 47.4 419.3 47.4Q421.3 47.4 422.1 47.9Q422.9 48.4 422.9 49.8Q422.9 51.4 421.4 57Q420.4 61 419.8 64Q419.2 67 418.8 71.4Q422.1 62.8 426.2 57.4Q430.3 52 434.2 49.7Q438.2 47.4 441.5 47.4Q448 47.4 448 53.9Q448 55.1 447.1 60.1Q446.3 64.2 446.3 65.2Q446.3 68.7 448.8 68.7Q451.6 68.7 456 64.3Q457.3 63 458.7 63Q460 63 460.7 64.1Q461.5 65.3 461.5 67.2Q461.5 70.9 459.5 73Q456.7 75.9 452.9 77.9Q449.2 80 445 80Q439.7 80 436.9 77.3Q434.2 74.6 434.2 70Q434.2 68.5 434.5 67Q434.7 65 434.7 64.3Q434.7 62.7 433.6 62.7Q432.1 62.7 429.6 66Q427.2 69.4 424.8 74.9Q422.4 80.4 420.9 86.5Q419.8 91.2 418.3 92.8Q416.9 94.5 413.8 94.5Q410 94.5 408.4 90.5Q406.9 86.5 406.9 77.7Z M456.9 33.4Q456.9 29.8 459.6 27.5Q462.4 25.2 466.5 25.2Q470.2 25.2 472.5 27Q474.8 28.7 474.8 32Q474.8 36 472.2 38.4Q469.6 40.8 465.3 40.8Q461.1 40.8 459 38.8Q456.9 36.9 456.9 33.4Z M452.1 77.7Q452.1 73.2 453.2 66.1Q454.4 59.1 456.2 53Q457.1 49.8 458.6 48.5Q460.1 47.4 463.4 47.4Q468.5 47.4 468.5 50.8Q468.5 53.3 466.6 62.4Q464.2 73.4 464.2 77.3Q464.2 80.3 465 81.9Q465.8 83.5 467.7 83.5Q469.5 83.5 472.2 81Q474.9 78.5 479.4 73.1Q480.6 71.7 482.1 71.7Q483.4 71.7 484.1 72.9Q484.9 74.1 484.9 76.2Q484.9 80.2 483 82.4Q473.1 94.5 464.5 94.5Q458 94.5 455 89.9Q452.1 85.3 452.1 77.7Z M475.5 78.2Q475.5 70.2 479.2 63Q482.9 55.9 489 51.5Q495.2 47.1 502.1 47.1Q504.3 47.1 505 48Q505.8 48.9 506.3 51Q508.4 50.6 510.7 50.6Q515.6 50.6 515.6 54.1Q515.6 56.3 514.1 64.2Q511.8 75.7 511.8 80.2Q511.8 81.7 512.5 82.6Q513.3 83.5 514.5 83.5Q516.4 83.5 519 81Q521.8 78.6 526.4 73.1Q527.6 71.7 529.1 71.7Q530.4 71.7 531.1 72.9Q531.9 74.1 531.9 76.2Q531.9 80.2 530 82.4Q525.9 87.5 521.3 91Q516.7 94.5 512.4 94.5Q509.1 94.5 506.3 92.2Q503.6 90 502.2 86.1Q497 94.5 489.1 94.5Q482.9 94.5 479.2 90Q475.5 85.5 475.5 78.2Z M499.8 74.9 503.5 56.5Q499.3 56.6 495.7 59.6Q492.2 62.7 490.1 67.7Q488 72.7 488 78.3Q488 81.4 489.2 82.9Q490.5 84.4 492.7 84.4Q494.9 84.4 496.9 81.8Q498.9 79.2 499.8 74.9Z M524 77.7Q524 64.7 527.7 53Q528.6 50 530.6 48.7Q532.7 47.4 536.4 47.4Q538.4 47.4 539.2 47.9Q540 48.4 540 49.8Q540 51.4 538.5 57Q537.5 61 536.9 63.9Q536.3 66.9 535.9 71.3Q538.6 63.5 542.3 58Q546.1 52.6 550 50Q554 47.4 557.5 47.4Q561 47.4 562.4 49Q563.9 50.5 563.9 53.9Q563.9 57.1 562 65.5Q561.2 69.1 560.9 70.9Q564.2 62.5 568.2 57.2Q572.3 51.9 576.2 49.6Q580.1 47.4 583.4 47.4Q586.6 47.4 588.2 49Q589.9 50.6 589.9 53.9Q589.9 56.5 588.8 63.7Q587.8 69.8 587.2 75.2Q586.6 80.7 586.6 87.4Q586.6 91.2 585 92.8Q583.5 94.5 580 94.5Q576.7 94.5 575.2 92.8Q573.7 91.1 573.7 87.7Q573.7 83.7 575.1 74.5Q576.3 66.5 576.3 64.3Q576.3 62.7 575.2 62.7Q573.9 62.7 571.5 66Q569.1 69.4 566.7 74.9Q564.3 80.4 562.8 86.5Q561.7 91.3 560.2 92.9Q558.8 94.5 555.6 94.5Q552.3 94.5 550.6 91.3Q549 88.2 549 83.7Q549 79.9 550 72.7Q550.8 66.3 550.8 64.3Q550.8 62.7 549.7 62.7Q548.2 62.7 545.9 66.3Q543.6 69.9 541.4 75.5Q539.3 81.1 538 86.5Q536.9 91.2 535.4 92.8Q534 94.5 530.9 94.5Q527.1 94.5 525.5 90.5Q524 86.5 524 77.7Z" fill="currentColor"/></svg>',
-  colores: { acento: "#C8262E", oscuro: "#16264A", claro: "#FBF6EE" },
-  fotos: {
-    portada: "fotos/portada-fricase.jpg",
-    portadas: ["fotos/portada-fricase.jpg", "fotos/portada-ropa-vieja.jpg", "fotos/portada-arroz.jpg", "fotos/portada-frijoles.jpg"],
-    videoHorizontal: "", videoVertical: "",
-    historia: "fotos/charola-fricase.jpg",
-    visitanos: "fotos/portada-arroz.jpg"
-  },
-  cinta: ["Comida cubana casera", "Encargos de lunes a sábado", "$150 la charola", "Congrí, fricasé y tostones", "Pedidos por WhatsApp"],
-  horarios: { 0: "Sin servicio", 1: "Entregas con encargo", 2: "Entregas con encargo", 3: "Entregas con encargo", 4: "Entregas con encargo", 5: "Entregas con encargo", 6: "Entregas con encargo" },
-  promos: {},
-
-  // Modo charola: el cliente arma su plato y lo encarga
-  charola: {
-    nombre: "Charola",
-    titulo: "Arma tu charola",
-    texto: "$150 por charola. Escoge tu arroz, tu carne, tu vianda y tu potaje; la ensalada va incluida. ¿Con más hambre? Agrega ración extra de arroz o de potaje por $40. Encargos con 24 horas de anticipación, de lunes a sábado.",
-    precio: 150,
-    anticipo: 75,
-    conceptoPago: "tu nombre y “Pago de servicios”",
-    cuenta: "",
-    foto: "fotos/charola-fricase.jpg",
-    // Charola visual: la foto de cada hueco cambia según lo que elige el cliente
-    fotoIncluye: "fotos/op-ensalada.jpg",
-    fotosOpciones: {
-      "Congrí": "fotos/op-congri.jpg", "Arroz blanco": "fotos/op-blanco.jpg", "Arroz amarillo": "fotos/op-amarillo.jpg",
-      "Fricasé de puerco": "fotos/op-fpuerco.jpg", "Fricasé de pollo": "fotos/op-fpollo.jpg", "Bistec de puerco": "fotos/op-bistec.jpg",
-      "Ropa vieja": "fotos/op-ropa.jpg", "Picadillo de res": "fotos/op-picadillo.jpg", "Chuleta de puerco": "fotos/op-chuleta.jpg",
-      "Papa con mojo": "fotos/op-papa.jpg", "Boniato": "fotos/op-boniato.jpg", "Platanito maduro frito": "fotos/op-maduro.jpg", "Tostones": "fotos/op-tostones.jpg",
-      "Frijoles negros": "fotos/op-negros.jpg", "Frijoles colorados": "fotos/op-colorados.jpg", "Chícharo": "fotos/op-chicharo.jpg"
-    },
-    incluye: "ensalada fresca de col, tomate, lechuga y pepino.",
-    incluyeCorto: "Ensalada",
-    extras: [
-      { id: "xarroz", t: "Ración extra de arroz", precio: 40 },
-      { id: "xpotaje", t: "Ración extra de potaje", precio: 40 }
-    ],
-    aviso: "El último día para encargar es el viernes, para entregar el sábado.",
-    // Cupo diario: pega aquí las URLs de producción de los webhooks de n8n
-    // Menú, cupo y encargos desde el CRM (Supabase). Sin esto se usa lo de arriba.
-    menuApi: { url: "https://mltjlslvbhwegnafdswf.supabase.co", key: "sb_publishable_Ej634MujaTmhbqagvJYoNw_ky9OXU-a", cuenta: "ff7a0fa1-1338-439d-8b04-baae18232f94" },
-    cupo: { diario: 10, api: "", apiEncargo: "" }, // el cupo y los encargos van solo al CRM (menuApi); ya no a n8n
-    encargos: { diasAntes: 1, dias: [1, 2, 3, 4, 5, 6] },
-    grupos: [
-      { id: "arroz", titulo: "Arroz", opciones: ["Congrí", "Arroz blanco", "Arroz amarillo"] },
-      { id: "carne", titulo: "Carne", opciones: ["Fricasé de puerco", "Fricasé de pollo", "Bistec de puerco", "Ropa vieja", "Picadillo de res", "Chuleta de puerco"] },
-      { id: "vianda", titulo: "Vianda", opciones: ["Papa con mojo", "Boniato", "Platanito maduro frito", "Tostones"] },
-      { id: "potaje", titulo: "Potaje", opcional: true, opciones: ["Frijoles negros", "Frijoles colorados", "Chícharo"] }
-    ]
-  },
-  menu: [],
-
-  historia: {
-    titulo: "Comida cubana como en casa",
-    texto: [
-      "Doña Miriam cocina comida cubana casera aquí en Saltillo: congrí, fricasé, ropa vieja, tostones y potajes como se hacen en Cuba.",
-      "Cada charola se prepara por encargo, con ingredientes frescos y el sazón de siempre."
-    ]
-  },
-  stats: [
-    { n: "150", pre: "$", t: "la charola completa" },
-    { n: "16", t: "opciones para combinar" },
-    { n: "6", t: "días a la semana" }
-  ],
-  galeria: ["fotos/charola-fricase.jpg", "fotos/charola-arroz.jpg", "fotos/tostones.jpg", "fotos/ropa-vieja.jpg"],
-  resenasDeEjemplo: false,
-  textos: { galeria: "Hecho en casa, como en Cuba", notas: "Sin cebolla, el mojo aparte…" },
-    resenas: [],
-  calificacionGoogle: "5.0",
-  totalResenasGoogle: "0",
-  creditos: { texto: "Sitio por Onlinefreedom", url: "https://proyect.onlinefreedom.site" }
-};
-</script>
-
-<script>
-/* Estilos de letra: cada uno cambia tipografías, mayúsculas, tamaños y redondeo */
-(function () {
-  const ESTILOS = {
-    callejero: { fonts: "Big+Shoulders+Display:wght@800;900&family=Instrument+Sans:wght@400;500;600;700", display: '"Big Shoulders Display", "Arial Narrow", Impact, sans-serif', body: '"Instrument Sans", system-ui, sans-serif', dw: 900, dt: "uppercase", dls: ".005em", dlh: ".9", ds: 1, ds2: 1, heroCh: "9ch", r: "10px", btnR: "6px" },
-    familiar:  { fonts: "Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700", display: '"Fraunces", Georgia, serif', body: '"Nunito Sans", system-ui, sans-serif', dw: 700, dt: "none", dls: "-.015em", dlh: "1.02", ds: .7, ds2: .82, heroCh: "12ch", r: "14px", btnR: "999px" },
-    cafe:      { fonts: "Fredoka:wght@500;600&family=Nunito:wght@400;600;700", display: '"Fredoka", "Trebuchet MS", sans-serif', body: '"Nunito", system-ui, sans-serif', dw: 600, dt: "none", dls: "-.01em", dlh: "1", ds: .68, ds2: .82, heroCh: "11ch", r: "22px", btnR: "999px" },
-    moderno:   { fonts: "Outfit:wght@500;600;700&family=DM+Sans:wght@400;500;700", display: '"Outfit", system-ui, sans-serif', body: '"DM Sans", system-ui, sans-serif', dw: 600, dt: "none", dls: "-.035em", dlh: ".98", ds: .7, ds2: .82, heroCh: "11ch", r: "6px", btnR: "4px" }
-  };
-  const e = ESTILOS[CONFIG.estilo] || ESTILOS.callejero, st = document.documentElement.style;
-  const l = document.createElement("link");
-  l.rel = "stylesheet"; l.href = "https://fonts.googleapis.com/css2?family=" + e.fonts + "&display=swap";
-  document.head.appendChild(l);
-  st.setProperty("--f-display", e.display); st.setProperty("--f-body", e.body);
-  st.setProperty("--dw", e.dw); st.setProperty("--dt", e.dt); st.setProperty("--dls", e.dls); st.setProperty("--dlh", e.dlh);
-  st.setProperty("--ds", e.ds); st.setProperty("--ds2", e.ds2); st.setProperty("--hero-ch", e.heroCh);
-  st.setProperty("--r", e.r); st.setProperty("--btn-r", e.btnR);
-  const c = CONFIG.colores || {};
-  if (c.acento) st.setProperty("--acento", c.acento);
-  if (c.oscuro) st.setProperty("--oscuro", c.oscuro);
-  if (c.claro) st.setProperty("--claro", c.claro);
-})();
-</script>
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap">
 <style>
-/* Layout: portada a sangre con foto + cinta, favoritos con foto, menú en lista con precios alineados, historia a dos columnas, cierre oscuro con horario y mapa. Un solo look (sin modo oscuro) para que la marca del cliente se vea igual siempre. */
-:root {
-  --acento: #C2361F;
-  --oscuro: #171310;
-  --claro: #F4F1EC;
-  --papel: #FFFFFF;
-  --tinta: #1D1915;
-  --gris: #6C635A;
-  --linea: #E2DCD3;
-  --sobre-oscuro: #F4EFE7;
-  --gris-oscuro: #A99F93;
-  --wa: #1FA855;
-  --f-display: "Big Shoulders Display", "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
-  --f-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --max: 1180px;
-  --r: 10px;
+img{max-width:100%}
+
+/* Una columna pensada para celular; en compu se centra. Marca: crema, rojo, café, verde, amarillo. Un solo look a propósito. */
+:root{
+  --crema:#FBF5EA; --blanco:#FFFFFF; --rojo:#B3122B; --rojo-osc:#7E0C1E;
+  --cafe:#2B1A12; --cafe-2:#5A4436; --cafe-3:#8A6F5C; --borde:#EADFCB;
+  --verde:#1F7A45; --amarillo:#F2B233;
+  --f:"Nunito", "Segoe UI", system-ui, sans-serif;
   color-scheme: light;
 }
-* { box-sizing: border-box; }
-[hidden] { display: none !important; }
-table { color: inherit; font: inherit; }
-html { scroll-behavior: smooth; scroll-padding-top: 72px; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before { animation: none !important; transition: none !important; } }
-body { background: var(--claro); color: var(--tinta); font-family: var(--f-body); font-size: 16px; line-height: 1.6; }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--oscuro); }
-img { display: block; max-width: 100%; }
-a { color: inherit; }
-h1, h2, h3 { margin: 0; text-wrap: balance; }
-.wrap { max-width: var(--max); margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
-.display { font-family: var(--f-display); font-weight: 900; text-transform: uppercase; line-height: .9; letter-spacing: .005em; }
-.kicker { font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--acento); }
-.section { padding-block: 88px; }
-.head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 36px; }
-.head h2 { font-size: clamp(40px, 6vw, 68px); }
-:focus-visible { outline: 3px solid var(--acento); outline-offset: 3px; border-radius: 4px; }
+*{box-sizing:border-box}
+body{background:var(--crema);color:var(--cafe);font-family:var(--f);font-size:16px;margin:0;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--crema)}
+img{max-width:100%;display:block}
+button,input{font-family:inherit}
+:focus-visible{outline:3px solid var(--amarillo);outline-offset:2px}
+.col{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0}
 
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: 6px; font: 700 16px/1 var(--f-body); text-decoration: none; border: 2px solid transparent; cursor: pointer; letter-spacing: .01em; transition: transform .15s, background .15s; }
-.btn:hover { transform: translateY(-1px); }
-.btn svg { width: 20px; height: 20px; flex: none; }
-.btn-wa { background: var(--wa); color: #fff; }
-.btn-acento { background: var(--acento); color: #fff; }
-.btn-linea { border-color: currentColor; color: inherit; background: transparent; }
-
-/* Barra superior */
-header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: transparent; color: var(--sobre-oscuro); margin-bottom: -64px; transition: background .35s, box-shadow .35s; }
-header.top.solid { background: var(--oscuro); box-shadow: 0 6px 24px rgba(0,0,0,.25); }
-header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
-.logo { font-family: var(--f-display); font-weight: 900; font-size: 24px; text-transform: uppercase; text-decoration: none; letter-spacing: .02em; line-height: 1; }
-nav.links { display: flex; gap: 28px; font-size: 14px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
-nav.links a { text-decoration: none; color: var(--gris-oscuro); }
-nav.links a:hover { color: var(--sobre-oscuro); }
-.top-cta { min-height: 40px; padding: 0 16px; font-size: 14px; }
-@media (max-width: 820px) { nav.links { display: none; } .logo { font-size: 20px; } }
+/* Encabezado */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--crema);border-bottom:1px solid var(--borde)}
+.top .col{height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.top img{height:34px;width:auto}
+.btn-wa{min-height:44px;padding:0 14px;border-radius:999px;border:2px solid var(--verde);color:var(--verde);font-weight:800;font-size:15px;display:inline-flex;align-items:center;gap:6px;text-decoration:none}
 
 /* Portada */
-.hero { position: relative; color: var(--sobre-oscuro); background: var(--oscuro); overflow: hidden; }
-.hero-media { position: absolute; inset: 0; will-change: transform; }
-.hero .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
-.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,12,10,.92) 0%, rgba(15,12,10,.65) 45%, rgba(15,12,10,.15) 100%), linear-gradient(0deg, rgba(15,12,10,.7), transparent 50%); }
-.hero .wrap { position: relative; z-index: 1; padding-block: 120px 80px; min-height: 620px; display: flex; flex-direction: column; justify-content: flex-end; gap: 22px; }
-.hero h1 { font-size: clamp(52px, 11vw, 132px); max-width: 9ch; overflow-wrap: anywhere; }
-.hero p { margin: 0; font-size: clamp(17px, 2vw, 21px); max-width: 38ch; color: #E7DFD3; }
-.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-.status { align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.1); backdrop-filter: blur(6px); }
-.status i { width: 9px; height: 9px; border-radius: 50%; background: #3DDC84; box-shadow: 0 0 0 4px rgba(61,220,132,.2); }
-.status.closed i { background: #FF6B5B; box-shadow: 0 0 0 4px rgba(255,107,91,.2); }
-@media (max-width: 600px) { .hero .wrap { min-height: 560px; padding-block: 96px 48px; } .hero::after { background: linear-gradient(0deg, rgba(15,12,10,.95) 10%, rgba(15,12,10,.45) 70%, rgba(15,12,10,.3)); } }
+.hero{position:relative;max-width:640px;margin:0 auto}
+.hero .foto{width:100%;height:clamp(340px,62vw,460px);object-fit:cover}
+.cupo{position:absolute;left:16px;top:16px;background:var(--amarillo);color:var(--cafe);font-weight:900;font-size:14px;padding:8px 12px;border-radius:999px;display:flex;align-items:center;gap:6px}
+.cupo i{width:8px;height:8px;border-radius:50%;background:var(--rojo);display:block}
+.precio{position:absolute;right:16px;bottom:-30px;width:96px;height:96px;border-radius:50%;background:var(--rojo);color:var(--crema);border:4px solid var(--crema);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(43,26,18,.25)}
+.precio b{font-size:27px;font-weight:900;line-height:1}
+.precio span{font-size:12px;font-weight:800}
+.intro{padding-block:26px 8px;display:flex;flex-direction:column;gap:12px}
+.intro h1{font-size:clamp(32px,8vw,40px);line-height:1.05;font-weight:900;max-width:16ch;letter-spacing:-.01em}
+.intro p{font-size:18px;line-height:1.4;color:var(--cafe-2);font-weight:700;max-width:34ch}
+.cta{min-height:60px;border-radius:16px;background:var(--rojo);color:#fff;font-size:20px;font-weight:900;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;box-shadow:0 6px 0 var(--rojo-osc);border:0;width:100%;cursor:pointer}
+.cta:active{transform:translateY(3px);box-shadow:0 3px 0 var(--rojo-osc)}
+.horas{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;font-size:14px;font-weight:700;color:var(--cafe-2);padding-top:12px}
 
-/* Cinta */
-.cinta { background: var(--acento); color: #fff; overflow: hidden; white-space: nowrap; }
-.cinta-track { display: inline-flex; gap: 36px; padding-block: 14px; animation: corre 32s linear infinite; }
-.cinta span { font-family: var(--f-display); font-weight: 800; font-size: 22px; text-transform: uppercase; letter-spacing: .04em; display: inline-flex; align-items: center; gap: 36px; }
-.cinta span::after { content: "✶"; font-size: 16px; opacity: .8; }
-@keyframes corre { to { transform: translateX(-50%); } }
+/* Repetir */
+.repetir{margin-top:28px;background:var(--blanco);border:2px solid var(--amarillo);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:12px}
+.repetir .t{display:flex;align-items:center;gap:8px;font-weight:900}
+.repetir .fila{display:flex;align-items:center;gap:10px}
+.repetir .fila span{font-size:14px;font-weight:700;color:var(--cafe-2);line-height:1.3}
+.btn-amarillo{min-height:48px;border-radius:12px;border:0;background:var(--amarillo);color:var(--cafe);font-size:16px;font-weight:900;cursor:pointer}
+.caritas{display:flex;flex-shrink:0}
+.caritas img,.caritas .vacia{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid #fff;margin-left:-12px}
+.caritas>:first-child{margin-left:0}
+.caritas .vacia{border:2px dashed #B9A48F;background:var(--crema)}
 
-.promo { background: var(--oscuro); color: var(--sobre-oscuro); }
-.promo .wrap { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; padding-block: 16px; font-weight: 600; }
-.promo b { font-family: var(--f-display); font-weight: 800; text-transform: uppercase; font-size: 18px; color: #fff; background: var(--acento); padding: 2px 10px; border-radius: 4px; letter-spacing: .04em; }
+/* Armar */
+.armar{padding-block:36px 150px;display:flex;flex-direction:column;gap:24px;scroll-margin-top:70px}
+.armar header h2{font-size:28px;font-weight:900}
+.armar header p{font-size:15px;font-weight:700;color:var(--cafe-2);margin-top:4px}
+.grupo{display:flex;flex-direction:column;gap:10px}
+.grupo .cab{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.grupo h3{font-size:19px;font-weight:900}
+.estado{font-size:13px;font-weight:800;color:var(--cafe-3)}
+.estado.ok{color:var(--verde)}
+.opciones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.op{position:relative;padding:0;border:3px solid var(--borde);border-radius:16px;background:var(--blanco);overflow:hidden;text-align:center;cursor:pointer;color:var(--cafe);transition:border-color .15s, transform .15s}
+.op img{width:100%;aspect-ratio:1;object-fit:cover}
+.op span{display:block;padding:6px 4px 8px;font-size:14px;font-weight:800;line-height:1.2}
+.op[aria-pressed="true"]{border-color:var(--rojo)}
+.op[aria-pressed="true"] span{color:var(--rojo);font-weight:900}
+.op .palomita{position:absolute;top:6px;right:6px;width:26px;height:26px;border-radius:50%;background:var(--rojo);display:none;align-items:center;justify-content:center}
+.op[aria-pressed="true"] .palomita{display:flex}
+.op:active{transform:scale(.97)}
+.extras{display:flex;flex-direction:column;gap:8px}
+.extra{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--blanco);border:1px solid var(--borde);border-radius:14px;padding:10px 12px}
+.extra .n{font-weight:800}
+.extra .n small{display:block;color:var(--cafe-3);font-weight:700;font-size:13px}
+.paso{display:flex;align-items:center;gap:6px}
+.paso button{width:44px;height:44px;border-radius:12px;border:2px solid var(--borde);background:var(--crema);font-size:22px;font-weight:900;color:var(--cafe);cursor:pointer}
+.paso output{min-width:22px;text-align:center;font-weight:900;font-variant-numeric:tabular-nums}
+.incluye{font-size:14px;font-weight:700;color:var(--cafe-2)}
 
-/* Favoritos */
-.favs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.fav { background: var(--papel); border-radius: var(--r); overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 1px 2px rgba(29,25,21,.06), 0 10px 30px rgba(29,25,21,.06); }
-.fav .ph { aspect-ratio: 5 / 4; overflow: hidden; max-width: 100%; }
-.fav .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
-.fav:hover .ph img { transform: scale(1.04); }
-.fav-body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
-.fav-body h3 { font-family: var(--f-display); font-weight: 800; font-size: 30px; text-transform: uppercase; line-height: 1; }
-.fav-body p { margin: 0; color: var(--gris); font-size: 15px; flex: 1; }
-.fav-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
-.precio { font-family: var(--f-display); font-weight: 800; font-size: 28px; font-variant-numeric: tabular-nums; }
-@media (max-width: 900px) { .favs { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 600px) { .favs { grid-template-columns: 1fr; } }
+/* Barra fija */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:25;background:var(--blanco);border-top:1px solid var(--borde);box-shadow:0 -8px 24px rgba(43,26,18,.12);padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+.barra .col{display:flex;align-items:center;gap:12px;padding-top:12px}
+.barra .info{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+.barra .txt{display:flex;flex-direction:column;min-width:0}
+.barra .txt small{font-size:13px;font-weight:800;color:var(--cafe-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.barra .txt b{font-size:21px;font-weight:900;font-variant-numeric:tabular-nums}
+.btn-rojo{min-height:52px;padding:0 20px;border-radius:14px;border:0;background:var(--rojo);color:#fff;font-size:17px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn-rojo[aria-disabled="true"]{background:#C9B8A6;cursor:not-allowed}
 
-/* Cantidad */
-.qty { display: inline-flex; align-items: center; gap: 4px; }
-.qty button { width: 40px; height: 40px; border-radius: 6px; border: 1.5px solid var(--linea); background: var(--papel); color: var(--tinta); font: 700 20px/1 var(--f-body); cursor: pointer; }
-.qty button.add { background: var(--tinta); border-color: var(--tinta); color: #fff; }
-.qty button.add.big { width: auto; padding: 0 16px; font-size: 15px; }
-.qty output { min-width: 26px; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
-
-/* Menú en lista */
-.menu-wrap { display: grid; grid-template-columns: 240px 1fr; gap: 48px; margin-top: 72px; }
-.cats { display: flex; flex-direction: column; gap: 4px; position: sticky; top: 90px; align-self: start; }
-.cat { text-align: left; background: none; border: 0; border-left: 3px solid transparent; padding: 10px 14px; font: 600 16px var(--f-body); color: var(--gris); cursor: pointer; }
-.cat[aria-selected="true"] { color: var(--tinta); border-left-color: var(--acento); font-weight: 700; }
-.rows { display: flex; flex-direction: column; }
-.row { display: grid; grid-template-columns: 1fr auto auto; gap: 18px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--linea); }
-.row:first-child { border-top: 1px solid var(--linea); }
-.row h3 { font-size: 18px; font-weight: 700; }
-.row p { margin: 2px 0 0; color: var(--gris); font-size: 15px; }
-.row .precio { font-size: 24px; }
-.row > div:first-child { min-width: 0; }
-@media (max-width: 820px) {
-  .menu-wrap { grid-template-columns: minmax(0, 1fr); gap: 20px; }
-  .menu-wrap > div { min-width: 0; }
-  .cats { position: static; flex-direction: row; overflow-x: auto; gap: 8px; }
-  .cat { flex: none; border: 1.5px solid var(--linea); border-radius: 999px; padding: 8px 16px; background: var(--papel); }
-  .cat[aria-selected="true"] { background: var(--tinta); color: #fff; border-color: var(--tinta); }
-}
+/* Hoja del encargo */
+.velo{position:fixed;inset:0;z-index:40;background:rgba(43,26,18,.5);display:flex;align-items:flex-end;justify-content:center}
+.hoja{width:100%;max-width:640px;max-height:92vh;overflow:auto;background:var(--crema);border-radius:24px 24px 0 0;padding:10px max(16px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:14px}
+.asa{width:44px;height:5px;border-radius:9px;background:#D9CBB4;margin:0 auto 4px}
+.hoja .cab{display:flex;justify-content:space-between;align-items:center}
+.hoja h2{font-size:26px;font-weight:900}
+.cerrar{width:44px;height:44px;border-radius:50%;border:0;background:var(--blanco);color:var(--cafe);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.resumen{background:var(--blanco);border:1px solid var(--borde);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.linea{display:flex;align-items:center;gap:12px}
+.linea img{width:56px;height:56px;border-radius:12px;object-fit:cover;flex-shrink:0}
+.linea .d{flex:1;min-width:0;display:flex;flex-direction:column}
+.linea .d b{font-weight:900}
+.linea .d span{font-size:14px;font-weight:700;color:var(--cafe-2)}
+.linea .q{font-weight:900;font-variant-numeric:tabular-nums}
+.sep{height:1px;background:var(--borde)}
+.suma{display:flex;justify-content:space-between;font-weight:700;color:var(--cafe-2);font-size:15px;font-variant-numeric:tabular-nums}
+.suma.total{font-size:19px;font-weight:900;color:var(--cafe)}
+.otra{min-height:44px;border-radius:12px;border:2px dashed var(--cafe-3);background:transparent;color:var(--cafe);font-weight:800;font-size:15px;cursor:pointer}
+.recoger{background:var(--verde);color:#fff;border-radius:18px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
+.recoger b{font-size:17px;font-weight:900;line-height:1.25;display:block}
+.recoger span{font-size:14px;font-weight:700;opacity:.92}
+.campo{display:flex;flex-direction:column;gap:6px}
+.campo label{font-size:14px;font-weight:800}
+.campo input{min-height:50px;border-radius:12px;border:2px solid var(--borde);background:var(--blanco);padding:0 14px;font-size:16px;font-weight:700;color:var(--cafe)}
+.campo input:focus{border-color:var(--rojo);outline:none}
+.aviso{font-size:13px;font-weight:700;color:var(--cafe-3);text-align:center}
+.listo{background:var(--blanco);border:2px solid var(--verde);border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.listo b{color:var(--verde);font-size:18px;font-weight:900}
+.listo p{font-size:15px;font-weight:700;color:var(--cafe-2);line-height:1.45}
 
 /* Historia */
-.historia { background: var(--papel); }
-.split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-.split .foto { border-radius: var(--r); overflow: hidden; aspect-ratio: 4 / 5; max-width: 100%; }
-.split .foto img { width: 100%; height: 100%; object-fit: cover; }
-.split-text { display: flex; flex-direction: column; gap: 18px; max-width: 54ch; min-width: 0; }
-.split-text h2 { font-size: clamp(40px, 5.5vw, 64px); }
-.split-text p { margin: 0; font-size: 18px; color: #3C352E; }
-.stats { display: flex; gap: 40px; flex-wrap: wrap; padding-top: 18px; border-top: 1px solid var(--linea); margin-top: 6px; }
-.stats div { display: flex; flex-direction: column; }
-.stats b { font-family: var(--f-display); font-weight: 900; font-size: 48px; line-height: 1; color: var(--acento); }
-.stats span { font-size: 14px; color: var(--gris); }
-@media (max-width: 820px) { .split { grid-template-columns: 1fr; gap: 32px; } .split .foto { aspect-ratio: 4 / 3; } }
-
-/* Galería */
-.galeria { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 220px; gap: 12px; }
-.galeria figure { margin: 0; border-radius: var(--r); overflow: hidden; }
-.galeria figure:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-.galeria figure:nth-child(4) { grid-column: span 2; }
-.galeria img { width: 100%; height: 100%; object-fit: cover; }
-@media (max-width: 820px) { .galeria { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; } .galeria figure:nth-child(4) { grid-column: span 2; } }
-
-/* Reseñas */
-.resenas-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 32px; }
-.nota { display: flex; align-items: center; gap: 14px; }
-.nota b { font-family: var(--f-display); font-weight: 900; font-size: 64px; line-height: 1; }
-.stars { color: #E2A21B; letter-spacing: 2px; }
-.resenas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.resena { background: var(--papel); border-radius: var(--r); padding: 26px; display: flex; flex-direction: column; gap: 14px; }
-.resena p { margin: 0; font-size: 18px; line-height: 1.5; }
-.resena .quien { font-size: 14px; font-weight: 600; color: var(--gris); }
-.ejemplo { font-size: 13px; font-weight: 600; color: var(--acento); margin-top: 14px; }
-@media (max-width: 900px) { .resenas { grid-template-columns: 1fr; } }
+.historia{padding-block:8px 40px;display:flex;flex-direction:column;gap:16px}
+.ceja{font-size:13px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--rojo)}
+.historia h2{font-size:30px;line-height:1.1;font-weight:900}
+.historia .grande{width:100%;height:260px;object-fit:cover;border-radius:20px}
+.historia p{font-size:17px;line-height:1.55;font-weight:600;color:#4A3A30;max-width:60ch}
+.datos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.dato{background:var(--blanco);border:1px solid var(--borde);border-radius:14px;padding:12px 8px;text-align:center;display:flex;flex-direction:column;gap:2px}
+.dato b{font-size:21px;font-weight:900;color:var(--rojo)}
+.dato span{font-size:13px;font-weight:700;color:var(--cafe-2)}
+.galeria{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.galeria img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px}
 
 /* Visítanos */
-.visita { background: var(--oscuro); color: var(--sobre-oscuro); position: relative; overflow: hidden; }
-.visita .head h2 { color: #fff; }
-.visita-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-.horas { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 17px; }
-.horas td { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.12); }
-.horas td:last-child { text-align: right; color: var(--gris-oscuro); }
-.horas tr.hoy td { color: #fff; font-weight: 700; }
-.dato { display: flex; flex-direction: column; gap: 2px; margin-top: 22px; }
-.dato span { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gris-oscuro); }
-.dato b { font-size: 19px; font-weight: 600; }
-.mapa { border-radius: var(--r); overflow: hidden; position: relative; min-height: 360px; background: #2A231E; }
-.mapa img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; }
-.mapa iframe { border: 0; width: 100%; height: 100%; min-height: 360px; display: block; position: relative; }
-.mapa-card { position: absolute; left: 20px; right: 20px; bottom: 20px; background: var(--papel); color: var(--tinta); border-radius: var(--r); padding: 18px; display: flex; gap: 14px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-.mapa-card p { margin: 0; font-weight: 600; min-width: 0; flex: 1 1 200px; }
-@media (max-width: 820px) { .visita-grid { grid-template-columns: 1fr; } }
+.visita{background:var(--cafe);color:var(--crema)}
+.visita .col{padding-block:36px calc(120px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:18px}
+.visita .ceja{color:var(--amarillo)}
+.visita h2{font-size:28px;font-weight:900}
+.dir{display:flex;gap:12px;align-items:flex-start}
+.dir b{font-size:17px;font-weight:800;display:block}
+.dir span{font-size:15px;font-weight:600;opacity:.85}
+.tabla{background:rgba(251,245,234,.08);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.tabla div{display:flex;justify-content:space-between;font-size:15px;font-weight:700;gap:12px}
+.tabla .off{opacity:.65}
+.tabla small{font-size:13px;font-weight:600;opacity:.75}
+.mapa{min-height:52px;border-radius:14px;border:2px solid rgba(251,245,234,.3);color:var(--crema);font-weight:800;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.btn-verde{min-height:56px;border-radius:16px;background:var(--verde);color:#fff;font-size:18px;font-weight:900;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none}
+.pie{padding-top:16px;border-top:1px solid rgba(251,245,234,.15);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:13px;font-weight:700;opacity:.85}
+.pie a{color:var(--amarillo)}
+.demo{background:var(--cafe);color:var(--amarillo);font-size:12px;font-weight:800;text-align:center;padding:6px 16px}
 
-/* Animación al agregar al pedido */
-.fly { position: fixed; z-index: 60; width: 48px; height: 48px; border-radius: 50%; background: var(--acento) center/cover; box-shadow: 0 6px 18px rgba(0,0,0,.3); pointer-events: none; border: 3px solid #fff; }
-.bump { animation: bump .45s cubic-bezier(.3,1.6,.5,1); }
-@keyframes bump { 40% { transform: scale(1.18); } }
+/* Portada en carrusel con acercamiento lento */
+.hero .marco{position:relative;height:clamp(340px,62vw,460px);overflow:hidden;background:var(--cafe)}
+.hero .slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease}
+.hero .slide.on{opacity:1;animation:acerca 7.5s ease-out both}
+@keyframes acerca{from{transform:scale(1.12)}to{transform:scale(1)}}
+/* Video de portada como Chipotle: llena la portada y el texto va encima */
+.hero .marco{height:clamp(480px,78vh,640px)}
+.hero .video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.hero .sombra{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(43,26,18,0) 35%,rgba(43,26,18,.55) 62%,rgba(43,26,18,.9) 100%)}
+.hero .sobre{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:0 max(20px,env(safe-area-inset-right,0px)) 44px max(20px,env(safe-area-inset-left,0px));color:var(--crema)}
+.hero .sobre h1{color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.35);padding-right:96px}
+.hero .sobre p{color:var(--crema);padding-right:96px}
+.hero .cupo,.hero .precio{z-index:4}
+.hero .precio{bottom:-30px}
+.hero .puntos{left:auto;right:16px;bottom:auto;top:20px;z-index:4}
+.puntos{position:absolute;left:16px;bottom:16px;display:flex;gap:8px;z-index:2}
+.puntos button{width:10px;height:10px;padding:0;border-radius:5px;border:0;background:rgba(255,255,255,.55);cursor:pointer;transition:width .3s,background .3s}
+.puntos button[aria-current="true"]{width:28px;background:#fff}
+.intro>*,.cupo,.precio{animation:sube .8s cubic-bezier(.2,.7,.2,1) both}
+.intro>:nth-child(2){animation-delay:.12s}
+.precio{animation-delay:.3s}
+@keyframes sube{from{opacity:0;transform:translateY(24px)}}
 
-/* Contadores */
-.stats b { font-variant-numeric: tabular-nums; }
+/* Cinta que corre */
+.cinta{background:var(--rojo);color:var(--crema);overflow:hidden;white-space:nowrap;padding-block:12px;margin-top:28px}
+.cinta .pista{display:inline-flex;gap:28px;animation:corre 26s linear infinite;padding-left:28px}
+.cinta span{font-size:19px;font-weight:900;display:inline-flex;align-items:center;gap:28px}
+.cinta span::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--amarillo)}
+@keyframes corre{to{transform:translateX(-50%)}}
 
-/* Galería ampliable */
-.galeria figure { cursor: zoom-in; position: relative; }
-.galeria figure::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0); transition: background .25s; }
-.galeria figure:hover::after { background: rgba(0,0,0,.12); }
-.galeria img { transition: transform .5s; }
-.galeria figure:hover img { transform: scale(1.04); }
-.lb { position: fixed; inset: 0; z-index: 70; background: rgba(12,10,8,.94); display: grid; place-items: center; padding: calc(56px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(56px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
-.lb img { max-width: min(1100px, 100%); max-height: 100%; border-radius: 8px; object-fit: contain; animation: lbIn .3s ease; }
-@keyframes lbIn { from { opacity: 0; transform: scale(.96); } }
-.lb button { position: absolute; width: 48px; height: 48px; border-radius: 50%; border: 0; background: rgba(255,255,255,.12); color: #fff; font-size: 28px; line-height: 1; cursor: pointer; }
-.lb button:hover { background: rgba(255,255,255,.22); }
-.lb-x { top: calc(12px + env(safe-area-inset-top, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); }
-.lb-prev { left: max(12px, env(safe-area-inset-left, 0px)); top: 50%; transform: translateY(-50%); }
-.lb-next { right: max(12px, env(safe-area-inset-right, 0px)); top: 50%; transform: translateY(-50%); }
-.lb-n { position: absolute; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); left: 0; right: 0; text-align: center; color: #cfc6ba; font-size: 14px; font-variant-numeric: tabular-nums; }
+/* Foto viva: la foto real de la charola cambia por zonas */
+.vista{position:sticky;top:calc(64px + env(safe-area-inset-top,0px));z-index:5;background:var(--crema);margin-inline:-4px;padding:8px 4px 10px;box-shadow:0 10px 12px -12px rgba(43,26,18,.4)}
+.vista .fila{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:12px;align-items:center}
+.fv{position:relative;aspect-ratio:840/897;overflow:hidden;border-radius:16px;background:#E9DCC6;box-shadow:0 6px 16px rgba(43,26,18,.18)}
+.fv>img{position:absolute;max-width:none}
+.fv>img.base{inset:0;width:100%;height:100%;object-fit:cover}
+.fv>img.capa{opacity:0;transition:opacity .45s ease;pointer-events:none}
+.fv>img.capa.on{opacity:1}
+.fv-pot{position:absolute;right:4%;top:4%;width:30%;aspect-ratio:1;border-radius:50%;overflow:hidden;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.35);opacity:0;transform:scale(.6);transition:opacity .35s,transform .4s cubic-bezier(.2,.8,.2,1.35)}
+.fv-pot.on{opacity:1;transform:none}
+.fv-pot img{width:100%;height:100%;object-fit:cover}
+.fv-ej{position:absolute;left:8px;top:8px;background:rgba(255,255,255,.92);color:var(--cafe);font-size:11px;font-weight:800;padding:4px 9px;border-radius:999px;transition:opacity .3s}
+.fv.brilla::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.45) 50%,transparent 65%);animation:brillo .7s ease-out both;pointer-events:none}
+@keyframes brillo{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.lista{display:flex;flex-direction:column;gap:6px;min-width:0}
+.lista .tit{font-size:13px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--rojo)}
+.lista .it{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:800;line-height:1.2;min-width:0}
+.lista .it i{width:18px;height:18px;border-radius:50%;flex-shrink:0;border:2px dashed #B9A48F;display:flex;align-items:center;justify-content:center}
+.lista .it.ok i{border:0;background:var(--verde)}
+.lista .it.no{color:var(--cafe-3);font-weight:700}
+.lista .it.doble{color:var(--rojo)}
+.lista .p{font-size:22px;font-weight:900;font-variant-numeric:tabular-nums;margin-top:4px}
 
-/* Parallax de la foto de historia */
-.split .foto img { will-change: transform; transform: scale(1.12); }
-
-/* Barra fija en celular */
-.barra-movil { display: none; }
-@media (max-width: 700px) {
-  body .float { display: none; }
-  .barra-movil { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; background: var(--oscuro); padding: 10px max(12px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); box-shadow: 0 -6px 20px rgba(0,0,0,.2); }
-  .barra-movil .btn { min-height: 48px; padding: 0 10px; font-size: 15px; border-radius: 8px; }
-  .barra-movil .btn-tel { background: rgba(255,255,255,.1); color: #fff; }
-  .barra-movil .n { background: #fff; color: var(--acento); min-width: 22px; height: 22px; border-radius: 11px; display: inline-grid; place-items: center; font-size: 13px; padding: 0 5px; }
-}
-
-/* Aparecer al hacer scroll (solo si el navegador lo soporta y no pide menos movimiento) */
-.js-reveal .rv { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); transition-delay: var(--delay, 0s); }
-.js-reveal .rv.in { opacity: 1; transform: none; }
-.js-reveal .rv.rv-img { transform: translateY(28px) scale(.97); }
-.js-reveal .rv.rv-img.in { transform: none; }
-.hero .bg { animation: acerca 9s ease-out both; }
-@keyframes acerca { from { transform: scale(1.12); } to { transform: scale(1); } }
-.hero .wrap > * { animation: sube .8s cubic-bezier(.2,.7,.2,1) both; }
-.hero .wrap > *:nth-child(2) { animation-delay: .1s; }
-.hero .wrap > *:nth-child(3) { animation-delay: .25s; }
-.hero .wrap > *:nth-child(4) { animation-delay: .4s; }
-@keyframes sube { from { opacity: 0; transform: translateY(24px); } }
-@media (prefers-reduced-motion: reduce) { .js-reveal .rv { opacity: 1 !important; transform: none !important; } }
-
-footer { background: var(--oscuro); color: var(--gris-oscuro); border-top: 1px solid rgba(255,255,255,.1); font-size: 14px; }
-footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 28px 120px; }
-footer a { color: var(--sobre-oscuro); text-decoration: none; font-weight: 600; }
-footer .social { display: flex; gap: 18px; }
-
-/* Flotantes */
-.float { position: fixed; z-index: 25; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; gap: 10px; align-items: center; }
-.fab-wa { width: 60px; height: 60px; border-radius: 50%; background: var(--wa); color: #fff; display: grid; place-items: center; box-shadow: 0 10px 28px rgba(0,0,0,.28); }
-.fab-wa svg { width: 32px; height: 32px; }
-.fab-cart { min-height: 56px; padding: 0 22px; border-radius: 999px; background: var(--acento); color: #fff; border: 0; font: 700 16px var(--f-body); box-shadow: 0 10px 28px rgba(0,0,0,.28); cursor: pointer; display: inline-flex; gap: 12px; align-items: center; }
-.fab-cart .n { background: #fff; color: var(--acento); min-width: 26px; height: 26px; border-radius: 13px; display: grid; place-items: center; font-size: 14px; padding: 0 6px; font-variant-numeric: tabular-nums; }
-
-/* Panel del pedido */
-.sheet-bg { position: fixed; inset: 0; background: rgba(10,8,6,.55); z-index: 40; }
-.sheet { position: fixed; z-index: 41; left: 0; right: 0; bottom: 0; max-height: 88vh; overflow-y: auto; background: var(--papel); border-radius: 16px 16px 0 0; padding: 24px max(22px, env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) max(22px, env(safe-area-inset-left, 0px)); display: flex; flex-direction: column; gap: 16px; max-width: 560px; margin: 0 auto; }
-.sheet h2 { font-family: var(--f-display); font-weight: 900; font-size: 36px; text-transform: uppercase; line-height: 1; }
-.sheet-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-.x { width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--linea); background: var(--claro); color: var(--tinta); font-size: 22px; cursor: pointer; }
-.lines { display: flex; flex-direction: column; gap: 10px; }
-.line { display: flex; justify-content: space-between; gap: 12px; }
-.line span:first-child { font-weight: 600; min-width: 0; }
-.line span:last-child { font-variant-numeric: tabular-nums; color: var(--gris); }
-.totals { border-top: 1px dashed var(--linea); padding-top: 12px; display: flex; flex-direction: column; gap: 4px; font-variant-numeric: tabular-nums; }
-.totals div { display: flex; justify-content: space-between; }
-.totals .grand { font-size: 20px; font-weight: 700; }
-.field { display: flex; flex-direction: column; gap: 6px; border: 0; padding: 0; margin: 0; }
-.field label, .field legend { font-weight: 600; font-size: 14px; padding: 0; margin-bottom: 6px; }
-.field input, .field textarea { font: 16px var(--f-body); padding: 12px 14px; border-radius: 8px; border: 1.5px solid var(--linea); background: var(--claro); color: var(--tinta); width: 100%; }
-.seg { display: flex; gap: 8px; flex-wrap: wrap; }
-.seg label { flex: 1; min-width: 140px; display: flex; gap: 8px; align-items: center; padding: 12px 14px; border: 1.5px solid var(--linea); border-radius: 8px; font-weight: 600; cursor: pointer; margin: 0; }
-.seg label:has(input:checked) { border-color: var(--tinta); background: var(--claro); }
-.hint { font-size: 13px; color: var(--gris); margin: 0; }
-
-/* Estilos de letra (los valores vienen del bloque ESTILOS) */
-:root { --dw: 900; --dt: uppercase; --dls: .005em; --dlh: .9; --ds: 1; --ds2: 1; --hero-ch: 9ch; --btn-r: 6px; }
-.display, .logo, .cinta span, .promo b, .fav-body h3, .precio, .stats b, .nota b, .sheet h2 { font-weight: var(--dw); text-transform: var(--dt); letter-spacing: var(--dls); }
-.display { line-height: var(--dlh); }
-.hero h1 { font-size: calc(clamp(52px, 11vw, 132px) * var(--ds)); max-width: var(--hero-ch); }
-.head h2 { font-size: calc(clamp(40px, 6vw, 68px) * var(--ds2)); }
-.split-text h2 { font-size: calc(clamp(40px, 5.5vw, 64px) * var(--ds2)); }
-.fav-body h3 { font-size: calc(30px * var(--ds2)); line-height: 1.05; }
-.sheet h2 { font-size: calc(36px * var(--ds2)); }
-.cinta span { font-size: calc(22px * var(--ds2)); }
-.btn, .qty button, .seg label, .field input, .field textarea, .mapa-card .btn { border-radius: var(--btn-r); }
-.qty button { border-radius: min(var(--btn-r), 20px); }
-.logo img, .logo svg { display: block; height: 40px; width: auto; max-width: 220px; }
-@media (max-width: 820px) { .logo img, .logo svg { height: 34px; } }
-
-/* Carrusel de portada */
-.hero .bg.slide { opacity: 0; transition: opacity 1.6s ease; animation: none; }
-.hero .bg.slide.on { opacity: 1; animation: acerca 7.5s ease-out both; }
-.hero-dots { position: absolute; z-index: 2; right: max(20px, env(safe-area-inset-right, 0px)); bottom: 24px; display: flex; gap: 8px; }
-.hero-dots button { width: 10px; height: 10px; padding: 0; border-radius: 50%; border: 0; background: rgba(255,255,255,.45); cursor: pointer; transition: width .3s, background .3s; }
-.hero-dots button[aria-current="true"] { width: 28px; border-radius: 5px; background: #fff; }
-@media (max-width: 600px) { .hero-dots { bottom: 16px; } }
-
-/* ===== Modo charola (comida corrida / por encargo) ===== */
-.charola { display: grid; grid-template-columns: 1.35fr .9fr; gap: 32px; align-items: start; }
-.ch-grupos { display: flex; flex-direction: column; gap: 26px; min-width: 0; }
-.ch-grupo h3 { font-family: var(--f-display); font-weight: var(--dw); text-transform: var(--dt); letter-spacing: var(--dls); font-size: calc(26px * var(--ds2)); display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-.ch-grupo h3 small { font-family: var(--f-body); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gris); }
-.ch-grupo h3 small.ok { color: #1F8A4C; }
-.ch-ops { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
-.ch-op { border: 2px solid var(--linea); background: var(--papel); color: var(--tinta); border-radius: 999px; padding: 11px 18px; font: 600 16px var(--f-body); cursor: pointer; transition: border-color .2s, background .2s, transform .15s; }
-.ch-op:hover { border-color: color-mix(in srgb, var(--acento) 50%, var(--linea)); }
-.ch-op[aria-pressed="true"] { border-color: var(--acento); background: color-mix(in srgb, var(--acento) 12%, var(--papel)); transform: translateY(-1px); }
-.ch-op[aria-pressed="true"]::before { content: "✓ "; color: var(--acento); font-weight: 800; }
-.ch-incluye { background: var(--papel); border: 1px dashed var(--linea); border-radius: var(--r); padding: 16px 18px; color: var(--gris); }
-.ch-incluye b { color: var(--tinta); }
-.ch-resumen { position: sticky; top: 90px; background: var(--papel); border-radius: calc(var(--r) * 1.4); overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 16px 40px rgba(0,0,0,.1); }
-.ch-resumen .ph { aspect-ratio: 16 / 10; overflow: hidden; max-width: 100%; }
-.ch-resumen .ph img { width: 100%; height: 100%; object-fit: cover; }
-.ch-body { padding: 22px; display: flex; flex-direction: column; gap: 14px; }
-.ch-body h3 { font-family: var(--f-display); font-weight: var(--dw); text-transform: var(--dt); letter-spacing: var(--dls); font-size: calc(26px * var(--ds2)); }
-.ch-lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 15px; }
-.ch-lista li { display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px dashed var(--linea); padding-bottom: 6px; }
-.ch-lista li span:first-child { color: var(--gris); }
-.ch-lista li b { text-align: right; }
-.ch-lista li.falta b { color: #B3261E; font-weight: 600; }
-.ch-precio { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.ch-precio .precio { font-size: 30px; }
-.ch-nota { font-size: 13px; color: var(--gris); }
-.ch-body .btn { width: 100%; }
-.ch-body .btn[disabled] { opacity: .45; cursor: not-allowed; transform: none; }
-.ch-cupo { background: var(--papel); border: 1px solid var(--linea); border-radius: var(--r); padding: 16px 18px; margin-bottom: 26px; display: flex; flex-direction: column; gap: 10px; }
-.ch-cupo b { font-size: 15px; }
-.ch-dias { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
-.ch-dia { flex: none; border: 2px solid var(--linea); background: var(--papel); color: var(--tinta); border-radius: 12px; padding: 8px 12px; font: 600 14px var(--f-body); cursor: pointer; text-align: center; line-height: 1.25; }
-.ch-dia small { display: block; font-size: 12px; font-weight: 700; color: #1F8A4C; }
-.ch-dia.pocas small { color: #C77700; }
-.ch-dia[disabled] { opacity: .5; cursor: not-allowed; }
-.ch-dia[disabled] small { color: #B3261E; }
-.ch-dia[aria-pressed="true"] { border-color: var(--acento); background: color-mix(in srgb, var(--acento) 10%, var(--papel)); }
-.line .quitar { border: 0; background: none; color: var(--gris); font-size: 13px; text-decoration: underline; cursor: pointer; padding: 0; }
-.line .det { display: block; font-size: 13px; color: var(--gris); font-weight: 400; }
-@media (max-width: 900px) { .charola { grid-template-columns: minmax(0, 1fr); } .ch-resumen { position: static; } }
-/* Charola visual: cada hueco muestra la foto de lo elegido */
-.bandeja { --hueco: color-mix(in srgb, var(--claro, #FBF6EE) 70%, #fff); display: grid; gap: 8px; padding: 10px; aspect-ratio: 4 / 3; background: linear-gradient(145deg, #fff, #ECE6DA); border-radius: 18px; box-shadow: inset 0 2px 6px rgba(0,0,0,.08), 0 1px 0 #fff; }
-.bj-hueco { grid-area: var(--a); position: relative; border-radius: 12px; overflow: hidden; background: var(--hueco); box-shadow: inset 0 3px 8px rgba(0,0,0,.14); display: grid; place-items: center; min-height: 0; min-width: 0; }
-.bj-hueco.redondo { border-radius: 50%; aspect-ratio: 1; align-self: center; justify-self: center; height: 100%; max-width: 100%; }
-.bj-hueco img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: bjEntra .45s cubic-bezier(.2,.8,.2,1.2); }
-.bj-hueco .vacio { padding: 6px; text-align: center; font: 700 12px/1.25 var(--f-body); color: var(--gris); letter-spacing: .02em; border: 2px dashed color-mix(in srgb, var(--gris) 35%, transparent); border-radius: inherit; position: absolute; inset: 6px; display: grid; place-items: center; }
-.bj-hueco .tag { position: absolute; left: 6px; bottom: 6px; z-index: 1; background: rgba(0,0,0,.62); color: #fff; font: 700 11px var(--f-body); padding: 3px 7px; border-radius: 999px; max-width: calc(100% - 12px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.bj-hueco.redondo .tag { left: 50%; transform: translateX(-50%); bottom: 10%; }
-.bj-hueco .doble { position: absolute; right: 6px; top: 6px; z-index: 1; background: var(--acento); color: #fff; font: 800 11px var(--f-body); padding: 3px 7px; border-radius: 999px; }
-@keyframes bjEntra { from { opacity: 0; transform: scale(1.12); } to { opacity: 1; transform: none; } }
-.ch-resumen .bandeja { margin: 14px 14px 0; }
-.ch-vista { display: none; }
-@media (max-width: 900px) {
-  .ch-vista { display: block; position: sticky; top: 62px; z-index: 5; margin: 0 -4px 4px; padding: 6px 4px; background: var(--claro, #FBF6EE); box-shadow: 0 8px 12px -10px rgba(0,0,0,.25); }
-  .ch-vista .bandeja { aspect-ratio: auto; height: 180px; grid-template-columns: 1fr 1fr 1.1fr 1.1fr; padding: 8px; gap: 6px; }
-  .ch-vista .bj-hueco .vacio { font-size: 11px; inset: 4px; }
-  .ch-vista .bj-hueco .tag { font-size: 10px; padding: 2px 6px; }
-  .ch-resumen .bandeja { display: none; }
-}
-@media (prefers-reduced-motion: reduce) { .bj-hueco img { animation: none; } }
-/* Foto viva: la foto real de la charola cambia por zonas según lo elegido */
-.fv { position: relative; aspect-ratio: var(--fvr, 840 / 897); overflow: hidden; background: #eee; }
-.fv > img { position: absolute; max-width: none; }
-.fv > img.fv-base { inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.fv > img.fv-capa { opacity: 0; transition: opacity .4s ease; pointer-events: none; }
-.fv > img.fv-capa.on { opacity: 1; }
-.fv-pot { position: absolute; right: 3%; top: 3%; width: 27%; aspect-ratio: 1; border-radius: 50%; box-shadow: 0 6px 18px rgba(0,0,0,.35); opacity: 0; transform: scale(.7); transition: opacity .35s, transform .35s cubic-bezier(.2,.8,.2,1.3); overflow: hidden; background: #fff; display: grid; place-items: center; text-align: center; font: 700 11px/1.2 var(--f-body); color: var(--tinta); padding: 6px; }
-.fv-pot.on { opacity: 1; transform: none; }
-.fv-pot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.fv-chips { position: absolute; left: 8px; right: 8px; bottom: 8px; display: flex; flex-wrap: wrap; gap: 5px; }
-.fv-chips span { background: rgba(0,0,0,.62); color: #fff; font: 700 11px var(--f-body); padding: 3px 8px; border-radius: 999px; }
-.fv-chips span.doble { background: var(--acento); }
-.fv-ej { position: absolute; left: 8px; top: 8px; background: rgba(255,255,255,.9); color: var(--tinta); font: 700 11px var(--f-body); padding: 4px 9px; border-radius: 999px; transition: opacity .3s; }
-.ch-resumen .fv { border-radius: 0; }
-@media (max-width: 900px) {
-  .ch-vista .fv { height: 250px; aspect-ratio: auto; width: auto; max-width: 100%; margin: 0 auto; border-radius: 14px; aspect-ratio: var(--fvr, 840 / 897); }
-  .ch-resumen .fv { display: none; }
-}
+/* Aparece al bajar */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+.salta{animation:salta .35s ease}
+@keyframes salta{40%{transform:scale(1.18)}}
+.galeria figure{margin:0;overflow:hidden;border-radius:16px}
+.galeria figure img{border-radius:0;transition:transform .5s}
+.galeria figure:hover img{transform:scale(1.06)}
 
 
+/* Encargo real */
+[hidden]{display:none!important}
+.aviso-top{background:var(--amarillo);color:var(--cafe);font-weight:800;font-size:14px;text-align:center;padding:8px 16px}
+.lbl{font-size:14px;font-weight:800}
+.dias{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.dia{flex:0 0 auto;min-width:84px;min-height:56px;border-radius:12px;border:2px solid var(--borde);background:var(--blanco);color:var(--cafe);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;padding:6px 10px}
+.dia b{font-size:15px;font-weight:900;text-transform:capitalize}
+.dia small{font-size:12px;font-weight:700;color:var(--cafe-3)}
+.dia.pocas small{color:var(--rojo)}
+.dia[aria-pressed="true"]{border-color:var(--rojo);background:#FFF1EE}
+.dia:disabled{opacity:.5;cursor:not-allowed}
+.error{margin:0;background:#FFF1EE;border:2px solid var(--rojo);color:var(--rojo-osc);border-radius:12px;padding:10px 12px;font-weight:800;font-size:15px}
+.quitar{border:0;background:transparent;color:var(--rojo);font-weight:800;font-size:13px;cursor:pointer;min-height:44px;padding:0 4px}
+.op small{display:block;font-size:11px;font-weight:800;color:var(--rojo)}
+.op small:empty{display:none}
+.op:disabled{opacity:.45;cursor:not-allowed}
+.campo label small{font-weight:600;color:var(--cafe-3)}
+.listo .btn-verde{min-height:52px}
+@media (prefers-reduced-motion:reduce){ .hero .slide.on,.intro>*,.cupo,.precio,.cinta .pista,.salta,.fv.brilla::after{animation:none!important} .js .rv{opacity:1;transform:none} }
+@media (min-width:560px){ .opciones{grid-template-columns:repeat(4,minmax(0,1fr))} .galeria{grid-template-columns:repeat(4,minmax(0,1fr))} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
 </style>
-
 </head>
 <body>
+
+
 <header class="top">
-  <div class="wrap">
-    <a class="logo" href="#inicio" id="logo"></a>
-    <nav class="links" aria-label="Secciones">
-      <a href="#menu">Menú</a><a href="#historia">Historia</a><a href="#resenas">Reseñas</a><a href="#visitanos">Visítanos</a>
-    </nav>
-    <a class="btn btn-acento top-cta" href="#menu">Pedir</a>
+  <div class="col">
+    <img src="fotos/logo-dona-miriam.svg" alt="Doña Miriam">
+    <a class="btn-wa" href="https://wa.me/528443690845" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"/></svg>
+      WhatsApp</a>
   </div>
 </header>
+<div class="aviso-top" id="avisoTop" role="status" hidden></div>
 
-<main id="inicio">
+<main>
   <section class="hero">
-    <div class="hero-media" id="heroMedia">
-      <img class="bg" id="heroImg" alt="">
-      <video class="bg" id="heroVid" muted autoplay loop playsinline preload="auto" aria-hidden="true" hidden></video>
-    </div>
-    <div class="wrap">
-      <span class="status" id="status"><i></i><span></span></span>
-      <h1 class="display" id="nombre"></h1>
-      <p id="eslogan"></p>
-      <div class="hero-ctas">
-        <a class="btn btn-wa" id="heroWa" target="_blank" rel="noopener"></a>
-        <a class="btn btn-linea" href="#menu">Ver el menú</a>
+    <div class="marco" id="marco">
+      <img class="slide on" src="fotos/charola-fricase.jpg" alt="Charola de fricasé con arroz, frijoles y maduros">
+      <img class="slide" src="fotos/portada-ropa-vieja.jpg" alt="Ropa vieja">
+      <img class="slide" src="fotos/portada-arroz.jpg" alt="Arroz congrí">
+      <img class="slide" src="fotos/portada-frijoles.jpg" alt="Frijoles negros">
+      <video class="video" id="video" muted autoplay loop playsinline preload="auto" poster="fotos/portada-poster.jpg" aria-hidden="true">
+        <source src="fotos/portada.mp4" type="video/mp4">
+      </video>
+      <div class="sombra" aria-hidden="true"></div>
+      <div class="sobre intro">
+        <h1>Comida cubana casera en Saltillo</h1>
+        <p>Encarga hoy, recoge mañana. Arroz, carne y vianda como en casa de la abuela.</p>
       </div>
+      <div class="puntos" id="puntos" hidden></div>
     </div>
+    <div class="cupo"><i></i><span id="cupoTxt">Quedan 9 para mañana</span></div>
+    <div class="precio"><b data-precio>$150</b><span>la charola</span></div>
   </section>
 
-  <div class="cinta" aria-hidden="true"><div class="cinta-track" id="cinta"></div></div>
-  <div class="promo" id="promo" hidden><div class="wrap"><b>Hoy</b><span id="promoTxt"></span></div></div>
+  <div class="col">
+    <div style="padding-top:44px">
+      <button class="cta" id="irArmar" type="button">Arma tu charola
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <div class="horas"><span>Lunes a sábado</span><span aria-hidden="true">·</span><span>Recoges de 12:00 a 3:00 p. m.</span></div>
+    </div>
+  </div>
 
-  <section class="section" id="menu">
-    <div class="wrap">
-      <div class="head"><span class="kicker">Lo más pedido</span><h2 class="display">Los favoritos de la casa</h2></div>
-      <div class="favs" id="favs"></div>
+  <div class="cinta" aria-hidden="true"><div class="pista">
+    <span>Comida cubana casera</span><span>Encargos de lunes a sábado</span><span>$150 la charola</span><span>Congrí, fricasé y tostones</span><span>Recoges de 12 a 3</span>
+    <span>Comida cubana casera</span><span>Encargos de lunes a sábado</span><span>$150 la charola</span><span>Congrí, fricasé y tostones</span><span>Recoges de 12 a 3</span>
+  </div></div>
 
-      <div class="menu-wrap">
-        <div>
-          <div class="head" style="margin-bottom:20px"><span class="kicker">Menú completo</span></div>
-          <div class="cats" role="tablist" id="cats"></div>
-        </div>
-        <div class="rows" id="rows"></div>
+  <div class="col">
+
+    <div class="repetir" id="repetir" hidden>
+      <div class="t">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B3122B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+        ¿Lo mismo que la vez pasada?
       </div>
-      <div id="charolaBox" hidden></div>
+      <div class="fila"><div class="caritas" id="repCaras"></div><span id="repTxt"></span></div>
+      <button class="btn-amarillo" id="repBtn" type="button">Pedir lo mismo</button>
     </div>
-  </section>
 
-  <section class="section historia" id="historia">
-    <div class="wrap split">
-      <div class="foto"><img id="historiaImg" alt="La cocina de Doña Miriam" loading="lazy"></div>
-      <div class="split-text">
-        <span class="kicker">Nuestra historia</span>
-        <h2 class="display" id="historiaTitulo"></h2>
-        <div id="historiaTexto" style="display:flex;flex-direction:column;gap:16px"></div>
-        <div class="stats" id="stats"></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="galeria-sec">
-    <div class="wrap">
-      <div class="head"><span class="kicker">Galería</span><h2 class="display" id="galTitulo">Directo del comal</h2></div>
-      <script>if(CONFIG.textos&&CONFIG.textos.galeria)document.getElementById("galTitulo").textContent=CONFIG.textos.galeria;</script>
-      <div class="galeria" id="galeria"></div>
-    </div>
-  </section>
-
-  <section class="section" id="resenas" style="padding-top:0">
-    <div class="wrap">
-      <div class="resenas-top">
-        <div class="head" style="margin:0"><span class="kicker">Reseñas en Google</span><h2 class="display">Lo que dice la gente</h2></div>
-        <div class="nota"><b id="notaNum"></b><div><div class="stars" id="notaStars"></div><div style="font-size:14px;color:var(--gris)" id="notaTotal"></div></div></div>
-      </div>
-      <div class="resenas" id="resenasList"></div>
-      <p class="ejemplo" id="ejemplo" hidden>Reseñas de ejemplo. En el sitio del cliente van sus reseñas reales de Google.</p>
-    </div>
-  </section>
-
-  <section class="section visita" id="visitanos">
-    <div class="wrap">
-      <div class="head"><span class="kicker" style="color:#FF8A73">Visítanos</span><h2 class="display">Horario y ubicación</h2></div>
-      <div class="visita-grid">
-        <div>
-          <table class="horas" id="horas"></table>
-          <div class="dato"><span>Teléfono y WhatsApp</span><b id="tel" style="user-select:all"></b></div>
-          <div class="dato"><span>Dirección</span><b id="dir"></b></div>
-        </div>
-        <div class="mapa" id="mapa">
-          <img id="visitaImg" alt="" loading="lazy">
-          <div class="mapa-card"><p id="dir2"></p><a class="btn btn-acento" id="mapsBtn" target="_blank" rel="noopener">Cómo llegar</a></div>
+    <section class="armar" id="armar">
+      <header>
+        <h2>Arma tu charola</h2>
+        <p id="armarSub">Toca uno de cada grupo.</p>
+      </header>
+      <div class="vista">
+        <div class="fila">
+          <div class="fv" id="fv">
+            <img class="base" src="fotos/fv-base.jpg" alt="Así se ve tu charola">
+            <div class="fv-pot" id="fvPot"></div>
+            <span class="fv-ej" id="fvEj">Así se ve tu charola</span>
+          </div>
+          <div class="lista" id="lista"></div>
         </div>
       </div>
+      <div id="grupos"></div>
+      <div class="grupo" id="bloqueExtras">
+        <div class="cab"><h3>¿Con más hambre?</h3><span class="estado">Opcional</span></div>
+        <div class="extras" id="extras"></div>
+        <p class="incluye">La ensalada va incluida en cada charola.</p>
+      </div>
+    </section>
+  </div>
+
+  <section class="col historia" id="historia">
+    <span class="ceja">Nuestra historia</span>
+    <h2>Comida cubana como en casa</h2>
+    <img class="grande" src="fotos/portada-frijoles.jpg" alt="Olla de frijoles negros cubanos">
+    <p>Doña Miriam cocina comida cubana casera aquí en Saltillo: congrí, fricasé, ropa vieja, tostones y potajes como se hacen en Cuba.</p>
+    <p>Cada charola se prepara por encargo, con ingredientes frescos y el sazón de siempre.</p>
+    <div class="datos">
+      <div class="dato"><b>$150</b><span>la charola</span></div>
+      <div class="dato"><b>16</b><span>opciones para combinar</span></div>
+      <div class="dato"><b>Lun–Sáb</b><span>con encargo</span></div>
+    </div>
+    <div class="galeria">
+      <figure class="rv"><img src="fotos/charola-arroz.jpg" alt="Charola con arroz y carne"></figure>
+      <figure class="rv" style="--d:.08s"><img src="fotos/ropa-vieja.jpg" alt="Ropa vieja"></figure>
+      <figure class="rv" style="--d:.16s"><img src="fotos/tostones.jpg" alt="Tostones"></figure>
+      <figure class="rv" style="--d:.24s"><img src="fotos/portada-fricase.jpg" alt="Fricasé"></figure>
+    </div>
+  </section>
+
+  <section class="visita" id="visitanos">
+    <div class="col">
+      <span class="ceja">Visítanos</span>
+      <h2>Pasa por tu charola</h2>
+      <div class="dir">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F2B233" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;margin-top:2px"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        <div><b>Dolores Hidalgo 124</b><span>Col. Guanajuato Oriente, Saltillo</span></div>
+      </div>
+      <div class="tabla">
+        <div><span>Lunes a sábado</span><span>12:00 – 3:00 p. m.</span></div>
+        <div class="off"><span>Domingo</span><span>Descanso</span></div>
+        <small>Se encarga con un día de anticipación.</small>
+      </div>
+      <a class="mapa" href="https://www.google.com/maps/search/?api=1&query=Dolores+Hidalgo+124+Guanajuato+Oriente+Saltillo" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg>
+        Cómo llegar</a>
+      <a class="btn-verde" href="https://wa.me/528443690845" target="_blank" rel="noopener">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"/></svg>
+        844 369 0845</a>
+      <div class="pie"><span>Doña Miriam · Comida cubana</span><a href="https://proyect.onlinefreedom.site" target="_blank" rel="noopener">Sitio por Onlinefreedom</a></div>
     </div>
   </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <span id="copy"></span>
-    <div class="social"><a id="fb" target="_blank" rel="noopener">Facebook</a><a id="ig" target="_blank" rel="noopener">Instagram</a></div>
-    <a id="credit" target="_blank" rel="noopener"></a>
-  </div>
-</footer>
-
-<div class="float">
-  <button class="fab-cart" id="fabCart" hidden><span>Ver mi pedido</span><span class="n" id="cartN">0</span></button>
-  <a class="fab-wa" id="fabWa" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"></a>
-</div>
-
-<nav class="barra-movil" aria-label="Contacto rápido">
-  <a class="btn btn-tel" id="barTel">Llamar</a>
-  <a class="btn btn-wa" id="barWa" target="_blank" rel="noopener">WhatsApp</a>
-  <button class="btn btn-acento" id="barCart" hidden>Pedido <span class="n" id="barN">0</span></button>
-</nav>
-
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Galería de fotos" hidden>
-  <img id="lbImg" alt="">
-  <button class="lb-x" id="lbX" aria-label="Cerrar">×</button>
-  <button class="lb-prev" id="lbPrev" aria-label="Foto anterior">‹</button>
-  <button class="lb-next" id="lbNext" aria-label="Foto siguiente">›</button>
-  <span class="lb-n" id="lbN"></span>
-</div>
-
-<div class="sheet-bg" id="sheetBg" hidden></div>
-<section class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
-  <div class="sheet-head"><h2 id="sheetTitle">Tu pedido</h2><button class="x" id="closeSheet" aria-label="Cerrar">×</button></div>
-  <div class="lines" id="lines"></div>
-  <div class="totals" id="totals"></div>
-  <div class="field"><label for="cNombre">Tu nombre</label><input id="cNombre" autocomplete="name" placeholder="Ej. Mariana"></div>
-  <div class="field"><label for="cTel">Tu WhatsApp <small style="font-weight:400;opacity:.7">(para confirmarte)</small></label><input id="cTel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej. 844 123 4567"></div>
-  <fieldset class="field">
-    <legend>¿Cómo lo quieres?</legend>
-    <div class="seg">
-      <label><input type="radio" name="entrega" id="eRecoger" value="Paso a recoger" checked> Paso a recoger</label>
-      <label id="lblDomicilio"><input type="radio" name="entrega" id="eDomicilio" value="A domicilio"> A domicilio</label>
+<div class="barra" id="barra">
+  <div class="col">
+    <div class="info">
+      <div class="caritas" id="barCaras"></div>
+      <div class="txt"><small id="barTxt">Tu charola · 0 de 3</small><b id="barTotal">$150</b></div>
     </div>
-  </fieldset>
-  <div class="field" id="fechaField" hidden><label for="cFecha">¿Para qué día?</label><input type="date" id="cFecha"><p class="hint" id="fechaHint"></p></div>
-  <div class="field" id="dirField" hidden><label for="cDir">Dirección de entrega</label><input id="cDir" autocomplete="street-address" placeholder="Calle, número y colonia"></div>
-  <div class="field"><label for="cNotas">Notas</label><textarea id="cNotas" rows="2" placeholder="Sin cebolla, salsa aparte…"></textarea></div>
-  <script>if(CONFIG.textos&&CONFIG.textos.notas)document.getElementById("cNotas").placeholder=CONFIG.textos.notas;</script>
-  <p class="hint" id="pagoHint" hidden></p>
-  <a class="btn btn-wa" id="sendWa" target="_blank" rel="noopener" style="width:100%"></a>
-  <p class="hint">Se abre WhatsApp con tu pedido ya escrito. Solo dale enviar.</p>
-</section>
+    <button class="btn-rojo" id="barBtn" type="button">Enviar
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+</div>
+
+<div class="velo" id="velo" hidden>
+  <div class="hoja" role="dialog" aria-modal="true" aria-labelledby="hojaTit">
+    <div class="asa"></div>
+    <div class="cab"><h2 id="hojaTit">Tu encargo</h2>
+      <button class="cerrar" id="cerrar" type="button" aria-label="Cerrar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div id="hojaCuerpo" style="display:flex;flex-direction:column;gap:14px">
+      <div class="resumen" id="resumen"></div>
+      <button class="otra" id="otra" type="button">+ Agregar otra charola</button>
+      <div class="campo">
+        <span class="lbl">¿Para qué día?</span>
+        <div class="dias" id="dias"></div>
+      </div>
+      <div class="recoger">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <div><b id="recogerTxt">Recoges mañana de 12:00 a 3:00 p. m.</b><span id="recogerDir">Dolores Hidalgo 124, Col. Guanajuato Oriente</span></div>
+      </div>
+      <form id="form" style="display:flex;flex-direction:column;gap:14px" novalidate>
+        <div class="campo"><label for="nombre">Tu nombre</label><input id="nombre" name="nombre" autocomplete="given-name" placeholder="Para saber de quién es" maxlength="80"></div>
+        <div class="campo"><label for="notas">Notas <small>(opcional)</small></label><input id="notas" name="notas" placeholder="Ej. sin cebolla, paso a las 2" maxlength="300"></div>
+        <p class="error" id="error" role="alert" hidden></p>
+        <button class="btn-rojo" id="apartar" type="submit" style="min-height:58px;font-size:19px;width:100%">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"/></svg>
+          Apartar por WhatsApp</button>
+        <p class="aviso" id="avisoAnticipo">Se aparta con un anticipo de $75 por charola. Te mandamos los datos de pago por WhatsApp.</p>
+      </form>
+    </div>
+    <div class="listo" id="listo" hidden>
+      <b>¡Listo! Tu encargo quedó apartado</b>
+      <p id="listoTxt"></p>
+      <a class="btn-verde" id="listoWa" href="#" target="_blank" rel="noopener">Abrir WhatsApp otra vez</a>
+      <button class="otra" id="listoOk" type="button">Cerrar</button>
+    </div>
+  </div>
+</div>
 
 <script>
-window.__iniciarSitio = function () {
-  const C = CONFIG, N = C.negocio, $ = (id) => document.getElementById(id);
-  const money = (n) => "$" + n.toLocaleString("es-MX");
-  const WA = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>';
-  const waLink = (t) => "https://wa.me/" + N.whatsapp + "?text=" + encodeURIComponent(t);
-
-  document.title = N.nombre + " · " + N.giro + " en " + N.ciudad;
-  if (C.logoSvg) $("logo").innerHTML = C.logoSvg;
-  else if (C.logo) $("logo").innerHTML = `<img src="${C.logo}" alt="${N.nombre}">`;
-  else $("logo").textContent = N.nombre;
-  $("logo").setAttribute("aria-label", N.nombre);
-  $("nombre").textContent = N.nombre;
-  $("eslogan").textContent = N.eslogan;
-  $("heroImg").src = C.fotos.portada;
-  $("historiaImg").src = C.fotos.historia;
-  $("visitaImg").src = C.fotos.visitanos;
-  const reduceMotion = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const isPhone = () => matchMedia("(max-width: 700px)").matches;
-
-  // Video de portada: vertical en celular, horizontal en computadora
-  const vSrc = isPhone() ? (C.fotos.videoVertical || C.fotos.videoHorizontal) : (C.fotos.videoHorizontal || C.fotos.videoVertical);
-  if (vSrc && !reduceMotion) {
-    const v = $("heroVid");
-    v.src = vSrc; v.poster = C.fotos.portada;
-    v.addEventListener("playing", () => { v.hidden = false; }, { once: true });
-    v.hidden = false; const p = v.play(); if (p && p.catch) p.catch(() => { v.hidden = true; });
-  }
-
-  // Carrusel de portada (solo si no hay video)
-  const usaVideo = !!(vSrc && !reduceMotion);
-  const slides = (C.fotos.portadas || []).filter(Boolean);
-  if (!usaVideo && slides.length > 1) {
-    $("heroImg").hidden = true;
-    const imgs = slides.map((src, i) => { const im = document.createElement("img"); im.className = "bg slide" + (i === 0 ? " on" : ""); im.src = src; im.alt = ""; $("heroMedia").appendChild(im); return im; });
-    const dots = document.createElement("div"); dots.className = "hero-dots"; dots.setAttribute("aria-label", "Fotos de portada");
-    dots.innerHTML = slides.map((_, i) => `<button type="button" aria-label="Foto ${i + 1}" aria-current="${i === 0}"></button>`).join("");
-    document.querySelector(".hero").appendChild(dots);
-    let cur = 0, timer = null;
-    const go = (n) => { imgs[cur].classList.remove("on"); dots.children[cur].setAttribute("aria-current", "false"); cur = (n + imgs.length) % imgs.length; const im = imgs[cur]; im.style.animation = "none"; void im.offsetWidth; im.style.animation = ""; im.classList.add("on"); dots.children[cur].setAttribute("aria-current", "true"); };
-    const start = () => { clearInterval(timer); timer = setInterval(() => go(cur + 1), reduceMotion ? 8000 : 5500); };
-    dots.addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; go([...dots.children].indexOf(b)); start(); });
-    document.addEventListener("visibilitychange", () => { if (document.hidden) clearInterval(timer); else start(); });
-    start();
-  }
-
-  // Barra fija del celular
-  $("barTel").href = "tel:+" + N.whatsapp;
-  $("barWa").href = waLink("Hola, quiero hacer un pedido.");
-  $("heroWa").innerHTML = WA + "<span>Pedir por WhatsApp</span>";
-  $("heroWa").href = waLink("Hola, quiero hacer un pedido.");
-  $("fabWa").innerHTML = WA; $("fabWa").href = waLink("Hola, tengo una pregunta.");
-  $("tel").textContent = N.telefono;
-  $("dir").textContent = N.direccion; $("dir2").textContent = N.direccion;
-  $("mapsBtn").href = N.mapsUrl;
-  // El visor de Claude bloquea mapas incrustados: ahí se queda la foto; en el sitio publicado sale el mapa.
-  let enMarco = true; try { enMarco = window.self !== window.top; } catch (e) {}
-  if (N.mapaEmbed && !enMarco) { const m = $("mapa"), im = m.querySelector("img"); if (im) im.remove(); m.insertAdjacentHTML("afterbegin", `<iframe src="${N.mapaEmbed}" loading="lazy" title="Mapa"></iframe>`); }
-  $("fb").href = N.facebook; $("ig").href = N.instagram;
-  if (!N.facebook) $("fb").hidden = true; if (!N.instagram) $("ig").hidden = true;
-  $("copy").textContent = "© " + new Date().getFullYear() + " " + N.nombre + " · " + N.ciudad;
-  $("credit").textContent = C.creditos.texto; $("credit").href = C.creditos.url;
-
-  // Cinta (duplicada para que el desplazamiento sea continuo)
-  const cinta = C.cinta.map((t) => `<span>${t}</span>`).join("");
-  $("cinta").innerHTML = cinta + cinta + cinta + cinta;
-
-  // Horario
-  const dias = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-  const toMin = (s) => { const [h, m] = s.split(":").map(Number); return h * 60 + m; };
-  const fmt = (s) => { let [h, m] = s.split(":").map(Number); const ap = h >= 12 ? "pm" : "am"; h = h % 12 || 12; return h + (m ? ":" + String(m).padStart(2, "0") : "") + " " + ap; };
-  const now = new Date(), d = now.getDay(), mins = now.getHours() * 60 + now.getMinutes();
-  const HR = (i) => Array.isArray(C.horarios[i]) ? C.horarios[i] : [];
-  function estado() {
-    for (const [a, b] of HR(d)) { const A = toMin(a), B = toMin(b); if (B > A ? mins >= A && mins < B : mins >= A) return { open: true, until: b }; }
-    for (const [a, b] of HR((d + 6) % 7)) { const A = toMin(a), B = toMin(b); if (B < A && mins < B) return { open: true, until: b }; }
-    for (let k = 0; k < 7; k++) { const dd = (d + k) % 7; for (const [a] of HR(dd)) if (k > 0 || toMin(a) > mins) return { open: false, next: (k === 0 ? "hoy" : k === 1 ? "mañana" : "el " + dias[dd].toLowerCase()) + " a las " + fmt(a) }; }
-    return { open: false, next: "" };
-  }
-  const st = estado();
-  $("status").classList.toggle("closed", !st.open);
-  $("status").lastElementChild.textContent = st.open ? "Abierto ahora · cierra " + fmt(st.until) : "Cerrado" + (st.next ? " · abre " + st.next : "");
-  $("horas").innerHTML = [1, 2, 3, 4, 5, 6, 0].map((i) => {
-    const t = typeof C.horarios[i] === "string" ? C.horarios[i] : HR(i).map(([a, b]) => fmt(a) + " – " + fmt(b)).join(", ") || "Cerrado";
-    return `<tr class="${i === d ? "hoy" : ""}"><td>${dias[i]}${i === d ? " · hoy" : ""}</td><td>${t}</td></tr>`;
-  }).join("");
-  if (C.promos && C.promos[d]) { $("promo").hidden = false; $("promoTxt").textContent = C.promos[d]; }
-
-  // Menú y pedido
-  const all = C.menu.flatMap((c) => c.items), byId = Object.fromEntries(all.map((i) => [i.id, i]));
-  const cart = {}; let cat = 0;
-  const qtyHtml = (it, big) => cart[it.id]
-    ? `<div class="qty"><button data-id="${it.id}" data-d="-1" aria-label="Quitar uno">−</button><output>${cart[it.id]}</output><button class="add" data-id="${it.id}" data-d="1" aria-label="Agregar otro">+</button></div>`
-    : `<div class="qty"><button class="add${big ? " big" : ""}" data-id="${it.id}" data-d="1" aria-label="Agregar ${it.nombre}">${big ? "+ Agregar" : "+"}</button></div>`;
-  function renderFavs() {
-    $("favs").innerHTML = all.filter((i) => i.foto).slice(0, 3).map((it) => `
-      <article class="fav">
-        <div class="ph"><img src="${it.foto}" alt="${it.nombre}" loading="lazy"></div>
-        <div class="fav-body"><h3>${it.nombre}</h3><p>${it.desc}</p>
-          <div class="fav-foot"><span class="precio">${money(it.precio)}</span>${qtyHtml(it, true)}</div></div>
-      </article>`).join("");
-  }
-  function renderCats() { $("cats").innerHTML = C.menu.map((c, i) => `<button class="cat" role="tab" aria-selected="${i === cat}" data-i="${i}">${c.categoria}</button>`).join(""); }
-  function renderRows() {
-    $("rows").innerHTML = C.menu[cat].items.map((it) => `
-      <div class="row"><div><h3>${it.nombre}</h3><p>${it.desc}</p></div><span class="precio">${money(it.precio)}</span>${qtyHtml(it, false)}</div>`).join("");
-  }
-  $("cats").addEventListener("click", (e) => { const b = e.target.closest(".cat"); if (!b) return; cat = +b.dataset.i; renderCats(); renderRows(); if (window.__marcarAparicion) window.__marcarAparicion(); });
-  document.addEventListener("click", (e) => {
-    const b = e.target.closest("button[data-id]"); if (!b) return;
-    const id = b.dataset.id, delta = +b.dataset.d, from = b.getBoundingClientRect();
-    cart[id] = Math.max(0, (cart[id] || 0) + delta); if (!cart[id]) delete cart[id];
-    renderFavs(); renderRows(); updateCart();
-    if (delta > 0) fly(from, byId[id]);
-  });
-  // El platillo "vuela" al botón del pedido
-  function fly(from, it) {
-    const target = isPhone() ? $("barCart") : $("fabCart");
-    if (!target || target.hidden) return;
-    const bump = () => { target.classList.remove("bump"); void target.offsetWidth; target.classList.add("bump"); };
-    if (reduceMotion || !document.body.animate) return bump();
-    const to = target.getBoundingClientRect();
-    const dot = document.createElement("div");
-    dot.className = "fly";
-    if (it.foto) dot.style.backgroundImage = `url("${it.foto}")`;
-    const x0 = from.left + from.width / 2 - 24, y0 = from.top + from.height / 2 - 24;
-    const x1 = to.left + to.width / 2 - 24, y1 = to.top + to.height / 2 - 24;
-    dot.style.left = x0 + "px"; dot.style.top = y0 + "px";
-    document.body.appendChild(dot);
-    const dx = x1 - x0, dy = y1 - y0;
-    dot.animate([
-      { transform: "translate(0,0) scale(1)", opacity: 1 },
-      { transform: `translate(${dx * .5}px, ${dy * .5 - 90}px) scale(1.1)`, opacity: 1, offset: .45 },
-      { transform: `translate(${dx}px, ${dy}px) scale(.35)`, opacity: .6 }
-    ], { duration: 700, easing: "cubic-bezier(.5,0,.6,1)" }).onfinish = () => { dot.remove(); bump(); };
-  }
-  // ----- Modo charola -----
-  const CH = C.charola, pedido = [];
-  let chSel = {}, chQty = 1, chEx = [];
-  const chTexto = (sel) => CH.grupos.map((g) => sel[g.id]).filter(Boolean).join(", ");
-  const EX = (CH && CH.extras) || [];
-  const exTexto = (ids) => ids.map((id) => EX.find((e) => e.id === id)).filter(Boolean).map((e) => e.t.toLowerCase()).join(", ");
-  const unidad = (ids) => CH.precio + ids.reduce((a, id) => a + ((EX.find((e) => e.id === id) || {}).precio || 0), 0);
-  const count = () => CH ? pedido.reduce((a, x) => a + x.qty, 0) : Object.values(cart).reduce((a, b) => a + b, 0);
-  const subtotal = () => CH ? pedido.reduce((a, x) => a + x.qty * unidad(x.ex), 0) : Object.entries(cart).reduce((s, [id, q]) => s + byId[id].precio * q, 0);
-  const delivery = () => $("eDomicilio").checked;
-  function updateCart() {
-    $("fabCart").hidden = count() === 0; $("cartN").textContent = count();
-    $("barCart").hidden = count() === 0; $("barN").textContent = count();
-    const env = delivery() ? N.costoEnvio : 0, sub = subtotal();
-    if (CH) {
-      $("lines").innerHTML = pedido.map((x, i) => `<div class="line"><span>${x.qty} × ${CH.nombre || "Charola"}<span class="det">${chTexto(x.sel)}${CH.incluyeCorto ? ", " + CH.incluyeCorto.toLowerCase() : ""}${x.ex.length ? " + " + exTexto(x.ex) : ""}</span><button type="button" class="quitar" data-quitar="${i}">Quitar</button></span><span>${money(x.qty * unidad(x.ex))}</span></div>`).join("") || '<p class="hint">Todavía no armas ninguna charola.</p>';
-      const ant = pedido.reduce((a, x) => a + x.qty * (CH.anticipo || 0), 0);
-      $("totals").innerHTML = `<div class="grand"><span>Total</span><span>${money(sub + env)}</span></div>` + (ant ? `<div><span>Anticipo para apartar</span><span>${money(ant)}</span></div>` : "");
-    } else {
-    $("lines").innerHTML = Object.entries(cart).map(([id, q]) => `<div class="line"><span>${q} × ${byId[id].nombre}</span><span>${money(byId[id].precio * q)}</span></div>`).join("") || '<p class="hint">Todavía no agregas nada.</p>';
-    $("totals").innerHTML = `<div><span>Subtotal</span><span>${money(sub)}</span></div>` + (env ? `<div><span>Envío</span><span>${money(env)}</span></div>` : "") + `<div class="grand"><span>Total</span><span>${money(sub + env)}</span></div>`;
-    }
-    $("dirField").hidden = !delivery();
-    buildMsg();
-  }
-  function buildMsg() {
-    const env = delivery() ? N.costoEnvio : 0;
-    if (CH) {
-      const ant = pedido.reduce((a, x) => a + x.qty * (CH.anticipo || 0), 0);
-      if (!folio) folio = nuevoFolio();
-      let t = `Hola ${N.nombre}, quiero hacer un encargo${CU.api || CH.menuApi ? " (folio " + folio + ")" : ""}:\n\n` + pedido.map((x) => `• ${x.qty} × ${CH.nombre || "Charola"}: ${chTexto(x.sel)}${CH.incluyeCorto ? " + " + CH.incluyeCorto.toLowerCase() : ""}${x.ex.length ? " + " + exTexto(x.ex) : ""} (${money(unidad(x.ex))} c/u)`).join("\n") +
-        `\n\nTotal: ${money(subtotal() + env)}` + (ant ? `\nAnticipo: ${money(ant)}` : "") +
-        `\nPara el día: ${fechaOk() ? fechaLarga() : "por confirmar"}\nEntrega: ${delivery() ? "A domicilio" : "Paso a recoger"}`;
-      if (delivery() && $("cDir").value.trim()) t += `\nDirección: ${$("cDir").value.trim()}`;
-      if ($("cNombre").value.trim()) t += `\nA nombre de: ${$("cNombre").value.trim()}`;
-      if ($("cNotas").value.trim()) t += `\nNotas: ${$("cNotas").value.trim()}`;
-      $("sendWa").href = waLink(t);
-      return;
-    }
-    let t = `Hola ${N.nombre}, quiero hacer un pedido:\n\n` + Object.entries(cart).map(([id, q]) => `• ${q} × ${byId[id].nombre} — ${money(byId[id].precio * q)}`).join("\n") +
-      `\n\nTotal: ${money(subtotal() + env)}${env ? " (incluye envío)" : ""}\nEntrega: ${delivery() ? "A domicilio" : "Paso a recoger"}`;
-    if (delivery() && $("cDir").value.trim()) t += `\nDirección: ${$("cDir").value.trim()}`;
-    if ($("cNombre").value.trim()) t += `\nA nombre de: ${$("cNombre").value.trim()}`;
-    if ($("cNotas").value.trim()) t += `\nNotas: ${$("cNotas").value.trim()}`;
-    $("sendWa").href = waLink(t);
-  }
-  $("sendWa").innerHTML = WA + "<span>Enviar pedido por WhatsApp</span>";
-  if (!N.aDomicilio) $("lblDomicilio").hidden = true;
-  ["cNombre", "cDir", "cNotas"].forEach((id) => $(id).addEventListener("input", buildMsg));
-
-  // Fechas de encargo
-  const P = Object.assign({ diasAntes: 1, dias: [1, 2, 3, 4, 5, 6] }, CH && CH.encargos || {});
-  const iso = (x) => `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, "0")}-${String(x.getDate()).padStart(2, "0")}`;
-  const primerDia = () => { const x = new Date(); x.setHours(0, 0, 0, 0); x.setDate(x.getDate() + P.diasAntes); for (let k = 0; k < 8 && !P.dias.includes(x.getDay()); k++) x.setDate(x.getDate() + 1); return x; };
-  const fechaSel = () => { const v = $("cFecha").value; if (!v) return null; const [y, m, dd] = v.split("-").map(Number); return new Date(y, m - 1, dd); };
-  const fechaOk = () => { const f = fechaSel(); return !!f && f >= primerDia() && P.dias.includes(f.getDay()); };
-  const fechaLarga = () => fechaSel().toLocaleDateString("es-MX", { weekday: "long", day: "numeric", month: "long" });
-  const relDia = (x) => { const h = new Date(); h.setHours(0, 0, 0, 0); const k = Math.round((x - h) / 864e5); return k === 1 ? "mañana" : "el " + x.toLocaleDateString("es-MX", { weekday: "long" }); };
-  // Cupo diario (n8n + Google Sheets). Sin api: solo se informa el máximo.
-  const CU = Object.assign({ diario: 0, api: "", apiEncargo: "" }, CH && CH.cupo || {});
-  let cupoDias = null, folio = "";
-  const quedan = (f) => cupoDias && cupoDias[f] ? cupoDias[f].quedan : null;
-  const nuevoFolio = () => "DM-" + Date.now().toString(36).toUpperCase().slice(-6);
-  const hayCupo = () => { const q = quedan($("cFecha").value); return q === null || count() <= q; };
-  if (CH) {
-    $("fechaField").hidden = false;
-    $("cFecha").min = iso(primerDia()); $("cFecha").value = iso(primerDia());
-    $("cFecha").addEventListener("input", () => {
-      const q = quedan($("cFecha").value);
-      $("fechaHint").textContent = fechaOk() ? (q === null ? "" : (count() > q ? `Solo quedan ${q} charolas para ese día. Elige otro día o reduce tu encargo.` : `Quedan ${q} de ${CU.diario} charolas para ese día.`)) : (fechaSel() && !P.dias.includes(fechaSel().getDay()) ? `Ese día no hay entregas. Elige de ${dias[P.dias[0]].toLowerCase()} a ${dias[P.dias[P.dias.length - 1]].toLowerCase()}.` : `Los encargos son con ${P.diasAntes * 24} horas de anticipación. Lo más pronto es ${relDia(primerDia())}.`);
-      buildMsg();
-    });
-    if (CH.anticipo) { $("pagoHint").hidden = false; $("pagoHint").textContent = CH.cuenta ? `Anticipo de ${money(CH.anticipo)} por charola a: ${CH.cuenta}. Manda tu comprobante por WhatsApp.` : `Para apartar tu encargo se pide un anticipo de ${money(CH.anticipo)} por charola. Te mandamos los datos de pago por WhatsApp.`; if (CH.conceptoPago) $("pagoHint").textContent += ` Al transferir, pon en el concepto: ${CH.conceptoPago}.`; }
-    $("lines").addEventListener("click", (e) => { const b = e.target.closest("[data-quitar]"); if (!b) return; pedido.splice(+b.dataset.quitar, 1); updateCart(); });
-    $("sheetTitle").textContent = "Tu encargo";
-    $("sendWa").addEventListener("click", (e) => {
-      if (!pedido.length || !fechaOk() || !hayCupo()) {
-        e.preventDefault();
-        $("fechaHint").textContent = !pedido.length ? "Agrega al menos una charola." : !fechaOk() ? "Revisa el día de entrega." : `Solo quedan ${quedan($("cFecha").value)} charolas para ese día. Elige otro día o reduce tu encargo.`;
-        $("cFecha").focus(); return;
-      }
-      if (CU.apiEncargo || CH.menuApi) {
-        const datos = { folio, fecha: $("cFecha").value, charolas: count(), nombre: $("cNombre").value.trim(), telefono: ($("cTel") ? $("cTel").value.trim() : ""), entrega: delivery() ? "A domicilio" : "Paso a recoger",
-          detalle: pedido.map((x) => `${x.qty}× ${chTexto(x.sel)}${x.ex.length ? " + " + exTexto(x.ex) : ""}`).join(" | ") + ($("cNotas").value.trim() ? " | Notas: " + $("cNotas").value.trim() : ""),
-          total: subtotal(), anticipo: pedido.reduce((a, x) => a + x.qty * (CH.anticipo || 0), 0) };
-        // Lo que pasa cuando el encargo quedó apartado: aviso al sistema viejo
-        // (n8n), descontar el cupo y vaciar la charola.
-        const terminar = () => {
-          if (CU.apiEncargo) { try { navigator.sendBeacon(CU.apiEncargo, new Blob([JSON.stringify(datos)], { type: "text/plain" })); } catch (err) {} }
-          if (cupoDias && cupoDias[datos.fecha]) cupoDias[datos.fecha].quedan = Math.max(0, cupoDias[datos.fecha].quedan - datos.charolas);
-          setTimeout(() => { pedido.splice(0); folio = ""; updateCart(); if (window.pintarCupo) window.pintarCupo(); $("fechaHint").textContent = "¡Listo! Tu encargo quedó apartado. Termina de enviarlo en WhatsApp."; }, 400);
-        };
-        if (!CH.menuApi) { terminar(); return; }
-        // Encargo al CRM: queda como tarjeta en «Nuevo encargo» (el total lo calcula el CRM).
-        // Primero se confirma con el CRM y solo entonces se abre WhatsApp: si un
-        // platillo se acabó o se llenó el día, se avisa aquí y no se manda nada.
-        e.preventDefault();
-        const boton = $("sendWa"), destino = boton.href;
-        const ventana = window.open("", "_blank");
-        boton.setAttribute("aria-busy", "true"); boton.style.opacity = ".6"; boton.style.pointerEvents = "none";
-        const nom = (t) => (CH.__nombres && CH.__nombres[t]) || t;
-        const pedidoCrm = { folio, fecha: datos.fecha, nombre: datos.nombre, telefono: datos.telefono, notas: $("cNotas").value.trim(),
-          charolas: pedido.map((x) => Object.assign({ qty: x.qty, extras: EX.filter((e) => x.ex.includes(e.id)).map((e) => e.t) },
-            Object.fromEntries(CH.grupos.map((g) => [g.id, x.sel[g.id] ? nom(x.sel[g.id]) : ""])))) };
-        const ctrl = new AbortController(), reloj = setTimeout(() => ctrl.abort(), 6000);
-        fetch(CH.menuApi.url + "/rest/v1/rpc/encargo_web", { method: "POST", signal: ctrl.signal, headers: { apikey: CH.menuApi.key, "Content-Type": "application/json" }, body: JSON.stringify({ p_account: CH.menuApi.cuenta, p: pedidoCrm }) })
-          .then((r) => r.json()).catch(() => null)
-          .then((res) => {
-            clearTimeout(reloj);
-            boton.removeAttribute("aria-busy"); boton.style.opacity = ""; boton.style.pointerEvents = "";
-            const motivo = res && res.ok === false ? res.error : null;
-            // Si el CRM no contesta se sigue por WhatsApp como antes; si contesta que no, se avisa.
-            if (motivo && motivo !== "sin_menu" && motivo !== "sin_tablero") {
-              if (ventana) ventana.close();
-              $("fechaHint").textContent =
-                motivo === "no_hay" ? `Se acabó «${res.plato}» para ese día. Cámbialo por otra opción o elige otro día.`
-                : motivo === "cupo" ? `Solo quedan ${res.quedan} charolas para ese día. Elige otro día o reduce tu encargo.`
-                : motivo === "fecha" ? "Revisa el día de entrega."
-                : motivo === "nombre" ? "Escribe tu nombre para apartar."
-                : motivo.indexOf("falta_") === 0 ? "A una charola le falta escoger algo. Revísala en tu encargo."
-                : "No se pudo apartar. Intenta otra vez o escríbenos por WhatsApp.";
-              $("fechaHint").scrollIntoView({ block: "center", behavior: "smooth" });
-              return;
-            }
-            if (ventana) ventana.location.href = destino; else window.location.href = destino;
-            terminar();
-          });
-      }
-    });
-    $("sendWa").innerHTML = WA + "<span>Enviar encargo por WhatsApp</span>";
-  }
-  document.querySelectorAll('input[name="entrega"]').forEach((r) => r.addEventListener("change", updateCart));
-  const sheet = (v) => { $("sheet").hidden = !v; $("sheetBg").hidden = !v; if (v) $("closeSheet").focus(); };
-  $("fabCart").addEventListener("click", () => sheet(true));
-  $("barCart").addEventListener("click", () => sheet(true));
-  $("closeSheet").addEventListener("click", () => sheet(false));
-  $("sheetBg").addEventListener("click", () => sheet(false));
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") sheet(false); });
-
-  // Historia
-  $("historiaTitulo").textContent = C.historia.titulo;
-  $("historiaTexto").innerHTML = C.historia.texto.map((p) => `<p>${p}</p>`).join("");
-  if (C.stats) $("stats").innerHTML = C.stats.map((x) => `<div><b data-n="${x.n}" data-pre="${x.pre || ""}">${x.pre || ""}${x.n}</b><span>${x.t}</span></div>`).join("");
-  else $("stats").innerHTML = `<div><b data-n="${new Date().getFullYear() - N.fundado}">${new Date().getFullYear() - N.fundado}</b><span>años en ${N.ciudad}</span></div><div><b data-n="${C.calificacionGoogle}">${C.calificacionGoogle}</b><span>estrellas en Google</span></div><div><b data-n="${all.length}">${all.length}</b><span>platillos en el menú</span></div>`;
-  // Contadores que suben al aparecer
-  if ("IntersectionObserver" in window && !reduceMotion) {
-    const nums = document.querySelectorAll("#stats b[data-n]");
-    nums.forEach((b) => { b.textContent = (b.dataset.pre || "") + (b.dataset.n.includes(".") ? "0.0" : "0"); });
-    const cio = new IntersectionObserver((es) => {
-      if (!es.some((e) => e.isIntersecting)) return;
-      cio.disconnect();
-      nums.forEach((b) => {
-        const end = parseFloat(b.dataset.n), dec = b.dataset.n.includes(".") ? 1 : 0, t0 = performance.now(), dur = 1400;
-        const step = (t) => { const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3); b.textContent = (b.dataset.pre || "") + (end * e).toFixed(dec); if (k < 1) requestAnimationFrame(step); };
-        requestAnimationFrame(step);
-      });
-    }, { threshold: 0.5 });
-    cio.observe($("stats"));
-  }
-
-  // Galería
-  $("galeria").innerHTML = C.galeria.map((src, i) => `<figure tabindex="0" role="button" aria-label="Ver foto ${i + 1} en grande" data-i="${i}"><img src="${src}" alt="" loading="lazy"></figure>`).join("");
-  // Galería ampliable
-  let lbI = 0, lastFocus = null;
-  const lbShow = (i) => { lbI = (i + C.galeria.length) % C.galeria.length; const img = $("lbImg"); img.style.animation = "none"; void img.offsetWidth; img.style.animation = ""; img.src = C.galeria[lbI]; $("lbN").textContent = (lbI + 1) + " / " + C.galeria.length; };
-  const lbOpen = (i) => { lastFocus = document.activeElement; lbShow(i); $("lb").hidden = false; $("lbX").focus(); };
-  const lbClose = () => { $("lb").hidden = true; if (lastFocus) lastFocus.focus(); };
-  $("galeria").addEventListener("click", (e) => { const f = e.target.closest("figure"); if (f) lbOpen(+f.dataset.i); });
-  $("galeria").addEventListener("keydown", (e) => { const f = e.target.closest("figure"); if (f && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); lbOpen(+f.dataset.i); } });
-  $("lbX").addEventListener("click", lbClose);
-  $("lbPrev").addEventListener("click", () => lbShow(lbI - 1));
-  $("lbNext").addEventListener("click", () => lbShow(lbI + 1));
-  $("lb").addEventListener("click", (e) => { if (e.target === $("lb")) lbClose(); });
-  document.addEventListener("keydown", (e) => { if ($("lb").hidden) return; if (e.key === "Escape") lbClose(); if (e.key === "ArrowLeft") lbShow(lbI - 1); if (e.key === "ArrowRight") lbShow(lbI + 1); });
-  let tx = null;
-  $("lb").addEventListener("touchstart", (e) => { tx = e.touches[0].clientX; }, { passive: true });
-  $("lb").addEventListener("touchend", (e) => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) lbShow(lbI + (dx < 0 ? 1 : -1)); tx = null; });
-
-  // Barra superior que se vuelve sólida + parallax
-  const header = document.querySelector("header.top"), heroMedia = $("heroMedia"), histImg = $("historiaImg"), hero = document.querySelector(".hero");
-  let ticking = false;
-  function onScroll() {
-    ticking = false;
-    const y = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    header.classList.toggle("solid", y > hero.offsetHeight - 120);
-    if (reduceMotion) return;
-    if (y < hero.offsetHeight) heroMedia.style.transform = `translate3d(0, ${y * 0.35}px, 0)`;
-    const r = histImg.parentElement.getBoundingClientRect();
-    if (r.bottom > 0 && r.top < innerHeight) {
-      const p = (r.top + r.height / 2 - innerHeight / 2) / innerHeight; // -1..1
-      histImg.style.transform = `translate3d(0, ${p * -40}px, 0) scale(1.12)`;
-    }
-  }
-  document.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true, capture: true });
-  addEventListener("resize", onScroll);
-  onScroll();
-
-  // Reseñas
-  const stars = (n) => "★★★★★".slice(0, n) + "☆☆☆☆☆".slice(0, 5 - n);
-  $("notaNum").textContent = C.calificacionGoogle;
-  $("notaStars").textContent = stars(Math.round(+C.calificacionGoogle));
-  $("notaTotal").textContent = C.totalResenasGoogle + " reseñas";
-  $("resenasList").innerHTML = C.resenas.map((r) => `<article class="resena"><div class="stars">${stars(r.estrellas)}</div><p>“${r.texto}”</p><span class="quien">${r.nombre}</span></article>`).join("");
-  $("ejemplo").hidden = !C.resenasDeEjemplo;
-  if (!(C.resenas || []).length) $("resenas").hidden = true;
-  if (!(C.galeria || []).length) $("galeria-sec").hidden = true;
-
-  if (!CH) { renderFavs(); renderCats(); renderRows(); }
-  else {
-    // Charola visual (opcional): charola.fotosOpciones = { Opción: ruta de la foto }
-    const BJ = CH.fotosOpciones ? Object.assign({ areas: '"carne carne arroz" "carne carne arroz" "vianda incluye potaje"', areasMovil: '"carne carne arroz vianda" "carne carne incluye potaje"', redondo: ["potaje"] }, CH.bandeja || {}) : null;
-    const huecos = BJ ? [...new Set(BJ.areas.replace(/"/g, " ").trim().split(/\s+/))] : [];
-    const bandejaHTML = (areas) => `<div class="bandeja" style='grid-template-areas:${areas || BJ.areas}'>${huecos.map((h) => `<div class="bj-hueco${BJ.redondo.includes(h) ? " redondo" : ""}" style="--a:${h}" data-h="${h}"></div>`).join("")}</div>`;
-    const bjPrev = {};
-    const pintarBandeja = () => {
-      if (!BJ) return;
-      huecos.forEach((h) => {
-        const grp = CH.grupos.find((g) => g.id === h);
-        const val = h === "incluye" ? (CH.incluyeCorto || "") : chSel[h] || "";
-        const src = h === "incluye" ? CH.fotoIncluye : CH.fotosOpciones[val];
-        const extra = EX.find((e) => chEx.includes(e.id) && new RegExp(h, "i").test(e.id + " " + e.t));
-        const clave = val + "|" + (extra ? 1 : 0);
-        document.querySelectorAll(`.bj-hueco[data-h="${h}"]`).forEach((el) => {
-          if (el.dataset.k === clave) return;
-          const cambiaFoto = (bjPrev[h] || "") !== val || !el.querySelector("img, .vacio");
-          el.dataset.k = clave;
-          if (!cambiaFoto) { const d = el.querySelector(".doble"); if (d) d.remove(); if (extra) el.insertAdjacentHTML("beforeend", `<span class="doble">Doble</span>`); return; }
-          el.innerHTML = src && val ? `<img src="${src}" alt="${val}"><span class="tag">${val}</span>${extra ? `<span class="doble">Doble</span>` : ""}`
-            : `<span class="vacio">${grp ? (grp.opcional ? "Sin " + grp.titulo.toLowerCase() : "Elige tu " + grp.titulo.toLowerCase()) : ""}</span>`;
-        });
-      });
-      huecos.forEach((h) => { bjPrev[h] = h === "incluye" ? (CH.incluyeCorto || "") : chSel[h] || ""; });
-    };
-    // Foto viva (opcional): charola.fotoViva = { base, capas: [{ grupos, zona, defecto, fotos }], potaje }
-    const FV = CH.fotoViva || null;
-    const fvHTML = () => `<div class="fv" style="--fvr:${FV.ratio || "840 / 897"}"><img class="fv-base" src="${FV.base}" alt="Charola de comida">${FV.capas.map((c, i) => Object.entries(c.fotos).map(([k, src]) => `<img class="fv-capa" data-c="${i}" data-k="${k}" src="${src}" alt="" style="left:${c.zona.x}%;top:${c.zona.y}%;width:${c.zona.w}%;height:${c.zona.h}%">`).join("")).join("")}<div class="fv-pot"></div><span class="fv-ej">Así se ve tu charola</span><div class="fv-chips"></div></div>`;
-    const pintarFV = () => {
-      if (!FV) return;
-      FV.capas.forEach((c, i) => {
-        const k = c.grupos.map((g, j) => chSel[g] || c.defecto[j]).join("|");
-        document.querySelectorAll(`.fv-capa[data-c="${i}"]`).forEach((im) => im.classList.toggle("on", im.dataset.k === k));
-      });
-      const pv = chSel.potaje, src = pv && FV.potaje && FV.potaje[pv];
-      document.querySelectorAll(".fv-pot").forEach((p) => {
-        const want = pv ? (src ? "img:" + pv : "txt:" + pv) : "";
-        if (p.dataset.w !== want) { p.dataset.w = want; p.innerHTML = !pv ? "" : src ? `<img src="${src}" alt="${pv}">` : `<span>${pv}</span>`; }
-        p.classList.toggle("on", !!pv);
-      });
-      const algo = Object.keys(chSel).length > 0;
-      document.querySelectorAll(".fv-ej").forEach((e) => { e.style.opacity = algo ? 0 : 1; });
-      const chips = CH.grupos.filter((g) => chSel[g.id]).map((g) => `<span>${chSel[g.id]}</span>`).concat(EX.filter((e) => chEx.includes(e.id)).map((e) => `<span class="doble">${e.t.replace(/^Ración extra de /i, "Doble ")}</span>`)).join("");
-      document.querySelectorAll(".fv-chips").forEach((c) => { c.innerHTML = chips; });
-    };
-    // Constructor de charola
-    document.querySelector("#menu > .wrap > .head").innerHTML = `<span class="kicker">Menú</span><h2 class="display">${CH.titulo || "Arma tu charola"}</h2><p style="color:var(--gris);font-size:17px;max-width:56ch">${CH.texto || ""}</p>`;
-    $("favs").hidden = true; document.querySelector(".menu-wrap").hidden = true; $("charolaBox").hidden = false;
-    $("charolaBox").innerHTML = (CU.diario ? `<div class="ch-cupo" id="chCupo"></div>` : "") + `
-      <div class="charola">
-        <div class="ch-grupos">
-          ${FV ? `<div class="ch-vista">${fvHTML()}</div>` : BJ ? `<div class="ch-vista">${bandejaHTML(BJ.areasMovil)}</div>` : ""}
-          ${CH.grupos.map((g) => `<div class="ch-grupo" data-g="${g.id}"><h3>${g.titulo} <small id="ok_${g.id}">${g.opcional ? "Opcional" : "Elige 1"}</small></h3><div class="ch-ops">${g.opciones.map((o) => `<button type="button" class="ch-op" aria-pressed="false" data-v="${o}">${o}</button>`).join("")}</div></div>`).join("")}
-          ${EX.length ? `<div class="ch-grupo"><h3>Extras <small>Opcional</small></h3><div class="ch-ops">${EX.map((e) => `<button type="button" class="ch-op ch-ex" aria-pressed="false" data-ex="${e.id}">${e.t} +${money(e.precio)}</button>`).join("")}</div></div>` : ""}
-          ${CH.incluye ? `<div class="ch-incluye"><b>Incluye:</b> ${CH.incluye}</div>` : ""}
-        </div>
-        <aside class="ch-resumen">
-          ${FV ? fvHTML() : BJ ? bandejaHTML() : CH.foto ? `<div class="ph"><img src="${CH.foto}" alt="Charola de comida" loading="lazy"></div>` : ""}
-          <div class="ch-body">
-            <h3>Tu charola</h3>
-            <ul class="ch-lista" id="chLista"></ul>
-            <div class="ch-precio"><span class="precio" id="chPrecio">${money(CH.precio)}</span>
-              <div class="qty"><button type="button" id="chMenos" aria-label="Una charola menos">−</button><output id="chQty">1</output><button type="button" class="add" id="chMas" aria-label="Una charola más">+</button></div></div>
-            ${CH.anticipo ? `<p class="ch-nota">Anticipo de ${money(CH.anticipo)} por charola para apartar tu encargo.${CH.conceptoPago ? ` Al transferir, pon en el concepto: ${CH.conceptoPago}.` : ""}</p>` : ""}
-            ${CH.aviso ? `<p class="ch-nota"><b>${CH.aviso}</b></p>` : ""}
-            <button type="button" class="btn btn-acento" id="chAgregar" disabled>Agregar al encargo</button>
-            <p class="ch-nota" id="chAviso"></p>
-          </div>
-        </aside>
-      </div>`;
-    const req = CH.grupos.filter((g) => !g.opcional);
-    const pintar = () => {
-      $("chLista").innerHTML = CH.grupos.map((g) => `<li class="${!chSel[g.id] && !g.opcional ? "falta" : ""}"><span>${g.titulo}</span><b>${chSel[g.id] || (g.opcional ? "—" : "Elige uno")}</b></li>`).join("") + (chEx.length ? `<li><span>Extras</span><b>${EX.filter((e) => chEx.includes(e.id)).map((e) => e.t.replace(/^Ración extra de /i, "+ ")).join(", ")}</b></li>` : "") + (CH.incluyeCorto ? `<li><span>Incluye</span><b>${CH.incluyeCorto}</b></li>` : "");
-      const listo = req.every((g) => chSel[g.id]);
-      $("chAgregar").disabled = !listo;
-      $("chPrecio").textContent = money(unidad(chEx));
-      $("chAgregar").textContent = `Agregar ${chQty > 1 ? chQty + " charolas" : "al encargo"} · ${money(unidad(chEx) * chQty)}`;
-      $("chQty").textContent = chQty;
-      CH.grupos.forEach((g) => { const o = $("ok_" + g.id); if (chSel[g.id]) { o.textContent = "✓ Listo"; o.className = "ok"; } else { o.textContent = g.opcional ? "Opcional" : "Elige 1"; o.className = ""; } });
-      pintarBandeja(); pintarFV();
-    };
-    $("charolaBox").addEventListener("click", (e) => {
-      const x = e.target.closest(".ch-ex");
-      if (x) { const on = x.getAttribute("aria-pressed") !== "true"; x.setAttribute("aria-pressed", on); chEx = on ? chEx.concat(x.dataset.ex) : chEx.filter((i) => i !== x.dataset.ex); pintar(); return; }
-      const b = e.target.closest(".ch-op"); if (!b) return;
-      const g = b.closest(".ch-grupo"), id = g.dataset.g, ya = b.getAttribute("aria-pressed") === "true";
-      const grp = CH.grupos.find((x) => x.id === id);
-      g.querySelectorAll(".ch-op").forEach((c) => c.setAttribute("aria-pressed", "false"));
-      if (ya && grp.opcional) delete chSel[id]; else { b.setAttribute("aria-pressed", "true"); chSel[id] = b.dataset.v; }
-      pintar();
-    });
-    $("chMas").addEventListener("click", () => { chQty = Math.min(50, chQty + 1); pintar(); });
-    $("chMenos").addEventListener("click", () => { chQty = Math.max(1, chQty - 1); pintar(); });
-    $("chAgregar").addEventListener("click", (e) => {
-      const from = e.currentTarget.getBoundingClientRect();
-      pedido.push({ sel: Object.assign({}, chSel), qty: chQty, ex: chEx.slice() });
-      chSel = {}; chQty = 1; chEx = [];
-      document.querySelectorAll(".ch-op").forEach((c) => c.setAttribute("aria-pressed", "false"));
-      pintar(); updateCart();
-      $("chAviso").textContent = "Agregada. Puedes armar otra charola distinta o enviar tu encargo.";
-      fly(from, { foto: CH.foto });
-    });
-    pintar();
-    // Disponibilidad por día
-    window.pintarCupo = function () {
-      if (!CU.diario || !$("chCupo")) return;
-      if (!cupoDias) { $("chCupo").innerHTML = `<b>Cupo limitado: ${CU.diario} charolas por día.</b><span class="ch-nota">Aparta tu encargo con tiempo, se llenan rápido.</span>`; return; }
-      const fs = Object.keys(cupoDias).filter((f) => { const [y, m, dd] = f.split("-").map(Number); return new Date(y, m - 1, dd) >= primerDia(); }).slice(0, 7);
-      $("chCupo").innerHTML = `<b>Charolas disponibles por día (${CU.diario} diarias)</b><div class="ch-dias">${fs.map((f) => { const [y, m, dd] = f.split("-").map(Number); const x = new Date(y, m - 1, dd); const q = cupoDias[f].quedan;
-        return `<button type="button" class="ch-dia${q && q <= 3 ? " pocas" : ""}" data-f="${f}" aria-pressed="${$("cFecha").value === f}" ${q ? "" : "disabled"}>${x.toLocaleDateString("es-MX", { weekday: "short", day: "numeric" }).replace(".", "")}<small>${q ? "Quedan " + q : "Agotado"}</small></button>`; }).join("")}</div>`;
-    };
-    $("charolaBox").addEventListener("click", (e) => { const b = e.target.closest(".ch-dia"); if (!b || b.disabled) return; $("cFecha").value = b.dataset.f; $("cFecha").dispatchEvent(new Event("input")); window.pintarCupo(); });
-    window.pintarCupo();
-    const usarCupo = (d) => {
-        cupoDias = d && d.dias || null; if (!cupoDias) return;
-        if (!quedan($("cFecha").value)) { const f = Object.keys(cupoDias).find((k) => { const [y, m, dd] = k.split("-").map(Number); return new Date(y, m - 1, dd) >= primerDia() && cupoDias[k].quedan > 0; }); if (f) $("cFecha").value = f; }
-        window.pintarCupo(); $("cFecha").dispatchEvent(new Event("input"));
-        const q = quedan($("cFecha").value);
-        if (q !== null) $("status").lastElementChild.textContent = `Quedan ${q} charolas para ${relDia(fechaSel())}`;
-    };
-    if (CH.__dias) setTimeout(() => usarCupo({ dias: CH.__dias }), 0);
-    else if (CU.api) fetch(CU.api, { cache: "no-store" }).then((r) => r.json()).then(usarCupo).catch(() => {});
-    $("heroWa").removeAttribute("target"); $("heroWa").href = "#menu"; $("heroWa").innerHTML = "<span>Arma tu charola</span>"; $("heroWa").className = "btn btn-acento";
-    // Estado: encargos en lugar de abierto/cerrado
-    $("status").classList.remove("closed");
-    $("status").lastElementChild.textContent = "Encarga hoy para " + relDia(primerDia());
-  }
-  updateCart();
-  // Ocultar del menú las secciones vacías
-  document.querySelectorAll("nav.links a").forEach((a) => { const t = document.querySelector(a.getAttribute("href")); if (!t || t.hidden) a.hidden = true; });
-
-  // Efecto de aparición al hacer scroll
-  const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if ("IntersectionObserver" in window && !reduce) {
-    document.documentElement.classList.add("js-reveal");
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-    const mark = (sel, img, stagger) => document.querySelectorAll(sel).forEach((el, i) => {
-      el.classList.add("rv"); if (img) el.classList.add("rv-img");
-      if (stagger) el.style.setProperty("--delay", (i % stagger) * 0.12 + "s");
-      io.observe(el); // el observador avisa también de lo que ya está en pantalla al cargar
-    });
-    window.__marcarAparicion = () => mark("#rows .row:not(.rv)", false, 6);
-    mark(".section .head", false, 0);
-    mark(".fav", false, 3);
-    mark("#rows .row", false, 6);
-    mark(".cats", false, 0);
-    mark(".split .foto", true, 0);
-    mark(".split-text > *", false, 5);
-    mark(".galeria figure", true, 6);
-    mark(".nota", false, 0);
-    mark(".resena", false, 3);
-    mark(".ch-grupo", false, 4);
-    mark(".ch-resumen", false, 0);
-    mark(".visita-grid > *", false, 2);
+/* ============================================================
+   CONFIG: lo que cambia por negocio. El menú, el precio, el cupo y los
+   días se leen del CRM (menuApi); lo de aquí abajo se usa si el CRM no
+   contesta.
+   ============================================================ */
+var CONFIG = {
+  nombre: "Doña Miriam",
+  whatsapp: "528443690845",
+  direccion: "Dolores Hidalgo 124, Col. Guanajuato Oriente",
+  horario: "12:00 a 3:00 p. m.",
+  precio: 150, anticipo: 75, cupo: 10, diasEntrega: [1, 2, 3, 4, 5, 6], diasAntes: 1,
+  menuApi: { url: "https://mltjlslvbhwegnafdswf.supabase.co", key: "sb_publishable_Ej634MujaTmhbqagvJYoNw_ky9OXU-a", cuenta: "ff7a0fa1-1338-439d-8b04-baae18232f94" },
+  grupos: [
+    { id: "arroz", t: "Arroz", ops: ["Congrí", "Arroz blanco", "Arroz amarillo"] },
+    { id: "carne", t: "Carne", ops: ["Fricasé de puerco", "Fricasé de pollo", "Bistec de puerco", "Ropa vieja", "Picadillo de res", "Chuleta de puerco"] },
+    { id: "vianda", t: "Vianda", ops: ["Papa con mojo", "Boniato", "Platanito maduro frito", "Tostones"] },
+    { id: "potaje", t: "Potaje", opcional: true, ops: ["Frijoles negros", "Frijoles colorados", "Chícharo"] }
+  ],
+  extras: [{ t: "Ración extra de arroz", p: 40 }, { t: "Ración extra de potaje", p: 40 }],
+  // Foto de cada opción (si el CRM no trae una).
+  fotos: {
+    "Congrí": "congri", "Arroz blanco": "blanco", "Arroz amarillo": "amarillo",
+    "Fricasé de puerco": "fpuerco", "Fricasé de pollo": "fpollo", "Bistec de puerco": "bistec", "Ropa vieja": "ropa", "Picadillo de res": "picadillo", "Chuleta de puerco": "chuleta",
+    "Papa con mojo": "papa", "Boniato": "boniato", "Platanito maduro frito": "maduro", "Tostones": "tostones",
+    "Frijoles negros": "negros", "Frijoles colorados": "colorados", "Chícharo": "chicharo"
+  },
+  // Foto viva: la foto real de la charola cambia por zonas.
+  fotoViva: {
+    capas: [
+      { grupos: ["carne"], defecto: ["Fricasé de puerco"], zona: { x: 0.552, y: 1.121, w: 59.853, h: 46.379 }, fotos: {
+        "Fricasé de pollo": "fv-fpollo", "Bistec de puerco": "fv-bistec", "Ropa vieja": "fv-ropa", "Picadillo de res": "fv-picadillo", "Chuleta de puerco": "fv-chuleta" } },
+      { grupos: ["arroz", "vianda"], defecto: ["Congrí", "Tostones"], zona: { x: 0, y: 41.552, w: 97.422, h: 58.448 }, fotos: {
+        "Congrí|Papa con mojo": "fv-ab-congri-papa", "Congrí|Boniato": "fv-ab-congri-boniato", "Congrí|Platanito maduro frito": "fv-ab-congri-maduro",
+        "Arroz blanco|Tostones": "fv-ab-blanco-tostones", "Arroz blanco|Papa con mojo": "fv-ab-blanco-papa", "Arroz blanco|Boniato": "fv-ab-blanco-boniato", "Arroz blanco|Platanito maduro frito": "fv-ab-blanco-maduro",
+        "Arroz amarillo|Tostones": "fv-ab-amarillo-tostones", "Arroz amarillo|Papa con mojo": "fv-ab-amarillo-papa", "Arroz amarillo|Boniato": "fv-ab-amarillo-boniato", "Arroz amarillo|Platanito maduro frito": "fv-ab-amarillo-maduro" } }
+    ],
+    potaje: { "Frijoles negros": "fv-potaje-negros", "Frijoles colorados": "fv-potaje-colorados", "Chícharo": "fv-potaje-chicharo" }
   }
 };
-// Si hay menuApi, primero se pide el menú y el cupo al CRM y después se arma la
-// página. Si el CRM no contesta en 2.5 s, se arma con lo que trae CONFIG.
+
 (function () {
-  const CH = CONFIG.charola, M = CH && CH.menuApi;
-  let hecho = false;
-  const arrancar = () => { if (hecho) return; hecho = true; window.__iniciarSitio(); };
-  if (!M) return arrancar();
-  const espera = setTimeout(arrancar, 2500);
-  fetch(M.url + "/rest/v1/rpc/sitio_datos", { method: "POST", headers: { apikey: M.key, "Content-Type": "application/json" }, body: JSON.stringify({ p_account: M.cuenta }) })
-    .then((r) => r.ok ? r.json() : null)
-    .then((d) => {
-      if (!hecho && d && Array.isArray(d.items)) {
-        const corto = ["D", "L", "M", "M", "J", "V", "S"];
-        const etiqueta = (it) => it.dias && it.dias.length ? `${it.nombre} (solo ${it.dias.slice().sort((a, b) => ((a + 6) % 7) - ((b + 6) % 7)).map((n) => corto[n]).join(", ")})` : it.nombre;
-        CH.__nombres = {};
-        CH.grupos.forEach((g) => {
-          g.opciones = d.items.filter((it) => it.grupo === g.id).map((it) => { const t = etiqueta(it); CH.__nombres[t] = it.nombre; return t; });
+  var $ = function (id) { return document.getElementById(id); };
+  var REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var DIAS = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+  var CORTO = ["D", "L", "M", "M", "J", "V", "S"];
+  var iso = function (x) { return x.getFullYear() + "-" + String(x.getMonth() + 1).padStart(2, "0") + "-" + String(x.getDate()).padStart(2, "0"); };
+  var deIso = function (f) { var p = f.split("-").map(Number); return new Date(p[0], p[1] - 1, p[2]); };
+  var money = function (n) { return "$" + n; };
+  var fin = function (t) { return /\.$/.test(t) ? t : t + "."; };
+  function el(tag, cls, html) { var x = document.createElement(tag); if (cls) x.className = cls; if (html != null) x.innerHTML = html; return x; }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+  // Estado
+  var PRECIO, ANTICIPO, CUPO, GRUPOS, OBLIG, EXTRAS, FECHAS = [], fecha = null, hoyCrm = null;
+  var actual = {}, extras = {}, charolas = [];
+  var CLAVE = "donamiriam.ultimo";
+  function leer() { try { return JSON.parse(localStorage.getItem(CLAVE) || "null"); } catch (e) { return null; } }
+  function guardar(v) { try { localStorage.setItem(CLAVE, JSON.stringify(v)); } catch (e) {} }
+  var fotoDe = {};
+
+  function iniciar(d) {
+    var C = CONFIG;
+    PRECIO = d && Number(d.precio_charola) || C.precio;
+    ANTICIPO = d ? Number(d.anticipo) || 0 : C.anticipo;
+    CUPO = d && Number(d.cupo_diario) || C.cupo;
+    var diasEnt = d && d.dias_entrega && d.dias_entrega.length ? d.dias_entrega : C.diasEntrega;
+    var diasAntes = d && d.dias_antes != null ? Number(d.dias_antes) : C.diasAntes;
+    var cerradas = d && d.fechas_cerradas || [];
+    hoyCrm = d && d.hoy ? deIso(d.hoy) : (function () { var x = new Date(); x.setHours(0, 0, 0, 0); return x; })();
+
+    // Grupos y extras: del CRM si contestó (solo lo disponible hoy), si no, de CONFIG.
+    GRUPOS = C.grupos.map(function (g) {
+      var ops;
+      if (d && Array.isArray(d.items)) ops = d.items.filter(function (it) { return it.grupo === g.id; }).map(function (it) { return { n: it.nombre, dias: it.dias || [], foto: it.foto || null }; });
+      else ops = g.ops.map(function (n) { return { n: n, dias: [], foto: null }; });
+      return { id: g.id, t: g.t, opcional: !!g.opcional, ops: ops };
+    }).filter(function (g) { return g.ops.length; });
+    OBLIG = GRUPOS.filter(function (g) { return !g.opcional; });
+    EXTRAS = (d && Array.isArray(d.items) ? d.items.filter(function (it) { return it.grupo === "extra"; }).map(function (it) { return { t: it.nombre, p: Number(it.precio) || 0 }; }) : C.extras)
+      .map(function (x, i) { return { id: "x" + i, t: x.t, p: x.p }; });
+    EXTRAS.forEach(function (x) { extras[x.id] = 0; });
+    GRUPOS.forEach(function (g) { g.ops.forEach(function (o) { fotoDe[o.n] = o.foto || (C.fotos[o.n] ? "fotos/op-" + C.fotos[o.n] + ".jpg" : "fotos/fv-base.jpg"); }); });
+
+    // Días de entrega con lo que queda de cupo.
+    var ocupado = d && d.ocupado || null;
+    for (var k = diasAntes; k < diasAntes + 14 && FECHAS.length < 6; k++) {
+      var x = new Date(hoyCrm); x.setDate(x.getDate() + k);
+      if (diasEnt.indexOf(x.getDay()) < 0 || cerradas.indexOf(iso(x)) >= 0) continue;
+      FECHAS.push({ f: iso(x), d: x, quedan: ocupado ? Math.max(0, CUPO - (ocupado[iso(x)] || 0)) : null });
+    }
+    var libre = FECHAS.filter(function (x) { return x.quedan === null || x.quedan > 0; })[0];
+    fecha = libre || FECHAS[0] || null;
+
+    $("recogerDir").textContent = C.direccion;
+    if (d && d.aviso) { $("avisoTop").textContent = d.aviso; $("avisoTop").hidden = false; }
+    $("avisoAnticipo").hidden = !ANTICIPO;
+    $("avisoAnticipo").textContent = "Se aparta con un anticipo de " + money(ANTICIPO) + " por charola. Te mandamos los datos de pago por WhatsApp.";
+    document.querySelectorAll("[data-precio]").forEach(function (e) { e.textContent = money(PRECIO); });
+    document.querySelectorAll("[data-cupo]").forEach(function (e) { e.textContent = CUPO; });
+
+    armarGrupos(); armarExtras(); armarFV(); textosFecha(); pintar(); mostrarRepetir();
+  }
+
+  // ===== Textos que dependen del día =====
+  function relDia(x) { var n = Math.round((x - hoyCrm) / 864e5); return n === 1 ? "mañana " + DIAS[x.getDay()] : "el " + DIAS[x.getDay()] + " " + x.getDate(); }
+  function textosFecha() {
+    if (!fecha) { $("cupoTxt").textContent = "Por ahora no hay días de entrega"; return; }
+    var rel = relDia(fecha.d), relCorto = Math.round((fecha.d - hoyCrm) / 864e5) === 1 ? "mañana" : "el " + DIAS[fecha.d.getDay()];
+    var hay = FECHAS.some(function (x) { return x.quedan === null || x.quedan > 0; });
+    $("cupoTxt").textContent = !hay ? "Se llenaron los próximos días" : fecha.quedan === null ? "Solo " + CUPO + " charolas al día" : "Quedan " + fecha.quedan + " para " + relCorto;
+    $("armarSub").textContent = "Toca uno de cada grupo. Es para " + rel + ".";
+    $("recogerTxt").textContent = "Recoges " + rel + " de " + fin(CONFIG.horario);
+    var dias = $("dias"); dias.innerHTML = "";
+    FECHAS.forEach(function (x) {
+      var b = el("button", "dia"); b.type = "button";
+      var lleno = x.quedan === 0;
+      b.disabled = lleno; b.setAttribute("aria-pressed", fecha && fecha.f === x.f ? "true" : "false");
+      b.innerHTML = "<b>" + DIAS[x.d.getDay()].slice(0, 3) + " " + x.d.getDate() + "</b><small>" + (lleno ? "Lleno" : x.quedan === null ? "Con encargo" : "Quedan " + x.quedan) + "</small>";
+      if (x.quedan !== null && x.quedan > 0 && x.quedan <= 3) b.classList.add("pocas");
+      b.addEventListener("click", function () { fecha = x; textosFecha(); revisarDias(); pintar(); ocultarError(); });
+      dias.appendChild(b);
+    });
+  }
+
+  // Platillos que solo se hacen ciertos días
+  function vale(o) { return !fecha || !o.dias.length || o.dias.indexOf(fecha.d.getDay()) >= 0; }
+  function revisarDias() {
+    GRUPOS.forEach(function (g) { g.ops.forEach(function (o) { if (actual[g.id] === o.n && !vale(o)) delete actual[g.id]; }); });
+    document.querySelectorAll(".op").forEach(function (b) {
+      var o = b._o; var ok = vale(o); b.disabled = !ok;
+      b.querySelector("small").textContent = ok || !o.dias.length ? "" : "Solo " + o.dias.slice().sort(function (a, c) { return ((a + 6) % 7) - ((c + 6) % 7); }).map(function (n) { return CORTO[n]; }).join(", ");
+    });
+  }
+
+  // ===== Armar =====
+  var PALOMITA = '<span class="palomita"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span>';
+  function armarGrupos() {
+    var cont = $("grupos"); cont.innerHTML = "";
+    GRUPOS.forEach(function (g, i) {
+      var s = el("div", "grupo"); s.id = "g-" + g.id;
+      var cab = el("div", "cab"); cab.appendChild(el("h3", null, (i + 1) + ". " + esc(g.t))); var est = el("span", "estado"); est.id = "est-" + g.id; cab.appendChild(est); s.appendChild(cab);
+      var grid = el("div", "opciones");
+      g.ops.forEach(function (o) {
+        var b = el("button", "op"); b.type = "button"; b.setAttribute("aria-pressed", "false"); b.dataset.g = g.id; b.dataset.v = o.n; b._o = o;
+        b.innerHTML = '<img src="' + esc(fotoDe[o.n]) + '" alt="" loading="lazy"><span>' + esc(o.n) + '<small></small></span>' + PALOMITA;
+        b.addEventListener("click", function () {
+          var nuevo = !actual[g.id];
+          if (actual[g.id] === o.n && g.opcional) { delete actual[g.id]; nuevo = false; } else actual[g.id] = o.n;
+          pintar(); if (nuevo) setTimeout(function () { siguiente(i); }, 380);
         });
-        CH.grupos = CH.grupos.filter((g) => g.opciones.length);
-        CH.extras = d.items.filter((it) => it.grupo === "extra").map((it, i) => ({ id: "x" + i, t: it.nombre, precio: Number(it.precio) || 0 }));
-        CH.precio = Number(d.precio_charola) || CH.precio;
-        CH.anticipo = Number(d.anticipo) || 0;
-        CH.encargos = Object.assign({}, CH.encargos, { diasAntes: d.dias_antes, dias: d.dias_entrega });
-        CH.cupo = Object.assign({}, CH.cupo, { diario: d.cupo_diario, api: "" });
-        if (d.aviso) CH.aviso = d.aviso;
-        // Cupo por día con lo que ya está apartado en el tablero.
-        const dias = {}, [y, m, dd] = d.hoy.split("-").map(Number);
-        for (let k = 0; k < 21; k++) {
-          const x = new Date(y, m - 1, dd + k), f = `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, "0")}-${String(x.getDate()).padStart(2, "0")}`;
-          if (!d.dias_entrega.includes(x.getDay()) || (d.fechas_cerradas || []).includes(f)) continue;
-          dias[f] = { quedan: Math.max(0, d.cupo_diario - ((d.ocupado || {})[f] || 0)) };
+        grid.appendChild(b);
+      });
+      s.appendChild(grid); cont.appendChild(s);
+    });
+    revisarDias();
+  }
+  function armarExtras() {
+    var ex = $("extras"); ex.innerHTML = "";
+    $("bloqueExtras").hidden = !EXTRAS.length;
+    EXTRAS.forEach(function (x) {
+      var r = el("div", "extra");
+      r.innerHTML = '<div class="n">' + esc(x.t) + '<small>+' + money(x.p) + '</small></div><div class="paso"><button type="button" aria-label="Quitar ' + esc(x.t) + '">−</button><output id="o-' + x.id + '">0</output><button type="button" aria-label="Agregar ' + esc(x.t) + '">+</button></div>';
+      var bs = r.querySelectorAll("button");
+      bs[0].addEventListener("click", function () { extras[x.id] = Math.max(0, extras[x.id] - 1); pintar(); });
+      bs[1].addEventListener("click", function () { extras[x.id] = Math.min(5, extras[x.id] + 1); pintar(); });
+      ex.appendChild(r);
+    });
+  }
+  // Como Chipotle: al escoger en un grupo, la página baja sola al siguiente que falte.
+  function siguiente(i) {
+    var dest = null;
+    for (var j = i + 1; j < GRUPOS.length; j++) { if (!actual[GRUPOS[j].id]) { dest = $("g-" + GRUPOS[j].id); break; } }
+    if (!dest) { var falta = OBLIG.filter(function (g) { return !actual[g.id]; })[0]; dest = falta ? $("g-" + falta.id) : $("bloqueExtras"); }
+    if (!dest || dest.hidden) return;
+    var tope = document.querySelector(".top").offsetHeight + document.querySelector(".vista").offsetHeight + 12;
+    var y = dest.getBoundingClientRect().top + scrollY - tope;
+    if (Math.abs(y - scrollY) < 24) return;
+    scrollTo({ top: y, behavior: REDUCE ? "auto" : "smooth" });
+  }
+
+  function completa(c) { return OBLIG.every(function (g) { return c[g.id]; }); }
+  function costoExtras(x) { return EXTRAS.reduce(function (s, e) { return s + (x[e.id] || 0) * e.p; }, 0); }
+  function caras(id, c) { var box = $(id); box.innerHTML = ""; OBLIG.forEach(function (g) { if (c[g.id]) { var im = el("img"); im.src = fotoDe[c[g.id]] || ""; im.alt = ""; box.appendChild(im); } else box.appendChild(el("span", "vacia")); }); }
+  function copia(o) { return JSON.parse(JSON.stringify(o)); }
+  function todas() { return charolas.concat([{ sel: copia(actual), extras: copia(extras) }]); }
+
+  function pintar() {
+    document.querySelectorAll(".op").forEach(function (b) { b.setAttribute("aria-pressed", actual[b.dataset.g] === b.dataset.v ? "true" : "false"); });
+    GRUPOS.forEach(function (g) { var e = $("est-" + g.id); var ok = !!actual[g.id]; e.textContent = ok ? "Listo" : g.opcional ? "Opcional" : "Falta elegir"; e.className = "estado" + (ok ? " ok" : ""); });
+    EXTRAS.forEach(function (x) { $("o-" + x.id).textContent = extras[x.id]; });
+    var n = OBLIG.filter(function (g) { return actual[g.id]; }).length;
+    caras("barCaras", actual);
+    $("barTxt").textContent = (charolas.length ? (charolas.length + 1) + " charolas · " : "Tu charola · ") + (n < OBLIG.length ? n + " de " + OBLIG.length : "lista");
+    var total = todas().reduce(function (s, c) { return s + PRECIO + costoExtras(c.extras); }, 0);
+    var bt = $("barTotal");
+    if (bt.textContent !== money(total)) { bt.textContent = money(total); bt.classList.remove("salta"); void bt.offsetWidth; bt.classList.add("salta"); }
+    $("barBtn").setAttribute("aria-disabled", completa(actual) ? "false" : "true");
+    pintarFV();
+  }
+
+  // ===== Foto viva =====
+  var fvBox = $("fv"), fvPot = $("fvPot"), fvAntes = "";
+  function armarFV() {
+    CONFIG.fotoViva.capas.forEach(function (c, i) {
+      Object.keys(c.fotos).forEach(function (k) {
+        var im = document.createElement("img"); im.className = "capa"; im.alt = ""; im.dataset.c = i; im.dataset.k = k;
+        im.src = "fotos/" + c.fotos[k] + ".webp";
+        im.style.left = c.zona.x + "%"; im.style.top = c.zona.y + "%"; im.style.width = c.zona.w + "%"; im.style.height = c.zona.h + "%";
+        fvBox.insertBefore(im, fvPot);
+      });
+    });
+  }
+  function pintarFV() {
+    var FV = CONFIG.fotoViva;
+    FV.capas.forEach(function (c, i) {
+      var k = c.grupos.map(function (g, j) { return actual[g] || c.defecto[j]; }).join("|");
+      fvBox.querySelectorAll('.capa[data-c="' + i + '"]').forEach(function (im) { im.classList.toggle("on", im.dataset.k === k); });
+    });
+    var pv = actual.potaje, src = pv && FV.potaje[pv] ? "fotos/" + FV.potaje[pv] + ".webp" : pv ? fotoDe[pv] : "";
+    if (fvPot.dataset.w !== (pv || "")) { fvPot.dataset.w = pv || ""; fvPot.innerHTML = pv ? '<img src="' + esc(src) + '" alt="' + esc(pv) + '">' : ""; }
+    fvPot.classList.toggle("on", !!pv);
+    $("fvEj").style.opacity = Object.keys(actual).length ? 0 : 1;
+    var ahora = JSON.stringify(actual);
+    if (fvAntes && ahora !== fvAntes && !REDUCE) { fvBox.classList.remove("brilla"); void fvBox.offsetWidth; fvBox.classList.add("brilla"); }
+    fvAntes = ahora;
+    var CHK = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>';
+    var h = '<span class="tit">Tu charola</span>';
+    GRUPOS.forEach(function (g) {
+      var v = actual[g.id];
+      if (v) h += '<div class="it ok"><i>' + CHK + '</i><span>' + esc(v) + '</span></div>';
+      else if (!g.opcional) h += '<div class="it no"><i></i><span>' + esc(g.t) + '</span></div>';
+    });
+    EXTRAS.forEach(function (x) { if (extras[x.id]) h += '<div class="it doble"><i style="border:0;background:var(--rojo)">' + CHK + '</i><span>' + esc(x.t.replace(/^Ración extra de /, "Doble ")) + (extras[x.id] > 1 ? " ×" + extras[x.id] : "") + '</span></div>'; });
+    h += '<div class="it" style="color:var(--cafe-2)"><i style="border:0;background:var(--verde)">' + CHK + '</i><span>Ensalada</span></div>';
+    h += '<b class="p">' + money(PRECIO + costoExtras(extras)) + '</b>';
+    $("lista").innerHTML = h;
+  }
+
+  // ===== Hoja del encargo =====
+  function textoCharola(c) { var p = OBLIG.map(function (g) { return c[g.id]; }); if (c.potaje) p.push(c.potaje); return p.join(" · "); }
+  function textoExtras(x) { return EXTRAS.filter(function (e) { return x[e.id]; }).map(function (e) { return x[e.id] + " " + e.t.toLowerCase(); }).join(", "); }
+  function mostrarError(t) { $("error").textContent = t; $("error").hidden = false; $("error").scrollIntoView({ block: "center", behavior: REDUCE ? "auto" : "smooth" }); }
+  function ocultarError() { $("error").hidden = true; }
+
+  function resumen() {
+    var r = $("resumen"); r.innerHTML = ""; var total = 0, lista = todas();
+    lista.forEach(function (c, i) {
+      var costo = PRECIO + costoExtras(c.extras); total += costo;
+      var l = el("div", "linea"), xt = textoExtras(c.extras);
+      l.innerHTML = '<img src="' + esc(fotoDe[c.sel.carne] || "fotos/fv-base.jpg") + '" alt=""><div class="d"><b>Charola ' + (i + 1) + '</b><span>' + esc(textoCharola(c.sel)) + (xt ? " + " + esc(xt) : "") + '</span></div><span class="q">' + money(costo) + '</span>' +
+        (lista.length > 1 ? '<button type="button" class="quitar" aria-label="Quitar charola ' + (i + 1) + '">Quitar</button>' : "");
+      var q = l.querySelector(".quitar");
+      if (q) q.addEventListener("click", function () {
+        if (i < charolas.length) charolas.splice(i, 1);
+        else { var u = charolas.pop(); actual = u.sel; extras = u.extras; }
+        pintar(); resumen();
+      });
+      r.appendChild(l);
+    });
+    r.appendChild(el("div", "sep"));
+    if (ANTICIPO) r.appendChild(el("div", "suma", '<span>Anticipo para apartar</span><span>' + money(ANTICIPO * lista.length) + '</span>'));
+    r.appendChild(el("div", "suma total", '<span>Total</span><span>' + money(total) + '</span>'));
+  }
+
+  var velo = $("velo");
+  function abrir() {
+    resumen(); textosFecha(); ocultarError();
+    $("hojaCuerpo").hidden = false; $("listo").hidden = true;
+    velo.hidden = false; document.body.style.overflow = "hidden";
+    setTimeout(function () { if (!$("nombre").value) $("nombre").focus(); }, 60);
+  }
+  function cerrar() { velo.hidden = true; document.body.style.overflow = ""; }
+  $("barBtn").addEventListener("click", function () {
+    if (!GRUPOS) return;
+    if (!completa(actual)) { var falta = OBLIG.filter(function (g) { return !actual[g.id]; })[0]; $("g-" + falta.id).scrollIntoView({ block: "center", behavior: REDUCE ? "auto" : "smooth" }); return; }
+    abrir();
+  });
+  $("cerrar").addEventListener("click", cerrar);
+  velo.addEventListener("click", function (e) { if (e.target === velo) cerrar(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !velo.hidden) cerrar(); });
+  $("otra").addEventListener("click", function () {
+    charolas.push({ sel: copia(actual), extras: copia(extras) });
+    actual = {}; EXTRAS.forEach(function (x) { extras[x.id] = 0; }); cerrar(); pintar(); irA();
+  });
+
+  function folioNuevo() { return "DM-" + Date.now().toString(36).toUpperCase().slice(-6); }
+  function mensaje(nombre, lista, folio, notas) {
+    var total = lista.reduce(function (s, c) { return s + PRECIO + costoExtras(c.extras); }, 0);
+    var t = "Hola " + CONFIG.nombre + ", quiero hacer un encargo (folio " + folio + "):\n\n" +
+      lista.map(function (c) { var xt = textoExtras(c.extras); return "• 1 × Charola: " + textoCharola(c.sel) + " + ensalada" + (xt ? " + " + xt : "") + " (" + money(PRECIO + costoExtras(c.extras)) + ")"; }).join("\n") +
+      "\n\nTotal: " + money(total) + (ANTICIPO ? "\nAnticipo: " + money(ANTICIPO * lista.length) : "") +
+      "\nPara el día: " + fecha.d.toLocaleDateString("es-MX", { weekday: "long", day: "numeric", month: "long" }) +
+      "\nEntrega: Paso a recoger de " + CONFIG.horario + "\nA nombre de: " + nombre;
+    if (notas) t += "\nNotas: " + notas;
+    return "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(t);
+  }
+
+  $("form").addEventListener("submit", function (e) {
+    e.preventDefault(); ocultarError();
+    var nombre = $("nombre").value.trim(), notas = $("notas").value.trim(), lista = todas();
+    if (!nombre) { mostrarError("Escribe tu nombre para apartar."); $("nombre").focus(); return; }
+    if (!fecha) { mostrarError("Por ahora no hay días de entrega. Escríbenos por WhatsApp."); return; }
+    if (fecha.quedan !== null && lista.length > fecha.quedan) { mostrarError("Solo quedan " + fecha.quedan + " charolas para ese día. Elige otro día o quita una charola."); return; }
+    var folio = folioNuevo(), link = mensaje(nombre, lista, folio, notas);
+    var ventana = null; try { ventana = window.open("", "_blank"); } catch (err) {}
+    var boton = $("apartar"); boton.setAttribute("aria-busy", "true"); boton.disabled = true;
+    var pedidoCrm = { folio: folio, fecha: fecha.f, nombre: nombre, telefono: "", notas: notas,
+      charolas: lista.map(function (c) { var o = { qty: 1, extras: [] }; GRUPOS.forEach(function (g) { o[g.id] = c.sel[g.id] || ""; });
+        EXTRAS.forEach(function (x) { for (var n = 0; n < (c.extras[x.id] || 0); n++) o.extras.push(x.t); }); return o; }) };
+    var M = CONFIG.menuApi, ctrl = window.AbortController ? new AbortController() : null, reloj = setTimeout(function () { if (ctrl) ctrl.abort(); }, 6000);
+    fetch(M.url + "/rest/v1/rpc/encargo_web", { method: "POST", signal: ctrl ? ctrl.signal : undefined, headers: { apikey: M.key, "Content-Type": "application/json" }, body: JSON.stringify({ p_account: M.cuenta, p: pedidoCrm }) })
+      .then(function (r) { return r.json(); }).catch(function () { return null; })
+      .then(function (res) {
+        clearTimeout(reloj); boton.removeAttribute("aria-busy"); boton.disabled = false;
+        var motivo = res && res.ok === false ? res.error : null;
+        // Si el CRM dice que no, se avisa aquí y no se abre WhatsApp. Si no contesta, se sigue por WhatsApp.
+        if (motivo && motivo !== "sin_menu" && motivo !== "sin_tablero") {
+          if (ventana) ventana.close();
+          if (motivo === "cupo" && fecha.quedan !== null) { fecha.quedan = Number(res.quedan) || 0; textosFecha(); }
+          mostrarError(motivo === "no_hay" ? "Se acabó «" + res.plato + "» para ese día. Cámbialo por otra opción o elige otro día."
+            : motivo === "cupo" ? "Solo quedan " + res.quedan + " charolas para ese día. Elige otro día o quita una charola."
+            : motivo === "fecha" ? "Ese día ya no se puede. Elige otro día."
+            : motivo === "nombre" ? "Escribe tu nombre para apartar."
+            : motivo.indexOf("falta_") === 0 ? "A una charola le falta escoger algo. Revísala."
+            : "No se pudo apartar. Intenta otra vez o escríbenos por WhatsApp.");
+          return;
         }
-        CH.__dias = dias;
-      }
-      clearTimeout(espera); arrancar();
-    })
-    .catch(() => { clearTimeout(espera); arrancar(); });
+        if (ventana) ventana.location.href = link; else location.href = link;
+        guardar({ charolas: lista, nombre: nombre });
+        if (fecha.quedan !== null) fecha.quedan = Math.max(0, fecha.quedan - lista.length);
+        $("listoTxt").textContent = "Tu folio es " + folio + ". Para " + relDia(fecha.d) + ", de " + fin(CONFIG.horario) + " Termina de enviar el mensaje en WhatsApp" + (ANTICIPO ? " y ahí te pasamos los datos para el anticipo." : ".");
+        $("listoWa").href = link;
+        $("hojaCuerpo").hidden = true; $("listo").hidden = false;
+        charolas = []; actual = {}; EXTRAS.forEach(function (x) { extras[x.id] = 0; }); $("notas").value = "";
+        pintar(); textosFecha(); mostrarRepetir();
+      });
+  });
+  $("listoOk").addEventListener("click", cerrar);
+
+  // ===== Lo mismo que la vez pasada =====
+  function existe(gid, n) { return GRUPOS.some(function (g) { return g.id === gid && g.ops.some(function (o) { return o.n === n && vale(o); }); }); }
+  function limpiar(c) {
+    var sel = {}; Object.keys(c.sel || {}).forEach(function (g) { if (existe(g, c.sel[g])) sel[g] = c.sel[g]; });
+    var ex = {}; EXTRAS.forEach(function (x) { ex[x.id] = 0; });
+    Object.keys(c.extras || {}).forEach(function (k) { if (k in ex) ex[k] = c.extras[k]; });
+    return { sel: sel, extras: ex };
+  }
+  function mostrarRepetir() {
+    var u = leer(), box = $("repetir");
+    if (!u || !u.charolas || !u.charolas.length || !GRUPOS) { box.hidden = true; return; }
+    var c = u.charolas[0];
+    caras("repCaras", c.sel);
+    $("repTxt").textContent = textoCharola(c.sel) + (u.charolas.length > 1 ? " · " + u.charolas.length + " charolas" : "");
+    if (u.nombre && !$("nombre").value) $("nombre").value = u.nombre;
+    box.hidden = false;
+  }
+  $("repBtn").addEventListener("click", function () {
+    var u = leer(); if (!u) return;
+    var lista = u.charolas.map(limpiar);
+    var ult = lista.pop(); charolas = lista.filter(function (c) { return completa(c.sel); });
+    actual = ult.sel; extras = ult.extras; pintar();
+    if (completa(actual) && charolas.length === lista.length) abrir();
+    else { irA(); setTimeout(function () { var falta = OBLIG.filter(function (g) { return !actual[g.id]; })[0]; if (falta) $("g-" + falta.id).scrollIntoView({ block: "center" }); }, 500); }
+  });
+
+  function irA() { $("armar").scrollIntoView({ behavior: REDUCE ? "auto" : "smooth" }); }
+  $("irArmar").addEventListener("click", irA);
+
+  // ===== Portada: video, o fotos si no hay video =====
+  var slides = document.querySelectorAll("#marco .slide"), puntos = $("puntos"), cual = 0, reloj;
+  slides.forEach(function (_, i) { var b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-label", "Foto " + (i + 1)); b.setAttribute("aria-current", i === 0 ? "true" : "false"); b.addEventListener("click", function () { ir(i); arrancar(); }); puntos.appendChild(b); });
+  function ir(i) { slides[cual].classList.remove("on"); puntos.children[cual].setAttribute("aria-current", "false"); cual = i; slides[cual].classList.add("on"); puntos.children[cual].setAttribute("aria-current", "true"); }
+  function arrancar() { clearInterval(reloj); if (REDUCE) return; reloj = setInterval(function () { ir((cual + 1) % slides.length); }, 5500); }
+  var vid = $("video");
+  function sinVideo() { vid.hidden = true; puntos.hidden = false; arrancar(); }
+  if (REDUCE) { vid.removeAttribute("autoplay"); sinVideo(); }
+  else { vid.addEventListener("error", sinVideo, true); var pr = vid.play && vid.play(); if (pr && pr.catch) pr.catch(function () {}); }
+
+  // ===== Aparecen al bajar =====
+  document.querySelectorAll(".historia > :not(.galeria), .visita .col > *, .armar > header").forEach(function (x) { x.classList.add("rv"); });
+  if ("IntersectionObserver" in window && !REDUCE) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { rootMargin: "0px 0px -8% 0px" });
+    document.querySelectorAll(".rv").forEach(function (x) { io.observe(x); });
+    document.documentElement.classList.add("js");
+  }
+
+  // ===== Arranque: primero el menú y el cupo del CRM (máx. 2.5 s) =====
+  var hecho = false;
+  function arrancarSitio(d) { if (hecho) return; hecho = true; iniciar(d); }
+  var espera = setTimeout(function () { arrancarSitio(null); }, 2500);
+  var M = CONFIG.menuApi;
+  fetch(M.url + "/rest/v1/rpc/sitio_datos", { method: "POST", headers: { apikey: M.key, "Content-Type": "application/json" }, body: JSON.stringify({ p_account: M.cuenta }) })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) { clearTimeout(espera); arrancarSitio(d && Array.isArray(d.items) && d.items.length ? d : null); })
+    .catch(function () { clearTimeout(espera); arrancarSitio(null); });
 })();
 </script>
+
 </body>
 </html>
