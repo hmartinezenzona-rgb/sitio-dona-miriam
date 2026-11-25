@@ -155,6 +155,7 @@ p{margin:0}
 .dir{display:flex;gap:12px;align-items:flex-start}
 .dir b{font-size:17px;font-weight:800;display:block}
 .dir span{font-size:15px;font-weight:600;opacity:.85}
+.v-izq,.v-der{display:flex;flex-direction:column;gap:18px}
 .tabla{background:rgba(251,245,234,.08);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
 .tabla div{display:flex;justify-content:space-between;font-size:15px;font-weight:700;gap:12px}
 .tabla .off{opacity:.65}
@@ -249,6 +250,51 @@ p{margin:0}
 @media (prefers-reduced-motion:reduce){ .hero .slide.on,.intro>*,.cupo,.precio,.cinta .pista,.salta,.fv.brilla::after{animation:none!important} .js .rv{opacity:1;transform:none} }
 @media (min-width:560px){ .opciones{grid-template-columns:repeat(4,minmax(0,1fr))} .galeria{grid-template-columns:repeat(4,minmax(0,1fr))} }
 @media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+
+/* ===== Computadora: más ancho, foto viva al lado ===== */
+.panel-btn{display:none}
+@media (min-width:960px){
+  .col{max-width:1180px;padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px))}
+  .top .col{height:76px}
+  .top img{height:42px}
+  .hero{max-width:none}
+  .hero .marco{height:clamp(540px,82vh,760px)}
+  .hero .sombra{background:linear-gradient(90deg,rgba(43,26,18,.88) 0%,rgba(43,26,18,.55) 38%,rgba(43,26,18,0) 70%)}
+  .hero .sobre{top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;padding:0 0 0 max(32px,calc((100vw - 1180px)/2 + 32px))}
+  .hero .sobre h1{font-size:clamp(56px,5.4vw,80px);max-width:12ch;padding-right:0}
+  .hero .sobre p{font-size:21px;max-width:30ch;padding-right:0}
+  .hero .cupo{left:max(32px,calc((100vw - 1180px)/2 + 32px));top:28px;font-size:15px}
+  .hero .precio{right:max(32px,calc((100vw - 1180px)/2 + 32px));width:128px;height:128px;bottom:-40px}
+  .hero .precio b{font-size:36px}
+  .hero .precio span{font-size:14px}
+  .cta{display:inline-flex;width:auto;padding:0 40px}
+  .horas{justify-content:flex-start;display:inline-flex;margin-left:24px;padding-top:0;vertical-align:middle}
+  .repetir{max-width:560px}
+  .barra{display:none}
+  .armar{display:grid;grid-template-columns:minmax(0,1fr) 400px;column-gap:48px;row-gap:28px;align-items:start;padding-block:56px 80px}
+  .armar>*{grid-column:1}
+  .armar>header h2{font-size:40px}
+  .vista{grid-column:2;grid-row:1 / span 3;position:sticky;top:96px;margin:0;padding:18px;background:var(--blanco);border:1px solid var(--borde);border-radius:24px;box-shadow:0 18px 40px -24px rgba(43,26,18,.45);display:flex;flex-direction:column;gap:16px}
+  .vista .fila{grid-template-columns:1fr;gap:16px}
+  .lista .p{font-size:26px}
+  .panel-btn{display:inline-flex;width:100%;min-height:56px;font-size:18px}
+  .panel-btn[aria-disabled="true"]{background:#C9B8A6}
+  #grupos{gap:32px!important}
+  .opciones{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+  .op span{font-size:15px}
+  .historia{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:56px;row-gap:16px;align-items:start;padding-block:40px 72px}
+  .historia>*{grid-column:1}
+  .historia .grande{grid-column:2;grid-row:1 / span 6;height:100%;min-height:440px}
+  .historia h2{font-size:44px}
+  .historia .galeria{grid-column:1 / -1;margin-top:24px}
+  .visita .col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:56px;padding-block:64px 40px;align-items:start}
+  .visita .col>.pie{grid-column:1 / -1}
+  .visita h2{font-size:40px}
+  .velo{align-items:center;padding:24px}
+  .hoja{border-radius:24px;max-height:88vh;padding:20px 28px 28px}
+  .asa{display:none}
+  .cinta span{font-size:22px}
+}
 </style>
 </head>
 <body>
@@ -324,6 +370,9 @@ p{margin:0}
           </div>
           <div class="lista" id="lista"></div>
         </div>
+        <button class="btn-rojo panel-btn" id="panelBtn" type="button">Apartar mi charola
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
       </div>
       <div id="grupos"></div>
       <div class="grupo" id="bloqueExtras">
@@ -355,12 +404,15 @@ p{margin:0}
 
   <section class="visita" id="visitanos">
     <div class="col">
+      <div class="v-izq">
       <span class="ceja">Visítanos</span>
       <h2>Pasa por tu charola</h2>
       <div class="dir">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F2B233" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;margin-top:2px"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
         <div><b>Dolores Hidalgo 124</b><span>Col. Guanajuato Oriente, Saltillo</span></div>
       </div>
+      </div>
+      <div class="v-der">
       <div class="tabla">
         <div><span>Lunes a sábado</span><span>12:00 – 3:00 p. m.</span></div>
         <div class="off"><span>Domingo</span><span>Descanso</span></div>
@@ -372,6 +424,7 @@ p{margin:0}
       <a class="btn-verde" href="https://wa.me/528443690845" target="_blank" rel="noopener">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"/></svg>
         844 369 0845</a>
+      </div>
       <div class="pie"><span>Doña Miriam · Comida cubana</span><a href="https://proyect.onlinefreedom.site" target="_blank" rel="noopener">Sitio por Onlinefreedom</a></div>
     </div>
   </section>
@@ -623,6 +676,8 @@ var CONFIG = {
     var bt = $("barTotal");
     if (bt.textContent !== money(total)) { bt.textContent = money(total); bt.classList.remove("salta"); void bt.offsetWidth; bt.classList.add("salta"); }
     $("barBtn").setAttribute("aria-disabled", completa(actual) ? "false" : "true");
+    $("panelBtn").setAttribute("aria-disabled", completa(actual) ? "false" : "true");
+    $("panelBtn").firstChild.textContent = completa(actual) ? (charolas.length ? "Apartar " + (charolas.length + 1) + " charolas · " + money(total) + " " : "Apartar mi charola · " + money(total) + " ") : "Te falta " + OBLIG.filter(function (g) { return !actual[g.id]; }).map(function (g) { return g.t.toLowerCase(); }).join(" y ") + " ";
     pintarFV();
   }
 
@@ -703,6 +758,7 @@ var CONFIG = {
     if (!completa(actual)) { var falta = OBLIG.filter(function (g) { return !actual[g.id]; })[0]; $("g-" + falta.id).scrollIntoView({ block: "center", behavior: REDUCE ? "auto" : "smooth" }); return; }
     abrir();
   });
+  $("panelBtn").addEventListener("click", function () { $("barBtn").click(); });
   $("cerrar").addEventListener("click", cerrar);
   velo.addEventListener("click", function (e) { if (e.target === velo) cerrar(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !velo.hidden) cerrar(); });
@@ -805,7 +861,7 @@ var CONFIG = {
   else { vid.addEventListener("error", sinVideo, true); var pr = vid.play && vid.play(); if (pr && pr.catch) pr.catch(function () {}); }
 
   // ===== Aparecen al bajar =====
-  document.querySelectorAll(".historia > :not(.galeria), .visita .col > *, .armar > header").forEach(function (x) { x.classList.add("rv"); });
+  document.querySelectorAll(".historia > :not(.galeria), .v-izq, .v-der, .armar > header").forEach(function (x) { x.classList.add("rv"); });
   if ("IntersectionObserver" in window && !REDUCE) {
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { rootMargin: "0px 0px -8% 0px" });
     document.querySelectorAll(".rv").forEach(function (x) { io.observe(x); });
