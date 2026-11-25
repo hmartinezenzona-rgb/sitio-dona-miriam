@@ -79,7 +79,7 @@ const CONFIG = {
     // Cupo diario: pega aquí las URLs de producción de los webhooks de n8n
     // Menú, cupo y encargos desde el CRM (Supabase). Sin esto se usa lo de arriba.
     menuApi: { url: "https://mltjlslvbhwegnafdswf.supabase.co", key: "sb_publishable_Ej634MujaTmhbqagvJYoNw_ky9OXU-a", cuenta: "ff7a0fa1-1338-439d-8b04-baae18232f94" },
-    cupo: { diario: 10, api: "https://automatizaciones-n8n.ttjgax.easypanel.host/webhook/dona-miriam/cupo", apiEncargo: "https://automatizaciones-n8n.ttjgax.easypanel.host/webhook/dona-miriam/encargo" },
+    cupo: { diario: 10, api: "", apiEncargo: "" }, // el cupo y los encargos van solo al CRM (menuApi); ya no a n8n
     encargos: { diasAntes: 1, dias: [1, 2, 3, 4, 5, 6] },
     grupos: [
       { id: "arroz", titulo: "Arroz", opciones: ["Congrí", "Arroz blanco", "Arroz amarillo"] },
