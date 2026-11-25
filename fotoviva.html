@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Doña Miriam · Comida cubana casera en Saltillo</title>
-<meta name="description" content="Comida cubana casera por encargo en Saltillo. Arma tu charola de $150: congrí, fricasé, ropa vieja, tostones. Encarga hoy, recoge mañana.">
+<meta name="description" content="Comida cubana casera por encargo en Saltillo. Un menú distinto cada día, charola de $200. Encarga hoy, recoge mañana.">
 <meta property="og:title" content="Doña Miriam · Comida cubana casera">
-<meta property="og:description" content="Arma tu charola de $150. Encarga hoy, recoge mañana en Saltillo.">
+<meta property="og:description" content="Un menú cubano distinto cada día. Encarga hoy, recoge mañana en Saltillo.">
 <meta property="og:image" content="fotos/portada-poster.jpg">
 <meta name="theme-color" content="#FBF5EA">
 <link rel="icon" type="image/svg+xml" href="fotos/icono.svg">
@@ -295,6 +295,54 @@ p{margin:0}
   .asa{display:none}
   .cinta span{font-size:22px}
 }
+
+/* ===== Menú de la semana ===== */
+.menu{padding-block:36px 150px;display:flex;flex-direction:column;gap:20px;scroll-margin-top:70px}
+.menu>header h2{font-size:28px;font-weight:900}
+.menu>header p{font-size:15px;font-weight:700;color:var(--cafe-2);margin-top:4px}
+.dias-sel{margin-inline:-4px;padding-inline:4px}
+.panel{display:flex;flex-direction:column;gap:14px}
+.panel .vista{position:static;box-shadow:none;margin:0;padding:0;background:transparent}
+.lista .it.fuerte span{font-size:16px;font-weight:900}
+.lista .p small{font-size:13px;font-weight:700;color:var(--cafe-3)}
+.pedir{display:flex;flex-direction:column;gap:8px}
+.cant{border:2px solid var(--borde)}
+.cant .n{font-size:17px}
+.paso button:disabled{opacity:.4;cursor:not-allowed}
+.semana{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+.semana h3{font-size:20px;font-weight:900}
+.semana-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.dcard{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--blanco);border:2px solid var(--borde);border-radius:16px;padding:12px;cursor:pointer;color:var(--cafe);font-family:inherit;transition:border-color .15s,transform .15s}
+.dcard[aria-pressed="true"]{border-color:var(--rojo);background:#FFF8F4}
+.dcard:disabled{opacity:.55;cursor:not-allowed}
+.dcard:active{transform:scale(.98)}
+.dc-cab{display:flex;flex-direction:column;gap:2px}
+@media (min-width:960px){.dc-cab{flex-direction:row;justify-content:space-between;align-items:baseline;gap:6px}}
+.dc-cab b{font-size:16px;font-weight:900}
+.dc-cab small{font-size:12px;font-weight:800;color:var(--verde)}
+.dcard:disabled .dc-cab small{color:var(--rojo)}
+.dc-plato{font-size:15px;font-weight:900;color:var(--rojo);line-height:1.2}
+.dc-resto{font-size:13px;font-weight:700;color:var(--cafe-2);line-height:1.35}
+.bar-dia{width:48px;height:48px;border-radius:12px;background:var(--rojo);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;flex-shrink:0}
+.bar-dia small{font-size:11px;font-weight:800;text-transform:uppercase}
+.bar-dia b{font-size:20px;font-weight:900}
+.btn-rojo[aria-disabled="true"]{background:#C9B8A6;cursor:not-allowed}
+.rep-txt{font-size:15px;font-weight:700;color:var(--cafe-2)}
+@media (min-width:640px){ .semana-grid{grid-template-columns:repeat(3,minmax(0,1fr))} }
+@media (min-width:960px){
+  .menu{display:grid;grid-template-columns:minmax(0,1fr) 420px;column-gap:48px;row-gap:24px;align-items:start;padding-block:56px 80px}
+  .menu>*{grid-column:1}
+  .menu>header h2{font-size:40px}
+  .dias-sel{display:none}
+  .panel{grid-column:2;grid-row:1 / span 3;position:sticky;top:96px;background:var(--blanco);border:1px solid var(--borde);border-radius:24px;padding:18px;box-shadow:0 18px 40px -24px rgba(43,26,18,.45)}
+  .panel .vista .fila{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+  .semana{margin-top:0}
+  .semana h3{display:none}
+  .semana-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .dcard{padding:18px;min-height:150px}
+  .dc-plato{font-size:20px}
+  .dc-resto{font-size:14px}
+}
 </style>
 </head>
 <body>
@@ -323,17 +371,17 @@ p{margin:0}
       <div class="sombra" aria-hidden="true"></div>
       <div class="sobre intro">
         <h1>Comida cubana casera en Saltillo</h1>
-        <p>Encarga hoy, recoge mañana. Arroz, carne y vianda como en casa de la abuela.</p>
+        <p>Un menú distinto cada día, como en casa de la abuela. Encarga hoy, recoge mañana.</p>
       </div>
       <div class="puntos" id="puntos" hidden></div>
     </div>
     <div class="cupo"><i></i><span id="cupoTxt">Quedan 9 para mañana</span></div>
-    <div class="precio"><b data-precio>$150</b><span>la charola</span></div>
+    <div class="precio"><b data-precio>$200</b><span>la charola</span></div>
   </section>
 
   <div class="col">
     <div style="padding-top:44px">
-      <button class="cta" id="irArmar" type="button">Arma tu charola
+      <button class="cta" id="irArmar" type="button">Ver el menú de la semana
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
       <div class="horas"><span>Lunes a sábado</span><span aria-hidden="true">·</span><span>Recoges de 12:00 a 3:00 p. m.</span></div>
@@ -341,8 +389,8 @@ p{margin:0}
   </div>
 
   <div class="cinta" aria-hidden="true"><div class="pista">
-    <span>Comida cubana casera</span><span>Encargos de lunes a sábado</span><span>$150 la charola</span><span>Congrí, fricasé y tostones</span><span>Recoges de 12 a 3</span>
-    <span>Comida cubana casera</span><span>Encargos de lunes a sábado</span><span>$150 la charola</span><span>Congrí, fricasé y tostones</span><span>Recoges de 12 a 3</span>
+    <span>Comida cubana casera</span><span>Un menú distinto cada día</span><span><b data-precio>$200</b> la charola</span><span>Encargos de lunes a sábado</span><span>Recoges de 12 a 3</span>
+    <span>Comida cubana casera</span><span>Un menú distinto cada día</span><span><b data-precio>$200</b> la charola</span><span>Encargos de lunes a sábado</span><span>Recoges de 12 a 3</span>
   </div></div>
 
   <div class="col">
@@ -352,33 +400,44 @@ p{margin:0}
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B3122B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
         ¿Lo mismo que la vez pasada?
       </div>
-      <div class="fila"><div class="caritas" id="repCaras"></div><span id="repTxt"></span></div>
+      <p class="rep-txt" id="repTxt"></p>
       <button class="btn-amarillo" id="repBtn" type="button">Pedir lo mismo</button>
     </div>
 
-    <section class="armar" id="armar">
+    <section class="menu" id="menu">
       <header>
-        <h2>Arma tu charola</h2>
-        <p id="armarSub">Toca uno de cada grupo.</p>
+        <h2>El menú de la semana</h2>
+        <p>Un menú distinto cada día. Escoge el día y cuántas charolas quieres.</p>
       </header>
-      <div class="vista">
-        <div class="fila">
-          <div class="fv" id="fv">
-            <img class="base" src="fotos/fv-base.jpg" alt="Así se ve tu charola">
-            <div class="fv-pot" id="fvPot"></div>
-            <span class="fv-ej" id="fvEj">Así se ve tu charola</span>
+
+      <div class="dias dias-sel" id="diasSel" role="group" aria-label="Día de entrega"></div>
+
+      <div class="panel" id="panel">
+        <div class="vista">
+          <div class="fila">
+            <div class="fv" id="fv">
+              <img class="base" src="fotos/fv-base.jpg" alt="Charola de comida cubana">
+              <div class="fv-pot" id="fvPot"></div>
+              <span class="fv-ej" id="fvEj">Foto de referencia</span>
+            </div>
+            <div class="lista" id="lista"></div>
           </div>
-          <div class="lista" id="lista"></div>
         </div>
-        <button class="btn-rojo panel-btn" id="panelBtn" type="button">Apartar mi charola
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </button>
+        <div class="pedir">
+          <div class="extra cant">
+            <div class="n">Charolas<small id="cantNota">Quedan 10 para ese día</small></div>
+            <div class="paso"><button type="button" id="menos" aria-label="Una charola menos">−</button><output id="cant">1</output><button type="button" id="mas" aria-label="Una charola más">+</button></div>
+          </div>
+          <div class="extras" id="extras"></div>
+          <button class="btn-rojo panel-btn" id="panelBtn" type="button"><span id="panelTxt">Apartar · $200</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
       </div>
-      <div id="grupos"></div>
-      <div class="grupo" id="bloqueExtras">
-        <div class="cab"><h3>¿Con más hambre?</h3><span class="estado">Opcional</span></div>
-        <div class="extras" id="extras"></div>
-        <p class="incluye">La ensalada va incluida en cada charola.</p>
+
+      <div class="semana">
+        <h3>Toda la semana</h3>
+        <div class="semana-grid" id="semana"></div>
       </div>
     </section>
   </div>
@@ -387,11 +446,11 @@ p{margin:0}
     <span class="ceja">Nuestra historia</span>
     <h2>Comida cubana como en casa</h2>
     <img class="grande" src="fotos/portada-frijoles.jpg" alt="Olla de frijoles negros cubanos">
-    <p>Doña Miriam cocina comida cubana casera aquí en Saltillo: congrí, fricasé, ropa vieja, tostones y potajes como se hacen en Cuba.</p>
-    <p>Cada charola se prepara por encargo, con ingredientes frescos y el sazón de siempre.</p>
+    <p>Doña Miriam cocina comida cubana casera aquí en Saltillo: congrí, bistec, chuleta encebollada, tostones y potajes como se hacen en Cuba.</p>
+    <p>Cada día prepara un solo menú, por encargo, con ingredientes frescos y el sazón de siempre.</p>
     <div class="datos">
-      <div class="dato"><b>$150</b><span>la charola</span></div>
-      <div class="dato"><b>16</b><span>opciones para combinar</span></div>
+      <div class="dato"><b data-precio>$200</b><span>la charola</span></div>
+      <div class="dato"><b>6</b><span>menús a la semana</span></div>
       <div class="dato"><b>Lun–Sáb</b><span>con encargo</span></div>
     </div>
     <div class="galeria">
@@ -433,10 +492,10 @@ p{margin:0}
 <div class="barra" id="barra">
   <div class="col">
     <div class="info">
-      <div class="caritas" id="barCaras"></div>
-      <div class="txt"><small id="barTxt">Tu charola · 0 de 3</small><b id="barTotal">$150</b></div>
+      <div class="bar-dia" id="barDia"></div>
+      <div class="txt"><small id="barTxt">1 charola</small><b id="barTotal">$200</b></div>
     </div>
-    <button class="btn-rojo" id="barBtn" type="button">Enviar
+    <button class="btn-rojo" id="barBtn" type="button">Apartar
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </button>
   </div>
@@ -450,11 +509,6 @@ p{margin:0}
     </div>
     <div id="hojaCuerpo" style="display:flex;flex-direction:column;gap:14px">
       <div class="resumen" id="resumen"></div>
-      <button class="otra" id="otra" type="button">+ Agregar otra charola</button>
-      <div class="campo">
-        <span class="lbl">¿Para qué día?</span>
-        <div class="dias" id="dias"></div>
-      </div>
       <div class="recoger">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0;margin-top:2px"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
         <div><b id="recogerTxt">Recoges mañana de 12:00 a 3:00 p. m.</b><span id="recogerDir">Dolores Hidalgo 124, Col. Guanajuato Oriente</span></div>
@@ -480,32 +534,44 @@ p{margin:0}
 
 <script>
 /* ============================================================
-   CONFIG: lo que cambia por negocio. El menú, el precio, el cupo y los
-   días se leen del CRM (menuApi); lo de aquí abajo se usa si el CRM no
-   contesta.
+   CONFIG: lo que cambia por negocio. El menú de cada día, el precio,
+   el cupo y los días se leen del CRM (menuApi). Lo de aquí se usa si
+   el CRM no contesta o todavía no tiene el menú por día.
    ============================================================ */
 var CONFIG = {
   nombre: "Doña Miriam",
   whatsapp: "528443690845",
   direccion: "Dolores Hidalgo 124, Col. Guanajuato Oriente",
   horario: "12:00 a 3:00 p. m.",
-  precio: 150, anticipo: 75, cupo: 10, diasEntrega: [1, 2, 3, 4, 5, 6], diasAntes: 1,
+  precio: 200, anticipo: 100, cupo: 10, diasEntrega: [1, 2, 3, 4, 5, 6], diasAntes: 1,
   menuApi: { url: "https://mltjlslvbhwegnafdswf.supabase.co", key: "sb_publishable_Ej634MujaTmhbqagvJYoNw_ky9OXU-a", cuenta: "ff7a0fa1-1338-439d-8b04-baae18232f94" },
+  // Partes de la charola, en el orden en que se muestran. «uno» siempre va; «opcional» solo algunos días.
   grupos: [
-    { id: "arroz", t: "Arroz", ops: ["Congrí", "Arroz blanco", "Arroz amarillo"] },
-    { id: "carne", t: "Carne", ops: ["Fricasé de puerco", "Fricasé de pollo", "Bistec de puerco", "Ropa vieja", "Picadillo de res", "Chuleta de puerco"] },
-    { id: "vianda", t: "Vianda", ops: ["Papa con mojo", "Boniato", "Platanito maduro frito", "Tostones"] },
-    { id: "potaje", t: "Potaje", opcional: true, ops: ["Frijoles negros", "Frijoles colorados", "Chícharo"] }
+    { id: "carne", t: "Plato fuerte", tipo: "uno" },
+    { id: "arroz", t: "Arroz", tipo: "opcional" },
+    { id: "potaje", t: "Potaje", tipo: "opcional" },
+    { id: "ensalada", t: "Ensalada", tipo: "uno" },
+    { id: "vianda", t: "Vianda", tipo: "uno" }
   ],
-  extras: [{ t: "Ración extra de arroz", p: 40 }, { t: "Ración extra de potaje", p: 40 }],
-  // Foto de cada opción (si el CRM no trae una).
-  fotos: {
-    "Congrí": "congri", "Arroz blanco": "blanco", "Arroz amarillo": "amarillo",
-    "Fricasé de puerco": "fpuerco", "Fricasé de pollo": "fpollo", "Bistec de puerco": "bistec", "Ropa vieja": "ropa", "Picadillo de res": "picadillo", "Chuleta de puerco": "chuleta",
-    "Papa con mojo": "papa", "Boniato": "boniato", "Platanito maduro frito": "maduro", "Tostones": "tostones",
-    "Frijoles negros": "negros", "Frijoles colorados": "colorados", "Chícharo": "chicharo"
+  // Menú por día (1 lunes … 6 sábado). Igual al del CRM.
+  menu: [
+    ["carne", "Pollo en salsa", [1]], ["carne", "Arroz amarillo con carne de puerco", [2]], ["carne", "Bistec de puerco", [3]],
+    ["carne", "Picadillo con papa", [4]], ["carne", "Arroz amarillo con jamón", [5]], ["carne", "Chuleta encebollada", [6]],
+    ["arroz", "Arroz blanco", [1, 4, 6]], ["arroz", "Arroz congrí", [3]],
+    ["potaje", "Potaje de frijoles colorados", [1]], ["potaje", "Potaje de chícharo", [4]], ["potaje", "Potaje de garbanzos", [6]],
+    ["ensalada", "Ensalada de pepino y tomate", [1, 5]], ["ensalada", "Ensalada de lechuga y tomate", [2, 4]], ["ensalada", "Ensalada de col y tomate", [3, 6]],
+    ["vianda", "Boniato hervido", [1, 4]], ["vianda", "Papa con mojo", [2, 5]], ["vianda", "Platanito maduro frito", [3]], ["vianda", "Tostones", [6]],
+    ["extra", "Ración extra de arroz", null, 40], ["extra", "Ración extra de potaje", [1, 4, 6], 40]
+  ],
+  // Foto viva: con qué foto real se parece cada platillo (es de referencia).
+  parecido: {
+    "Pollo en salsa": { carne: "Fricasé de pollo" }, "Bistec de puerco": { carne: "Bistec de puerco" },
+    "Picadillo con papa": { carne: "Picadillo de res" }, "Chuleta encebollada": { carne: "Chuleta de puerco" },
+    "Arroz amarillo con carne de puerco": { arroz: "Arroz amarillo" }, "Arroz amarillo con jamón": { arroz: "Arroz amarillo" },
+    "Arroz blanco": { arroz: "Arroz blanco" }, "Arroz congrí": { arroz: "Congrí" },
+    "Boniato hervido": { vianda: "Boniato" }, "Papa con mojo": { vianda: "Papa con mojo" }, "Platanito maduro frito": { vianda: "Platanito maduro frito" }, "Tostones": { vianda: "Tostones" },
+    "Potaje de frijoles colorados": { potaje: "Frijoles colorados" }, "Potaje de chícharo": { potaje: "Chícharo" }
   },
-  // Foto viva: la foto real de la charola cambia por zonas.
   fotoViva: {
     capas: [
       { grupos: ["carne"], defecto: ["Fricasé de puerco"], zona: { x: 0.552, y: 1.121, w: 59.853, h: 46.379 }, fotos: {
@@ -523,166 +589,146 @@ var CONFIG = {
   var $ = function (id) { return document.getElementById(id); };
   var REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var DIAS = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
-  var CORTO = ["D", "L", "M", "M", "J", "V", "S"];
   var iso = function (x) { return x.getFullYear() + "-" + String(x.getMonth() + 1).padStart(2, "0") + "-" + String(x.getDate()).padStart(2, "0"); };
   var deIso = function (f) { var p = f.split("-").map(Number); return new Date(p[0], p[1] - 1, p[2]); };
   var money = function (n) { return "$" + n; };
   var fin = function (t) { return /\.$/.test(t) ? t : t + "."; };
+  var cap = function (t) { return t.charAt(0).toUpperCase() + t.slice(1); };
   function el(tag, cls, html) { var x = document.createElement(tag); if (cls) x.className = cls; if (html != null) x.innerHTML = html; return x; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
 
-  // Estado
-  var PRECIO, ANTICIPO, CUPO, GRUPOS, OBLIG, EXTRAS, FECHAS = [], fecha = null, hoyCrm = null;
-  var actual = {}, extras = {}, charolas = [];
-  var CLAVE = "donamiriam.ultimo";
+  var PRECIO, ANTICIPO, CUPO, GRUPOS, ITEMS, FECHAS = [], fecha = null, hoyCrm = null, conCrm = false;
+  var cant = 1, extras = {};
+  var CLAVE = "donamiriam.ultimo2";
   function leer() { try { return JSON.parse(localStorage.getItem(CLAVE) || "null"); } catch (e) { return null; } }
   function guardar(v) { try { localStorage.setItem(CLAVE, JSON.stringify(v)); } catch (e) {} }
-  var fotoDe = {};
+
+  // ===== Menú de un día =====
+  function delDia(it, dow) { return !it.dias || !it.dias.length || it.dias.indexOf(dow) >= 0; }
+  function platosDe(dow) {
+    var r = [];
+    GRUPOS.forEach(function (g) { var it = ITEMS.filter(function (i) { return i.grupo === g.id && delDia(i, dow); })[0]; if (it) r.push({ g: g, n: it.nombre }); });
+    return r;
+  }
+  function diaCompleto(dow) { var p = platosDe(dow); return GRUPOS.every(function (g) { return g.tipo !== "uno" || p.some(function (x) { return x.g.id === g.id; }); }); }
+  function extrasDe(dow) { return ITEMS.filter(function (i) { return i.grupo === "extra" && delDia(i, dow); }); }
 
   function iniciar(d) {
     var C = CONFIG;
-    PRECIO = d && Number(d.precio_charola) || C.precio;
-    ANTICIPO = d ? Number(d.anticipo) || 0 : C.anticipo;
+    // ¿El CRM ya tiene el menú por día? (todas las partes que siempre van tienen platillos)
+    var itemsCrm = d && Array.isArray(d.items) ? d.items : null;
+    conCrm = !!itemsCrm && C.grupos.every(function (g) { return g.tipo !== "uno" || itemsCrm.some(function (i) { return i.grupo === g.id; }); });
+    GRUPOS = C.grupos;
+    ITEMS = conCrm ? itemsCrm.map(function (i) { return { grupo: i.grupo, nombre: i.nombre, dias: i.dias, precio: Number(i.precio) || 0 }; })
+      : C.menu.map(function (m) { return { grupo: m[0], nombre: m[1], dias: m[2], precio: m[3] || 0 }; });
+    PRECIO = conCrm && Number(d.precio_charola) || C.precio;
+    ANTICIPO = conCrm ? Number(d.anticipo) || 0 : C.anticipo;
     CUPO = d && Number(d.cupo_diario) || C.cupo;
     var diasEnt = d && d.dias_entrega && d.dias_entrega.length ? d.dias_entrega : C.diasEntrega;
     var diasAntes = d && d.dias_antes != null ? Number(d.dias_antes) : C.diasAntes;
     var cerradas = d && d.fechas_cerradas || [];
     hoyCrm = d && d.hoy ? deIso(d.hoy) : (function () { var x = new Date(); x.setHours(0, 0, 0, 0); return x; })();
-
-    // Grupos y extras: del CRM si contestó (solo lo disponible hoy), si no, de CONFIG.
-    GRUPOS = C.grupos.map(function (g) {
-      var ops;
-      if (d && Array.isArray(d.items)) ops = d.items.filter(function (it) { return it.grupo === g.id; }).map(function (it) { return { n: it.nombre, dias: it.dias || [], foto: it.foto || null }; });
-      else ops = g.ops.map(function (n) { return { n: n, dias: [], foto: null }; });
-      return { id: g.id, t: g.t, opcional: !!g.opcional, ops: ops };
-    }).filter(function (g) { return g.ops.length; });
-    OBLIG = GRUPOS.filter(function (g) { return !g.opcional; });
-    EXTRAS = (d && Array.isArray(d.items) ? d.items.filter(function (it) { return it.grupo === "extra"; }).map(function (it) { return { t: it.nombre, p: Number(it.precio) || 0 }; }) : C.extras)
-      .map(function (x, i) { return { id: "x" + i, t: x.t, p: x.p }; });
-    EXTRAS.forEach(function (x) { extras[x.id] = 0; });
-    GRUPOS.forEach(function (g) { g.ops.forEach(function (o) { fotoDe[o.n] = o.foto || (C.fotos[o.n] ? "fotos/op-" + C.fotos[o.n] + ".jpg" : "fotos/fv-base.jpg"); }); });
-
-    // Días de entrega con lo que queda de cupo.
     var ocupado = d && d.ocupado || null;
     for (var k = diasAntes; k < diasAntes + 14 && FECHAS.length < 6; k++) {
       var x = new Date(hoyCrm); x.setDate(x.getDate() + k);
       if (diasEnt.indexOf(x.getDay()) < 0 || cerradas.indexOf(iso(x)) >= 0) continue;
-      FECHAS.push({ f: iso(x), d: x, quedan: ocupado ? Math.max(0, CUPO - (ocupado[iso(x)] || 0)) : null });
+      FECHAS.push({ f: iso(x), d: x, quedan: ocupado ? Math.max(0, CUPO - (ocupado[iso(x)] || 0)) : null, hay: diaCompleto(x.getDay()) });
     }
-    var libre = FECHAS.filter(function (x) { return x.quedan === null || x.quedan > 0; })[0];
-    fecha = libre || FECHAS[0] || null;
+    fecha = FECHAS.filter(function (x) { return x.hay && (x.quedan === null || x.quedan > 0); })[0] || FECHAS[0] || null;
 
     $("recogerDir").textContent = C.direccion;
     if (d && d.aviso) { $("avisoTop").textContent = d.aviso; $("avisoTop").hidden = false; }
-    $("avisoAnticipo").hidden = !ANTICIPO;
-    $("avisoAnticipo").textContent = "Se aparta con un anticipo de " + money(ANTICIPO) + " por charola. Te mandamos los datos de pago por WhatsApp.";
     document.querySelectorAll("[data-precio]").forEach(function (e) { e.textContent = money(PRECIO); });
-    document.querySelectorAll("[data-cupo]").forEach(function (e) { e.textContent = CUPO; });
-
-    armarGrupos(); armarExtras(); armarFV(); textosFecha(); pintar(); mostrarRepetir();
+    armarFV(); elegirDia(fecha, true); mostrarRepetir();
   }
 
-  // ===== Textos que dependen del día =====
+  // ===== Días =====
   function relDia(x) { var n = Math.round((x - hoyCrm) / 864e5); return n === 1 ? "mañana " + DIAS[x.getDay()] : "el " + DIAS[x.getDay()] + " " + x.getDate(); }
-  function textosFecha() {
+  function corto(x) { return cap(DIAS[x.getDay()].slice(0, 3)) + " " + x.getDate(); }
+  function libre(x) { return x.hay && (x.quedan === null || x.quedan > 0); }
+  function nota(x) { return !x.hay ? "Sin menú" : x.quedan === 0 ? "Lleno" : x.quedan === null ? "Con encargo" : "Quedan " + x.quedan; }
+
+  function elegirDia(x, inicio) {
+    fecha = x;
     if (!fecha) { $("cupoTxt").textContent = "Por ahora no hay días de entrega"; return; }
-    var rel = relDia(fecha.d), relCorto = Math.round((fecha.d - hoyCrm) / 864e5) === 1 ? "mañana" : "el " + DIAS[fecha.d.getDay()];
-    var hay = FECHAS.some(function (x) { return x.quedan === null || x.quedan > 0; });
+    var dow = fecha.d.getDay();
+    // Extras de ese día
+    var ex = extrasDe(dow), nuevo = {};
+    ex.forEach(function (e) { nuevo[e.nombre] = extras[e.nombre] || 0; }); extras = nuevo;
+    if (fecha.quedan !== null) cant = Math.max(1, Math.min(cant, fecha.quedan || 1));
+    // Portada
+    var hay = FECHAS.some(libre);
+    var relCorto = Math.round((fecha.d - hoyCrm) / 864e5) === 1 ? "mañana" : "el " + DIAS[dow];
     $("cupoTxt").textContent = !hay ? "Se llenaron los próximos días" : fecha.quedan === null ? "Solo " + CUPO + " charolas al día" : "Quedan " + fecha.quedan + " para " + relCorto;
-    $("armarSub").textContent = "Toca uno de cada grupo. Es para " + rel + ".";
-    $("recogerTxt").textContent = "Recoges " + rel + " de " + fin(CONFIG.horario);
-    var dias = $("dias"); dias.innerHTML = "";
+    $("recogerTxt").textContent = "Recoges " + relDia(fecha.d) + " de " + fin(CONFIG.horario);
+    pintarDias(); pintarSemana(); armarExtras(); pintarFV(inicio); pintar();
+  }
+  function pintarDias() {
+    var box = $("diasSel"); box.innerHTML = "";
     FECHAS.forEach(function (x) {
       var b = el("button", "dia"); b.type = "button";
-      var lleno = x.quedan === 0;
-      b.disabled = lleno; b.setAttribute("aria-pressed", fecha && fecha.f === x.f ? "true" : "false");
-      b.innerHTML = "<b>" + DIAS[x.d.getDay()].slice(0, 3) + " " + x.d.getDate() + "</b><small>" + (lleno ? "Lleno" : x.quedan === null ? "Con encargo" : "Quedan " + x.quedan) + "</small>";
+      b.disabled = !libre(x); b.setAttribute("aria-pressed", fecha && fecha.f === x.f ? "true" : "false");
+      b.innerHTML = "<b>" + corto(x.d) + "</b><small>" + nota(x) + "</small>";
       if (x.quedan !== null && x.quedan > 0 && x.quedan <= 3) b.classList.add("pocas");
-      b.addEventListener("click", function () { fecha = x; textosFecha(); revisarDias(); pintar(); ocultarError(); });
-      dias.appendChild(b);
+      b.addEventListener("click", function () { elegirDia(x); });
+      box.appendChild(b);
     });
   }
-
-  // Platillos que solo se hacen ciertos días
-  function vale(o) { return !fecha || !o.dias.length || o.dias.indexOf(fecha.d.getDay()) >= 0; }
-  function revisarDias() {
-    GRUPOS.forEach(function (g) { g.ops.forEach(function (o) { if (actual[g.id] === o.n && !vale(o)) delete actual[g.id]; }); });
-    document.querySelectorAll(".op").forEach(function (b) {
-      var o = b._o; var ok = vale(o); b.disabled = !ok;
-      b.querySelector("small").textContent = ok || !o.dias.length ? "" : "Solo " + o.dias.slice().sort(function (a, c) { return ((a + 6) % 7) - ((c + 6) % 7); }).map(function (n) { return CORTO[n]; }).join(", ");
-    });
-  }
-
-  // ===== Armar =====
-  var PALOMITA = '<span class="palomita"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span>';
-  function armarGrupos() {
-    var cont = $("grupos"); cont.innerHTML = "";
-    GRUPOS.forEach(function (g, i) {
-      var s = el("div", "grupo"); s.id = "g-" + g.id;
-      var cab = el("div", "cab"); cab.appendChild(el("h3", null, (i + 1) + ". " + esc(g.t))); var est = el("span", "estado"); est.id = "est-" + g.id; cab.appendChild(est); s.appendChild(cab);
-      var grid = el("div", "opciones");
-      g.ops.forEach(function (o) {
-        var b = el("button", "op"); b.type = "button"; b.setAttribute("aria-pressed", "false"); b.dataset.g = g.id; b.dataset.v = o.n; b._o = o;
-        b.innerHTML = '<img src="' + esc(fotoDe[o.n]) + '" alt="" loading="lazy"><span>' + esc(o.n) + '<small></small></span>' + PALOMITA;
-        b.addEventListener("click", function () {
-          var nuevo = !actual[g.id];
-          if (actual[g.id] === o.n && g.opcional) { delete actual[g.id]; nuevo = false; } else actual[g.id] = o.n;
-          pintar(); if (nuevo) setTimeout(function () { siguiente(i); }, 380);
-        });
-        grid.appendChild(b);
+  function pintarSemana() {
+    var box = $("semana"); box.innerHTML = "";
+    FECHAS.forEach(function (x) {
+      var p = platosDe(x.d.getDay());
+      var b = el("button", "dcard"); b.type = "button"; b.disabled = !libre(x);
+      b.setAttribute("aria-pressed", fecha && fecha.f === x.f ? "true" : "false");
+      b.innerHTML = '<span class="dc-cab"><b>' + cap(DIAS[x.d.getDay()]) + " " + x.d.getDate() + '</b><small>' + nota(x) + '</small></span>' +
+        '<span class="dc-plato">' + esc(p[0] ? p[0].n : "—") + '</span>' +
+        '<span class="dc-resto">' + esc(p.slice(1).map(function (q) { return q.n; }).join(" · ")) + '</span>';
+      b.addEventListener("click", function () {
+        elegirDia(x);
+        var y = $("panel").getBoundingClientRect().top + scrollY - document.querySelector(".top").offsetHeight - 12;
+        if (innerWidth < 960) scrollTo({ top: y, behavior: REDUCE ? "auto" : "smooth" });
       });
-      s.appendChild(grid); cont.appendChild(s);
+      box.appendChild(b);
     });
-    revisarDias();
-  }
-  function armarExtras() {
-    var ex = $("extras"); ex.innerHTML = "";
-    $("bloqueExtras").hidden = !EXTRAS.length;
-    EXTRAS.forEach(function (x) {
-      var r = el("div", "extra");
-      r.innerHTML = '<div class="n">' + esc(x.t) + '<small>+' + money(x.p) + '</small></div><div class="paso"><button type="button" aria-label="Quitar ' + esc(x.t) + '">−</button><output id="o-' + x.id + '">0</output><button type="button" aria-label="Agregar ' + esc(x.t) + '">+</button></div>';
-      var bs = r.querySelectorAll("button");
-      bs[0].addEventListener("click", function () { extras[x.id] = Math.max(0, extras[x.id] - 1); pintar(); });
-      bs[1].addEventListener("click", function () { extras[x.id] = Math.min(5, extras[x.id] + 1); pintar(); });
-      ex.appendChild(r);
-    });
-  }
-  // Como Chipotle: al escoger en un grupo, la página baja sola al siguiente que falte.
-  function siguiente(i) {
-    var dest = null;
-    for (var j = i + 1; j < GRUPOS.length; j++) { if (!actual[GRUPOS[j].id]) { dest = $("g-" + GRUPOS[j].id); break; } }
-    if (!dest) { var falta = OBLIG.filter(function (g) { return !actual[g.id]; })[0]; dest = falta ? $("g-" + falta.id) : $("bloqueExtras"); }
-    if (!dest || dest.hidden) return;
-    var tope = document.querySelector(".top").offsetHeight + document.querySelector(".vista").offsetHeight + 12;
-    var y = dest.getBoundingClientRect().top + scrollY - tope;
-    if (Math.abs(y - scrollY) < 24) return;
-    scrollTo({ top: y, behavior: REDUCE ? "auto" : "smooth" });
   }
 
-  function completa(c) { return OBLIG.every(function (g) { return c[g.id]; }); }
-  function costoExtras(x) { return EXTRAS.reduce(function (s, e) { return s + (x[e.id] || 0) * e.p; }, 0); }
-  function caras(id, c) { var box = $(id); box.innerHTML = ""; OBLIG.forEach(function (g) { if (c[g.id]) { var im = el("img"); im.src = fotoDe[c[g.id]] || ""; im.alt = ""; box.appendChild(im); } else box.appendChild(el("span", "vacia")); }); }
-  function copia(o) { return JSON.parse(JSON.stringify(o)); }
-  function todas() { return charolas.concat([{ sel: copia(actual), extras: copia(extras) }]); }
+  // ===== Cantidad y extras =====
+  function armarExtras() {
+    var box = $("extras"); box.innerHTML = "";
+    Object.keys(extras).forEach(function (n) {
+      var it = ITEMS.filter(function (i) { return i.grupo === "extra" && i.nombre === n; })[0];
+      var r = el("div", "extra");
+      r.innerHTML = '<div class="n">' + esc(n) + '<small>+' + money(it.precio) + ' c/u</small></div><div class="paso"><button type="button" aria-label="Quitar ' + esc(n) + '">−</button><output>' + extras[n] + '</output><button type="button" aria-label="Agregar ' + esc(n) + '">+</button></div>';
+      var bs = r.querySelectorAll("button");
+      bs[0].addEventListener("click", function () { extras[n] = Math.max(0, extras[n] - 1); r.querySelector("output").textContent = extras[n]; pintar(); });
+      bs[1].addEventListener("click", function () { extras[n] = Math.min(10, extras[n] + 1); r.querySelector("output").textContent = extras[n]; pintar(); });
+      box.appendChild(r);
+    });
+  }
+  $("menos").addEventListener("click", function () { cant = Math.max(1, cant - 1); pintar(); });
+  $("mas").addEventListener("click", function () { var tope = fecha && fecha.quedan !== null ? fecha.quedan : 20; cant = Math.min(Math.max(tope, 1), cant + 1); pintar(); });
+
+  function costoExtras() { return Object.keys(extras).reduce(function (s, n) { var it = ITEMS.filter(function (i) { return i.grupo === "extra" && i.nombre === n; })[0]; return s + extras[n] * (it ? it.precio : 0); }, 0); }
+  function total() { return cant * PRECIO + costoExtras(); }
+  function textoExtras() { return Object.keys(extras).filter(function (n) { return extras[n]; }).map(function (n) { return extras[n] + " " + n.toLowerCase(); }).join(", "); }
 
   function pintar() {
-    document.querySelectorAll(".op").forEach(function (b) { b.setAttribute("aria-pressed", actual[b.dataset.g] === b.dataset.v ? "true" : "false"); });
-    GRUPOS.forEach(function (g) { var e = $("est-" + g.id); var ok = !!actual[g.id]; e.textContent = ok ? "Listo" : g.opcional ? "Opcional" : "Falta elegir"; e.className = "estado" + (ok ? " ok" : ""); });
-    EXTRAS.forEach(function (x) { $("o-" + x.id).textContent = extras[x.id]; });
-    var n = OBLIG.filter(function (g) { return actual[g.id]; }).length;
-    caras("barCaras", actual);
-    $("barTxt").textContent = (charolas.length ? (charolas.length + 1) + " charolas · " : "Tu charola · ") + (n < OBLIG.length ? n + " de " + OBLIG.length : "lista");
-    var total = todas().reduce(function (s, c) { return s + PRECIO + costoExtras(c.extras); }, 0);
+    if (!fecha) return;
+    $("cant").textContent = cant;
+    $("cantNota").textContent = fecha.quedan === null ? "Para " + relDia(fecha.d) : "Quedan " + fecha.quedan + " para " + relDia(fecha.d);
+    $("menos").disabled = cant <= 1;
+    $("mas").disabled = fecha.quedan !== null && cant >= fecha.quedan;
+    var t = money(total()), ok = libre(fecha);
+    $("barTxt").textContent = cant + (cant === 1 ? " charola · " : " charolas · ") + corto(fecha.d);
     var bt = $("barTotal");
-    if (bt.textContent !== money(total)) { bt.textContent = money(total); bt.classList.remove("salta"); void bt.offsetWidth; bt.classList.add("salta"); }
-    $("barBtn").setAttribute("aria-disabled", completa(actual) ? "false" : "true");
-    $("panelBtn").setAttribute("aria-disabled", completa(actual) ? "false" : "true");
-    $("panelBtn").firstChild.textContent = completa(actual) ? (charolas.length ? "Apartar " + (charolas.length + 1) + " charolas · " + money(total) + " " : "Apartar mi charola · " + money(total) + " ") : "Te falta " + OBLIG.filter(function (g) { return !actual[g.id]; }).map(function (g) { return g.t.toLowerCase(); }).join(" y ") + " ";
-    pintarFV();
+    if (bt.textContent !== t) { bt.textContent = t; bt.classList.remove("salta"); void bt.offsetWidth; bt.classList.add("salta"); }
+    $("barDia").innerHTML = "<small>" + DIAS[fecha.d.getDay()].slice(0, 3) + "</small><b>" + fecha.d.getDate() + "</b>";
+    $("panelTxt").textContent = ok ? "Apartar para " + relDia(fecha.d) + " · " + t : nota(fecha);
+    ["barBtn", "panelBtn"].forEach(function (id) { $(id).setAttribute("aria-disabled", ok ? "false" : "true"); });
   }
 
-  // ===== Foto viva =====
-  var fvBox = $("fv"), fvPot = $("fvPot"), fvAntes = "";
+  // ===== Foto viva del día =====
+  var fvBox = $("fv"), fvPot = $("fvPot");
   function armarFV() {
     CONFIG.fotoViva.capas.forEach(function (c, i) {
       Object.keys(c.fotos).forEach(function (k) {
@@ -693,104 +739,95 @@ var CONFIG = {
       });
     });
   }
-  function pintarFV() {
-    var FV = CONFIG.fotoViva;
+  function pintarFV(inicio) {
+    var FV = CONFIG.fotoViva, p = platosDe(fecha.d.getDay()), sel = {};
+    p.forEach(function (x) { var a = CONFIG.parecido[x.n]; if (a) Object.keys(a).forEach(function (k) { sel[k] = a[k]; }); });
     FV.capas.forEach(function (c, i) {
-      var k = c.grupos.map(function (g, j) { return actual[g] || c.defecto[j]; }).join("|");
+      var k = c.grupos.map(function (g, j) { return sel[g] || c.defecto[j]; }).join("|");
       fvBox.querySelectorAll('.capa[data-c="' + i + '"]').forEach(function (im) { im.classList.toggle("on", im.dataset.k === k); });
     });
-    var pv = actual.potaje, src = pv && FV.potaje[pv] ? "fotos/" + FV.potaje[pv] + ".webp" : pv ? fotoDe[pv] : "";
-    if (fvPot.dataset.w !== (pv || "")) { fvPot.dataset.w = pv || ""; fvPot.innerHTML = pv ? '<img src="' + esc(src) + '" alt="' + esc(pv) + '">' : ""; }
-    fvPot.classList.toggle("on", !!pv);
-    $("fvEj").style.opacity = Object.keys(actual).length ? 0 : 1;
-    var ahora = JSON.stringify(actual);
-    if (fvAntes && ahora !== fvAntes && !REDUCE) { fvBox.classList.remove("brilla"); void fvBox.offsetWidth; fvBox.classList.add("brilla"); }
-    fvAntes = ahora;
+    var pv = sel.potaje && FV.potaje[sel.potaje];
+    fvPot.innerHTML = pv ? '<img src="fotos/' + pv + '.webp" alt="">' : ""; fvPot.classList.toggle("on", !!pv);
+    if (!inicio && !REDUCE) { fvBox.classList.remove("brilla"); void fvBox.offsetWidth; fvBox.classList.add("brilla"); }
     var CHK = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>';
-    var h = '<span class="tit">Tu charola</span>';
-    GRUPOS.forEach(function (g) {
-      var v = actual[g.id];
-      if (v) h += '<div class="it ok"><i>' + CHK + '</i><span>' + esc(v) + '</span></div>';
-      else if (!g.opcional) h += '<div class="it no"><i></i><span>' + esc(g.t) + '</span></div>';
-    });
-    EXTRAS.forEach(function (x) { if (extras[x.id]) h += '<div class="it doble"><i style="border:0;background:var(--rojo)">' + CHK + '</i><span>' + esc(x.t.replace(/^Ración extra de /, "Doble ")) + (extras[x.id] > 1 ? " ×" + extras[x.id] : "") + '</span></div>'; });
-    h += '<div class="it" style="color:var(--cafe-2)"><i style="border:0;background:var(--verde)">' + CHK + '</i><span>Ensalada</span></div>';
-    h += '<b class="p">' + money(PRECIO + costoExtras(extras)) + '</b>';
+    var h = '<span class="tit">' + cap(DIAS[fecha.d.getDay()]) + " " + fecha.d.getDate() + '</span>';
+    p.forEach(function (x, i) { h += '<div class="it ok' + (i === 0 ? " fuerte" : "") + '"><i>' + CHK + '</i><span>' + esc(x.n) + '</span></div>'; });
+    if (!p.length) h += '<div class="it no"><i></i><span>Ese día no hay menú</span></div>';
+    h += '<b class="p">' + money(PRECIO) + ' <small>la charola</small></b>';
     $("lista").innerHTML = h;
   }
 
   // ===== Hoja del encargo =====
-  function textoCharola(c) { var p = OBLIG.map(function (g) { return c[g.id]; }); if (c.potaje) p.push(c.potaje); return p.join(" · "); }
-  function textoExtras(x) { return EXTRAS.filter(function (e) { return x[e.id]; }).map(function (e) { return x[e.id] + " " + e.t.toLowerCase(); }).join(", "); }
   function mostrarError(t) { $("error").textContent = t; $("error").hidden = false; $("error").scrollIntoView({ block: "center", behavior: REDUCE ? "auto" : "smooth" }); }
   function ocultarError() { $("error").hidden = true; }
-
+  function platosTexto() { return platosDe(fecha.d.getDay()).map(function (x) { return x.n; }).join(", "); }
   function resumen() {
-    var r = $("resumen"); r.innerHTML = ""; var total = 0, lista = todas();
-    lista.forEach(function (c, i) {
-      var costo = PRECIO + costoExtras(c.extras); total += costo;
-      var l = el("div", "linea"), xt = textoExtras(c.extras);
-      l.innerHTML = '<img src="' + esc(fotoDe[c.sel.carne] || "fotos/fv-base.jpg") + '" alt=""><div class="d"><b>Charola ' + (i + 1) + '</b><span>' + esc(textoCharola(c.sel)) + (xt ? " + " + esc(xt) : "") + '</span></div><span class="q">' + money(costo) + '</span>' +
-        (lista.length > 1 ? '<button type="button" class="quitar" aria-label="Quitar charola ' + (i + 1) + '">Quitar</button>' : "");
-      var q = l.querySelector(".quitar");
-      if (q) q.addEventListener("click", function () {
-        if (i < charolas.length) charolas.splice(i, 1);
-        else { var u = charolas.pop(); actual = u.sel; extras = u.extras; }
-        pintar(); resumen();
-      });
-      r.appendChild(l);
-    });
+    var r = $("resumen"); r.innerHTML = "";
+    var l = el("div", "linea");
+    l.innerHTML = '<img src="fotos/fv-base.jpg" alt=""><div class="d"><b>' + cant + (cant === 1 ? " charola" : " charolas") + " · " + cap(DIAS[fecha.d.getDay()]) + " " + fecha.d.getDate() + '</b><span>' + esc(platosTexto()) + '</span></div><span class="q">' + money(cant * PRECIO) + '</span>';
+    r.appendChild(l);
+    Object.keys(extras).forEach(function (n) { if (!extras[n]) return; var it = ITEMS.filter(function (i) { return i.grupo === "extra" && i.nombre === n; })[0]; r.appendChild(el("div", "suma", '<span>' + extras[n] + " × " + esc(n) + '</span><span>' + money(extras[n] * it.precio) + '</span>')); });
     r.appendChild(el("div", "sep"));
-    if (ANTICIPO) r.appendChild(el("div", "suma", '<span>Anticipo para apartar</span><span>' + money(ANTICIPO * lista.length) + '</span>'));
-    r.appendChild(el("div", "suma total", '<span>Total</span><span>' + money(total) + '</span>'));
+    if (ANTICIPO) r.appendChild(el("div", "suma", '<span>Anticipo para apartar</span><span>' + money(ANTICIPO * cant) + '</span>'));
+    r.appendChild(el("div", "suma total", '<span>Total</span><span>' + money(total()) + '</span>'));
+    $("avisoAnticipo").hidden = !ANTICIPO;
+    $("avisoAnticipo").textContent = "Se aparta con un anticipo de " + money(ANTICIPO) + " por charola. Te mandamos los datos de pago por WhatsApp.";
   }
-
   var velo = $("velo");
   function abrir() {
-    resumen(); textosFecha(); ocultarError();
+    if (!fecha || !libre(fecha)) return;
+    resumen(); ocultarError();
     $("hojaCuerpo").hidden = false; $("listo").hidden = true;
     velo.hidden = false; document.body.style.overflow = "hidden";
     setTimeout(function () { if (!$("nombre").value) $("nombre").focus(); }, 60);
   }
   function cerrar() { velo.hidden = true; document.body.style.overflow = ""; }
-  $("barBtn").addEventListener("click", function () {
-    if (!GRUPOS) return;
-    if (!completa(actual)) { var falta = OBLIG.filter(function (g) { return !actual[g.id]; })[0]; $("g-" + falta.id).scrollIntoView({ block: "center", behavior: REDUCE ? "auto" : "smooth" }); return; }
-    abrir();
-  });
-  $("panelBtn").addEventListener("click", function () { $("barBtn").click(); });
+  $("barBtn").addEventListener("click", abrir);
+  $("panelBtn").addEventListener("click", abrir);
   $("cerrar").addEventListener("click", cerrar);
   velo.addEventListener("click", function (e) { if (e.target === velo) cerrar(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !velo.hidden) cerrar(); });
-  $("otra").addEventListener("click", function () {
-    charolas.push({ sel: copia(actual), extras: copia(extras) });
-    actual = {}; EXTRAS.forEach(function (x) { extras[x.id] = 0; }); cerrar(); pintar(); irA();
-  });
 
   function folioNuevo() { return "DM-" + Date.now().toString(36).toUpperCase().slice(-6); }
-  function mensaje(nombre, lista, folio, notas) {
-    var total = lista.reduce(function (s, c) { return s + PRECIO + costoExtras(c.extras); }, 0);
+  function mensaje(nombre, folio, notas) {
+    var xt = textoExtras();
     var t = "Hola " + CONFIG.nombre + ", quiero hacer un encargo (folio " + folio + "):\n\n" +
-      lista.map(function (c) { var xt = textoExtras(c.extras); return "• 1 × Charola: " + textoCharola(c.sel) + " + ensalada" + (xt ? " + " + xt : "") + " (" + money(PRECIO + costoExtras(c.extras)) + ")"; }).join("\n") +
-      "\n\nTotal: " + money(total) + (ANTICIPO ? "\nAnticipo: " + money(ANTICIPO * lista.length) : "") +
+      "• " + cant + (cant === 1 ? " charola" : " charolas") + " del " + DIAS[fecha.d.getDay()] + ": " + platosTexto() + " (" + money(PRECIO) + " c/u)" +
+      (xt ? "\n• Extras: " + xt : "") +
+      "\n\nTotal: " + money(total()) + (ANTICIPO ? "\nAnticipo: " + money(ANTICIPO * cant) : "") +
       "\nPara el día: " + fecha.d.toLocaleDateString("es-MX", { weekday: "long", day: "numeric", month: "long" }) +
       "\nEntrega: Paso a recoger de " + CONFIG.horario + "\nA nombre de: " + nombre;
     if (notas) t += "\nNotas: " + notas;
     return "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(t);
   }
+  // Una entrada por charola; los extras se reparten entre ellas.
+  function unidades() {
+    var p = platosDe(fecha.d.getDay()), u = [];
+    for (var k = 0; k < cant; k++) { var o = { qty: 1, extras: [] }; p.forEach(function (x) { o[x.g.id] = x.n; }); u.push(o); }
+    Object.keys(extras).forEach(function (n) { for (var j = 0; j < extras[n]; j++) u[j % cant].extras.push(n); });
+    return u;
+  }
 
   $("form").addEventListener("submit", function (e) {
     e.preventDefault(); ocultarError();
-    var nombre = $("nombre").value.trim(), notas = $("notas").value.trim(), lista = todas();
-    if (!nombre) { mostrarError("Escribe tu nombre para apartar."); $("nombre").focus(); return; }
-    if (!fecha) { mostrarError("Por ahora no hay días de entrega. Escríbenos por WhatsApp."); return; }
-    if (fecha.quedan !== null && lista.length > fecha.quedan) { mostrarError("Solo quedan " + fecha.quedan + " charolas para ese día. Elige otro día o quita una charola."); return; }
-    var folio = folioNuevo(), link = mensaje(nombre, lista, folio, notas);
+    var nombre = $("nombre").value.trim(), notas = $("notas").value.trim();
+    if (nombre.length < 2) { mostrarError("Escribe tu nombre para apartar."); $("nombre").focus(); return; }
+    if (fecha.quedan !== null && cant > fecha.quedan) { mostrarError("Solo quedan " + fecha.quedan + " charolas para ese día. Elige otro día o pide menos."); return; }
+    var folio = folioNuevo(), link = mensaje(nombre, folio, notas);
+    var listo = function () {
+      guardar({ cant: cant, extras: extras, nombre: nombre });
+      if (fecha.quedan !== null) fecha.quedan = Math.max(0, fecha.quedan - cant);
+      $("listoTxt").textContent = "Tu folio es " + folio + ". Recoges " + relDia(fecha.d) + " de " + fin(CONFIG.horario) + " Termina de enviar el mensaje en WhatsApp" + (ANTICIPO ? " y ahí te pasamos los datos para el anticipo." : ".");
+      $("listoWa").href = link;
+      $("hojaCuerpo").hidden = true; $("listo").hidden = false;
+      cant = 1; Object.keys(extras).forEach(function (n) { extras[n] = 0; }); $("notas").value = "";
+      elegirDia(fecha, true); mostrarRepetir();
+    };
+    // Si el CRM todavía no tiene el menú por día, el encargo se manda solo por WhatsApp.
+    if (!conCrm) { location.href = link; listo(); return; }
     var ventana = null; try { ventana = window.open("", "_blank"); } catch (err) {}
     var boton = $("apartar"); boton.setAttribute("aria-busy", "true"); boton.disabled = true;
-    var pedidoCrm = { folio: folio, fecha: fecha.f, nombre: nombre, telefono: "", notas: notas,
-      charolas: lista.map(function (c) { var o = { qty: 1, extras: [] }; GRUPOS.forEach(function (g) { o[g.id] = c.sel[g.id] || ""; });
-        EXTRAS.forEach(function (x) { for (var n = 0; n < (c.extras[x.id] || 0); n++) o.extras.push(x.t); }); return o; }) };
+    var pedidoCrm = { folio: folio, fecha: fecha.f, nombre: nombre, telefono: "", notas: notas, charolas: unidades() };
     var M = CONFIG.menuApi, ctrl = window.AbortController ? new AbortController() : null, reloj = setTimeout(function () { if (ctrl) ctrl.abort(); }, 6000);
     fetch(M.url + "/rest/v1/rpc/encargo_web", { method: "POST", signal: ctrl ? ctrl.signal : undefined, headers: { apikey: M.key, "Content-Type": "application/json" }, body: JSON.stringify({ p_account: M.cuenta, p: pedidoCrm }) })
       .then(function (r) { return r.json(); }).catch(function () { return null; })
@@ -800,54 +837,38 @@ var CONFIG = {
         // Si el CRM dice que no, se avisa aquí y no se abre WhatsApp. Si no contesta, se sigue por WhatsApp.
         if (motivo && motivo !== "sin_menu" && motivo !== "sin_tablero") {
           if (ventana) ventana.close();
-          if (motivo === "cupo" && fecha.quedan !== null) { fecha.quedan = Number(res.quedan) || 0; textosFecha(); }
-          mostrarError(motivo === "no_hay" ? "Se acabó «" + res.plato + "» para ese día. Cámbialo por otra opción o elige otro día."
-            : motivo === "cupo" ? "Solo quedan " + res.quedan + " charolas para ese día. Elige otro día o quita una charola."
+          if (motivo === "cupo") { fecha.quedan = Number(res.quedan) || 0; elegirDia(fecha, true); }
+          mostrarError(motivo === "no_hay" ? "Se acabó «" + res.plato + "» para ese día. Quítalo o elige otro día."
+            : motivo === "cupo" ? "Solo quedan " + res.quedan + " charolas para ese día. Elige otro día o pide menos."
             : motivo === "fecha" ? "Ese día ya no se puede. Elige otro día."
             : motivo === "nombre" ? "Escribe tu nombre para apartar."
-            : motivo.indexOf("falta_") === 0 ? "A una charola le falta escoger algo. Revísala."
             : "No se pudo apartar. Intenta otra vez o escríbenos por WhatsApp.");
           return;
         }
         if (ventana) ventana.location.href = link; else location.href = link;
-        guardar({ charolas: lista, nombre: nombre });
-        if (fecha.quedan !== null) fecha.quedan = Math.max(0, fecha.quedan - lista.length);
-        $("listoTxt").textContent = "Tu folio es " + folio + ". Para " + relDia(fecha.d) + ", de " + fin(CONFIG.horario) + " Termina de enviar el mensaje en WhatsApp" + (ANTICIPO ? " y ahí te pasamos los datos para el anticipo." : ".");
-        $("listoWa").href = link;
-        $("hojaCuerpo").hidden = true; $("listo").hidden = false;
-        charolas = []; actual = {}; EXTRAS.forEach(function (x) { extras[x.id] = 0; }); $("notas").value = "";
-        pintar(); textosFecha(); mostrarRepetir();
+        listo();
       });
   });
   $("listoOk").addEventListener("click", cerrar);
 
   // ===== Lo mismo que la vez pasada =====
-  function existe(gid, n) { return GRUPOS.some(function (g) { return g.id === gid && g.ops.some(function (o) { return o.n === n && vale(o); }); }); }
-  function limpiar(c) {
-    var sel = {}; Object.keys(c.sel || {}).forEach(function (g) { if (existe(g, c.sel[g])) sel[g] = c.sel[g]; });
-    var ex = {}; EXTRAS.forEach(function (x) { ex[x.id] = 0; });
-    Object.keys(c.extras || {}).forEach(function (k) { if (k in ex) ex[k] = c.extras[k]; });
-    return { sel: sel, extras: ex };
-  }
   function mostrarRepetir() {
     var u = leer(), box = $("repetir");
-    if (!u || !u.charolas || !u.charolas.length || !GRUPOS) { box.hidden = true; return; }
-    var c = u.charolas[0];
-    caras("repCaras", c.sel);
-    $("repTxt").textContent = textoCharola(c.sel) + (u.charolas.length > 1 ? " · " + u.charolas.length + " charolas" : "");
+    if (!u || !u.cant || !fecha || !libre(fecha)) { box.hidden = true; return; }
+    var xt = Object.keys(u.extras || {}).filter(function (n) { return u.extras[n]; }).map(function (n) { return u.extras[n] + " " + n.toLowerCase(); }).join(", ");
+    $("repTxt").textContent = "La vez pasada: " + u.cant + (u.cant === 1 ? " charola" : " charolas") + (xt ? " + " + xt : "");
+    $("repBtn").textContent = "Pedir igual para " + relDia(fecha.d);
     if (u.nombre && !$("nombre").value) $("nombre").value = u.nombre;
     box.hidden = false;
   }
   $("repBtn").addEventListener("click", function () {
-    var u = leer(); if (!u) return;
-    var lista = u.charolas.map(limpiar);
-    var ult = lista.pop(); charolas = lista.filter(function (c) { return completa(c.sel); });
-    actual = ult.sel; extras = ult.extras; pintar();
-    if (completa(actual) && charolas.length === lista.length) abrir();
-    else { irA(); setTimeout(function () { var falta = OBLIG.filter(function (g) { return !actual[g.id]; })[0]; if (falta) $("g-" + falta.id).scrollIntoView({ block: "center" }); }, 500); }
+    var u = leer(); if (!u || !fecha) return;
+    cant = Math.max(1, fecha.quedan === null ? u.cant : Math.min(u.cant, fecha.quedan));
+    Object.keys(extras).forEach(function (n) { extras[n] = (u.extras && u.extras[n]) || 0; });
+    armarExtras(); pintar(); abrir();
   });
 
-  function irA() { $("armar").scrollIntoView({ behavior: REDUCE ? "auto" : "smooth" }); }
+  function irA() { $("menu").scrollIntoView({ behavior: REDUCE ? "auto" : "smooth" }); }
   $("irArmar").addEventListener("click", irA);
 
   // ===== Portada: video, o fotos si no hay video =====
@@ -861,7 +882,7 @@ var CONFIG = {
   else { vid.addEventListener("error", sinVideo, true); var pr = vid.play && vid.play(); if (pr && pr.catch) pr.catch(function () {}); }
 
   // ===== Aparecen al bajar =====
-  document.querySelectorAll(".historia > :not(.galeria), .v-izq, .v-der, .armar > header").forEach(function (x) { x.classList.add("rv"); });
+  document.querySelectorAll(".historia > :not(.galeria), .v-izq, .v-der, .menu > header, .semana").forEach(function (x) { x.classList.add("rv"); });
   if ("IntersectionObserver" in window && !REDUCE) {
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { rootMargin: "0px 0px -8% 0px" });
     document.querySelectorAll(".rv").forEach(function (x) { io.observe(x); });
@@ -875,7 +896,7 @@ var CONFIG = {
   var M = CONFIG.menuApi;
   fetch(M.url + "/rest/v1/rpc/sitio_datos", { method: "POST", headers: { apikey: M.key, "Content-Type": "application/json" }, body: JSON.stringify({ p_account: M.cuenta }) })
     .then(function (r) { return r.ok ? r.json() : null; })
-    .then(function (d) { clearTimeout(espera); arrancarSitio(d && Array.isArray(d.items) && d.items.length ? d : null); })
+    .then(function (d) { clearTimeout(espera); arrancarSitio(d && Array.isArray(d.items) ? d : null); })
     .catch(function () { clearTimeout(espera); arrancarSitio(null); });
 })();
 </script>
